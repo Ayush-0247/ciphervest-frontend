@@ -1,0 +1,407 @@
+/* ─── CSS VARIABLES ─────────────────────────────────────── */
+:root {
+  --sand: #f4f1eb;
+  --cream: #e7dfd4;
+  --gold: #a27c4f;
+  --ink: #1d1d1b;
+  --muted: #555;
+  --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── HERO SHELL ─────────────────────────────────────────── */
+.hero {
+  background: var(--sand);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+/* ─── ENVELOPE INTRO OVERLAY ─────────────────────────────── */
+.mailScene {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sand);
+  z-index: 100;
+  animation: sceneFadeOut 0.6s ease forwards;
+  animation-delay: 2.8s;
+  pointer-events: none;
+}
+
+@keyframes sceneFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.envelope {
+  position: relative;
+  width: 280px;
+  height: 175px;
+  transform-style: preserve-3d;
+  animation: flyIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes flyIn {
+  0% {
+    transform: translateY(-280px) rotateX(55deg) scale(0.65);
+    opacity: 0;
+  }
+  65% {
+    transform: translateY(18px) rotateX(8deg) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotateX(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+.envelopeBody {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+/* Bottom triangle fold */
+.envelopeBody::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 88px;
+  background: var(--cream);
+  clip-path: polygon(0 100%, 50% 0%, 100% 100%);
+}
+
+/* Left fold */
+.envelopeBody::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #ede7dc;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.envelopeRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #e4ddd2;
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+.envelopeFlap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88px;
+  background: var(--cream);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top center;
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+/* Flap opens when .open is applied */
+.envelope.open .envelopeFlap {
+  transform: rotateX(-165deg);
+}
+
+/* ─── MAIN CONTAINER (hero content) ─────────────────────── */
+.container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 80px;
+
+  /* hidden until reveal */
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.container.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── LEFT SIDE ──────────────────────────────────────────── */
+.left {
+  max-width: 620px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--gold);
+  padding: 8px 18px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  font-family: "Inter", sans-serif;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 3.2s;
+}
+
+.heading {
+  font-family: "Inter", sans-serif;
+  font-size: 68px;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 3.4s;
+}
+
+.subHeading {
+  font-family: "Playfair Display", serif;
+  font-size: 58px;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 3.55s;
+}
+
+.description {
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 3.7s;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 3.85s;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  padding: 16px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.primaryBtn {
+  background: var(--ink);
+  color: white;
+  border: none;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+.secondaryBtn {
+  background: transparent;
+  border: 1px solid #d4cec3;
+  color: var(--ink);
+}
+
+.secondaryBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ─── RIGHT SIDE ─────────────────────────────────────────── */
+.right {
+  position: relative;
+  height: 450px;
+}
+
+.floatWrapper {
+  perspective: 1000px;
+}
+
+.cardTop,
+.cardBottom {
+  width: 360px;
+  height: 210px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: var(--card-shadow);
+  padding: 25px;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.cardTop {
+  top: 0;
+  right: 0;
+  animation: floatTop 6s ease-in-out infinite;
+  animation-delay: 3.9s;
+  opacity: 0;
+  /* reveal on delay */
+  animation: cardReveal 0.7s ease forwards, floatTop 6s ease-in-out 4.6s infinite;
+}
+
+.cardBottom {
+  bottom: 0;
+  left: 40px;
+  opacity: 0;
+  animation: cardReveal 0.7s ease 4.1s forwards, floatBottom 6s ease-in-out 4.8s infinite;
+}
+
+/* Hover: pause float, apply scale */
+.cardTop:hover,
+.cardBottom:hover {
+  animation-play-state: paused;
+  transform: scale(1.04) rotate(1deg);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.14);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.cardChip {
+  width: 32px;
+  height: 32px;
+  background: var(--gold);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.cardBrand {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 600;
+  color: #999;
+  letter-spacing: 1px;
+}
+
+.cardNumber {
+  margin-top: 38px;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: #222;
+  font-family: "Courier New", monospace;
+}
+
+.cardFooter {
+  position: absolute;
+  bottom: 22px;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #888;
+}
+
+.cardHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ─── KEYFRAMES ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatTop {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(-15px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes floatBottom {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  50%  { transform: translateY(15px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 60px 30px;
+  }
+
+  .hero {
+    margin-top: 25px;
+  }
+
+  .heading {
+    font-size: 48px;
+  }
+
+  .subHeading {
+    font-size: 40px;
+  }
+
+  .right {
+    height: 380px;
+  }
+
+  .cardTop,
+  .cardBottom {
+    width: 300px;
+    height: 180px;
+  }
+}
+
+

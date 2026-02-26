@@ -1,0 +1,141 @@
+.fp-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 10%;
+  min-height: 100vh;
+  background-color: #eef2f7;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* LEFT */
+
+.fp-left {
+  flex: 1;
+}
+
+.fp-brand-sub {
+  font-size: 18px;
+  color: #3f3f3f;
+  letter-spacing: 1px;
+}
+
+.fp-brand-title {
+  font-size: 58px;
+  font-weight: 400;
+  margin: 12px 0 55px 0;
+  color: #1a1a1a;
+}
+
+.fp-brand-title span {
+  color: #b88a5a;
+  font-weight: 600;
+}
+
+/* Audio Visual Bars */
+
+.fp-audio-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.fp-bar {
+  width: 14px;
+  border-radius: 40px;
+}
+
+.fp-b1 { height: 75px; background: #0a66c2; }
+.fp-b2 { height: 115px; background: #6f42c1; }
+.fp-b3 { height: 95px; background: #ff8c00; }
+.fp-b4 { height: 135px; background: #0a66c2; }
+.fp-b5 { height: 105px; background: #6f42c1; }
+.fp-b6 { height: 85px; background: #ff8c00; }
+
+/* RIGHT */
+
+.fp-right {
+  flex: 1.3;
+  padding-left: 110px;
+}
+
+.fp-episode-time {
+  color: #8c6239;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.fp-main-heading {
+  font-size: 42px;
+  font-weight: 400;
+  color: #1c1c1c;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+.fp-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: #0056b3;
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 3px;
+}
+
+.fp-summary {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.85;
+  margin-bottom: 40px;
+}
+
+.fp-actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.fp-play-btn {
+  width: 68px;
+  height: 68px;
+  border: 1px solid #b88a5a;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.fp-play-btn:hover {
+  background-color: #b88a5a;
+  color: white;
+}
+
+.fp-transcript {
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #0056b3;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .fp-wrapper {
+    flex-direction: column;
+    padding: 70px 8%;
+  }
+
+  .fp-right {
+    padding-left: 0;
+    margin-top: 60px;
+  }
+
+  .fp-brand-title {
+    font-size: 44px;
+  }
+
+  .fp-main-heading {
+    font-size: 30px;
+  }
+}
