@@ -9,7 +9,7 @@ import Outmoto from "./pages/Outmoto";
 import Ourservices from "./pages/Ourservices";
 import Products from "./pages/Products";
 import "./App.css";
-import Hero from "./components/Hero";
+import Hero from "./Components/Hero";
 function Home() {
   return (
     <>
