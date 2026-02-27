@@ -1,6 +1,6 @@
 /* ─── CSS VARIABLES ─────────────────────────────────────── */
 :root {
-  --sand: #f4f1eb;
+  --sand: #ffffff;
   --cream: #e7dfd4;
   --gold: #a27c4f;
   --ink: #1d1d1b;
@@ -11,12 +11,15 @@
 /* ─── HERO SHELL ─────────────────────────────────────────── */
 .hero {
   background: var(--sand);
-  min-height: 100vh;
+  min-height: 90vh;
+  margin-top: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   perspective: 1200px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ─── ENVELOPE INTRO OVERLAY ─────────────────────────────── */
@@ -28,16 +31,15 @@
   justify-content: center;
   background: var(--sand);
   z-index: 100;
-  animation: sceneFadeOut 0.6s ease forwards;
-  animation-delay: 2.8s;
   pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-@keyframes sceneFadeOut {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
+.mailScene.fadeOut {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .envelope {
@@ -63,8 +65,6 @@
   }
 }
 
-
-
 .envelopeBody {
   position: absolute;
   inset: 0;
@@ -74,7 +74,6 @@
   overflow: hidden;
 }
 
-/* Bottom triangle fold */
 .envelopeBody::after {
   content: "";
   position: absolute;
@@ -86,7 +85,6 @@
   clip-path: polygon(0 100%, 50% 0%, 100% 100%);
 }
 
-/* Left fold */
 .envelopeBody::before {
   content: "";
   position: absolute;
@@ -121,12 +119,11 @@
   z-index: 2;
 }
 
-/* Flap opens when .open is applied */
 .envelope.open .envelopeFlap {
   transform: rotateX(-165deg);
 }
 
-/* ─── MAIN CONTAINER (hero content) ─────────────────────── */
+/* ─── MAIN CONTAINER ─────────────────────────────────────── */
 .container {
   max-width: 1300px;
   width: 100%;
@@ -136,8 +133,6 @@
   grid-template-columns: 1.1fr 1fr;
   align-items: center;
   gap: 80px;
-
-  /* hidden until reveal */
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.9s ease, transform 0.9s ease;
@@ -164,8 +159,7 @@
   margin-bottom: 30px;
   font-family: "Inter", sans-serif;
   opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 3.2s;
+  animation: fadeUp 0.8s ease 3.1s forwards;
 }
 
 .heading {
@@ -176,8 +170,7 @@
   color: var(--ink);
   margin-bottom: 10px;
   opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 3.4s;
+  animation: fadeUp 0.8s ease 3.3s forwards;
 }
 
 .subHeading {
@@ -187,8 +180,7 @@
   color: var(--gold);
   margin-bottom: 30px;
   opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 3.55s;
+  animation: fadeUp 0.8s ease 3.5s forwards;
 }
 
 .description {
@@ -198,16 +190,14 @@
   color: var(--muted);
   margin-bottom: 40px;
   opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 3.7s;
+  animation: fadeUp 0.8s ease 3.7s forwards;
 }
 
 .buttons {
   display: flex;
   gap: 20px;
   opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 3.85s;
+  animation: fadeUp 0.8s ease 3.9s forwards;
 }
 
 .primaryBtn,
@@ -261,34 +251,89 @@
   padding: 25px;
   position: absolute;
   box-sizing: border-box;
+  will-change: transform, opacity;
+  z-index: 0.6;
 }
 
+/* ══════════════════════════════════════════════════════════
+   CARD 1 – glides from left (text side) → right
+   
+   Uses a long 1.8s duration with a true ease-in-out custom
+   bezier so acceleration and deceleration are both gradual.
+   Minimal rotation keeps it feeling weightless and smooth.
+   Only 3 keyframe stops — fewer stops = smoother interpolation.
+   ══════════════════════════════════════════════════════════ */
 .cardTop {
   top: 0;
   right: 0;
-  animation: floatTop 6s ease-in-out infinite;
-  animation-delay: 3.9s;
   opacity: 0;
-  /* reveal on delay */
-  animation: cardReveal 0.7s ease forwards, floatTop 6s ease-in-out 4.6s infinite;
+  animation:
+    card1Glide   1.8s cubic-bezier(0.45, 0, 0.15, 1) 4.0s  forwards,
+    floatTop     7s   ease-in-out                     5.9s  infinite;
 }
 
+@keyframes card1Glide {
+  0% {
+    opacity: 0;
+    transform: translateX(-480px) translateY(20px) rotate(-8deg);
+  }
+  /* fade in early so motion is fully visible */
+  12% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   CARD 2 – drifts out from card 1's position to bottom-left.
+   
+   Starts scaled down and slightly behind card 1 (same coords).
+   Long 1.6s duration, gentle bezier, only 3 stops.
+   The scale growth from 0.82 → 1 is what sells the "emerging
+   from behind" look without any jarring snap.
+   ══════════════════════════════════════════════════════════ */
 .cardBottom {
   bottom: 0;
   left: 40px;
   opacity: 0;
-  animation: cardReveal 0.7s ease 4.1s forwards, floatBottom 6s ease-in-out 4.8s infinite;
+  animation:
+    card2Drift   1.6s cubic-bezier(0.45, 0, 0.15, 1) 5.6s  forwards,
+    floatBottom  7s   ease-in-out                     7.3s  infinite;
 }
 
-/* Hover: pause float, apply scale */
+@keyframes card2Drift {
+  0% {
+    opacity: 0;
+    /*
+      Origin: card 1's resting position, expressed as offset from card 2's rest.
+      Δx ≈ +320px (right), Δy ≈ -240px (up), scaled down + slight tilt
+      so it reads as tucked behind card 1.
+    */
+    transform: translateX(320px) translateY(-240px) scale(0.82) rotate(6deg);
+  }
+  /* reveal early — let the full glide be visible */
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
+  }
+}
+
+/* Hover: pause float */
 .cardTop:hover,
 .cardBottom:hover {
   animation-play-state: paused;
-  transform: scale(1.04) rotate(1deg);
+  transform: scale(1.04) rotate(1deg) !important;
   box-shadow: 0 35px 80px rgba(0, 0, 0, 0.14);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* ─── CARD INTERNALS ─────────────────────────────────────── */
 .cardChip {
   width: 32px;
   height: 32px;
@@ -338,7 +383,7 @@
   align-items: center;
 }
 
-/* ─── KEYFRAMES ──────────────────────────────────────────── */
+/* ─── SHARED KEYFRAMES ───────────────────────────────────── */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -350,26 +395,15 @@
   }
 }
 
-@keyframes cardReveal {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 @keyframes floatTop {
   0%   { transform: translateY(0px) rotate(0deg); }
-  50%  { transform: translateY(-15px) rotate(-1deg); }
+  50%  { transform: translateY(-14px) rotate(-0.8deg); }
   100% { transform: translateY(0px) rotate(0deg); }
 }
 
 @keyframes floatBottom {
   0%   { transform: translateY(0px) rotate(0deg); }
-  50%  { transform: translateY(15px) rotate(1deg); }
+  50%  { transform: translateY(14px) rotate(0.8deg); }
   100% { transform: translateY(0px) rotate(0deg); }
 }
 
@@ -403,5 +437,3 @@
     height: 180px;
   }
 }
-
-
