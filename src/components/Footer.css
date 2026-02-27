@@ -301,32 +301,53 @@
 }
 
 
-
-.footer form {
-  margin-top: 15px;
+/* Newsletter Form Fix */
+.nx-footer form {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
-.footer input {
-  padding: 10px;
-  width: 250px;
-  border-radius: 6px;
+.nx-footer form input {
+  padding: 15px 20px;
+  border-radius: 50px;
   border: none;
-  margin-right: 10px;
+  width: 300px;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow 0.3s;
 }
 
-.footer button {
-  padding: 10px 20px;
-  border-radius: 6px;
+.nx-footer form input:focus {
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.4);
+}
+
+.nx-footer form button {
+  padding: 15px 30px;
+  border-radius: 50px;
   border: none;
-  background: #00c896;
-  color: white;
+  background: white;
+  color: #355dfc;
+  font-weight: 600;
   cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.footer button:disabled {
+.nx-footer form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.nx-footer form button:disabled {
   opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.message {
+/* Message Styling */
+.nx-footer .message {
   margin-top: 15px;
+  font-size: 14px;
+  color: white;
 }
