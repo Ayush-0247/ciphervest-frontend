@@ -7,42 +7,47 @@ function Footer() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
+const API_URL = "https://ciphervest-backend.onrender.com";
 
-    if (!email) {
-      setMessage("Please enter an email");
-      return;
-    }
+const handleSubscribe = async (e) => {
+  e.preventDefault();
 
-    try {
-      setLoading(true);
-      setMessage("");
+  if (!email.trim()) {
+    setMessage("Please enter an email");
+    return;
+  }
 
-const res = await fetch("http://192.168.1.12:5000/api/newsletter/subscribe", {
+  try {
+    setLoading(true);
+    setMessage("");
+
+    const response = await fetch(
+      `${API_URL}/api/newsletter/subscribe`,
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
-        setMessage("Subscribed successfully 🎉");
-        setEmail("");
-      } else {
-        setMessage(data.message);
       }
+    );
 
-    } catch (error) {
-      console.error(error);
-      setMessage("Something went wrong");
-    } finally {
-      setLoading(false);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Subscription failed");
     }
-  };
+
+    setMessage("Subscribed successfully 🎉");
+    setEmail("");
+
+  } catch (error) {
+    console.error("Subscription Error:", error);
+    setMessage(error.message || "Unable to connect to server");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
 <footer className="nx-footer">
