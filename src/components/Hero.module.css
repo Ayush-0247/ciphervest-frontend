@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
 /* ─── CSS VARIABLES ─────────────────────────────────────── */
 :root {
-  --sand: #ffffff;
-  --cream: #e7dfd4;
-  --gold: #a27c4f;
-  --ink: #1d1d1b;
-  --muted: #555;
-  --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  --sand: #f5f7fa;
+  --cream: #dde6f5;
+  --gold: #1a56db;          /* professional blue */
+  --gold-light: #3b7cff;    /* lighter blue accent */
+  --ink: #0d1117;           /* near-black */
+  --muted: #3d4a5c;
+  --card-shadow: 0 25px 60px rgba(10, 30, 80, 0.10);
+  --blue-glow: rgba(26, 86, 219, 0.18);
 }
 
 /* ─── HERO SHELL ─────────────────────────────────────────── */
@@ -22,6 +26,18 @@
   z-index: 1;
 }
 
+/* Subtle blue-tinted mesh background */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 700px 500px at 75% 40%, rgba(59, 124, 255, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 15% 80%, rgba(26, 86, 219, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ─── ENVELOPE INTRO OVERLAY ─────────────────────────────── */
 .mailScene {
   position: fixed;
@@ -29,12 +45,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--sand);
+  background: #ffffff;
   z-index: 100;
   pointer-events: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
 }
 
 .mailScene.fadeOut {
@@ -47,16 +63,22 @@
   width: 280px;
   height: 175px;
   transform-style: preserve-3d;
-  animation: flyIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: flyIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes flyIn {
   0% {
-    transform: translateY(-280px) rotateX(55deg) scale(0.65);
+    transform: translateY(-300px) rotateX(50deg) scale(0.6);
     opacity: 0;
+    filter: blur(4px);
   }
-  65% {
-    transform: translateY(18px) rotateX(8deg) scale(1.02);
+  60% {
+    transform: translateY(14px) rotateX(6deg) scale(1.02);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  80% {
+    transform: translateY(-5px) rotateX(-2deg) scale(0.99);
     opacity: 1;
   }
   100% {
@@ -81,7 +103,7 @@
   left: 0;
   right: 0;
   height: 88px;
-  background: var(--cream);
+  background: #e7dfd4;
   clip-path: polygon(0 100%, 50% 0%, 100% 100%);
 }
 
@@ -112,10 +134,10 @@
   left: 0;
   right: 0;
   height: 88px;
-  background: var(--cream);
+  background: #e7dfd4;
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   transform-origin: top center;
-  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
 }
 
@@ -134,8 +156,10 @@
   align-items: center;
   gap: 80px;
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transform: translateY(28px);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
 }
 
 .container.reveal {
@@ -154,23 +178,24 @@
   color: var(--gold);
   padding: 8px 18px;
   font-size: 12px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   border-radius: 30px;
   margin-bottom: 30px;
-  font-family: "Inter", sans-serif;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
   opacity: 0;
-  animation: fadeUp 0.8s ease 3.1s forwards;
+  animation: fadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 3.1s forwards;
 }
 
 .heading {
-  font-family: "Inter", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 68px;
   font-weight: 600;
   line-height: 1.05;
   color: var(--ink);
   margin-bottom: 10px;
   opacity: 0;
-  animation: fadeUp 0.8s ease 3.3s forwards;
+  animation: fadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 3.3s forwards;
 }
 
 .subHeading {
@@ -180,24 +205,24 @@
   color: var(--gold);
   margin-bottom: 30px;
   opacity: 0;
-  animation: fadeUp 0.8s ease 3.5s forwards;
+  animation: fadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 3.5s forwards;
 }
 
 .description {
-  font-family: "Inter", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 17px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--muted);
   margin-bottom: 40px;
   opacity: 0;
-  animation: fadeUp 0.8s ease 3.7s forwards;
+  animation: fadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 3.7s forwards;
 }
 
 .buttons {
   display: flex;
   gap: 20px;
   opacity: 0;
-  animation: fadeUp 0.8s ease 3.9s forwards;
+  animation: fadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 3.9s forwards;
 }
 
 .primaryBtn,
@@ -205,30 +230,36 @@
   padding: 16px 28px;
   border-radius: 10px;
   font-size: 14px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .primaryBtn {
-  background: var(--ink);
+  background: var(--gold);
   color: white;
   border: none;
+  box-shadow: 0 4px 20px var(--blue-glow);
 }
 
 .primaryBtn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 14px 36px rgba(26, 86, 219, 0.35);
 }
 
 .secondaryBtn {
   background: transparent;
-  border: 1px solid #d4cec3;
+  border: 1px solid #bccde8;
   color: var(--ink);
 }
 
 .secondaryBtn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 20px rgba(10, 30, 80, 0.08);
+  border-color: var(--gold-light);
+  color: var(--gold);
 }
 
 /* ─── RIGHT SIDE ─────────────────────────────────────────── */

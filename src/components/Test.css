@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f0f0f0;
+  min-height: 100vh;
+}
+
+/* ─── PAGE WRAPPER ─── */
+.wealth-page {
+  background: #efefef;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px 40px;
+}
+
+/* ─── HERO SECTION ─── */
+.hero {
+  text-align: center;
+  width: 95vw;
+  margin-bottom: 48px;
+}
+
+
+
+.hero-title .emoji-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #9b59e8, #7c3aed);
+  border-radius: 12px;
+  font-size: 0.7rem;
+  vertical-align: middle;
+  margin: 0 4px 4px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.hero-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 auto 28px;
+}
+
+/* ─── BUTTONS ─── */
+.btn-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 13px 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #111;
+  border: 1.5px solid #ddd;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  border-color: #bbb;
+}
+
+/* ─── CARDS GRID ─── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 960px;
+  margin-bottom: 48px;
+}
+
+/* ─── CARD BASE ─── */
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* ─── CARD 1: Expense Tracker ─── */
+.card-tracker .card-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.card-tracker .card-subtitle {
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+/* Donut Chart */
+.donut-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.donut-svg {
+  width: 130px;
+  height: 70px;
+  overflow: visible;
+}
+
+.donut-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.donut-label {
+  font-size: 0.6rem;
+  color: #aaa;
+  display: block;
+}
+
+.donut-amount {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Expense rows */
+.expense-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.78rem;
+}
+
+.expense-tag {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.expense-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.dot-dark { background: #222; }
+.dot-purple { background: #8b5cf6; }
+.dot-light { background: #c4b5fd; }
+
+.expense-name {
+  color: #333;
+  font-weight: 500;
+}
+
+.expense-amount {
+  font-weight: 600;
+  color: #111;
+}
+
+/* ─── CARD 2: Credit Card ─── */
+.card-credit {
+  background: linear-gradient(135deg, #9333ea 0%, #7c3aed 40%, #6d28d9 70%, #a855f7 100%);
+  color: #fff;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-credit::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+}
+
+.card-credit::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: 30px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+
+.credit-label {
+  font-size: 0.72rem;
+  opacity: 0.8;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.credit-balance {
+  font-family: 'Sora', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -1px;
+}
+
+.mastercard-icon {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  z-index: 2;
+  display: flex;
+}
+
+.mc-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.mc-red {
+  background: #ff5f00;
+  opacity: 0.9;
+}
+
+.mc-yellow {
+  background: #ffb300;
+  opacity: 0.9;
+  margin-left: -10px;
+}
+
+.credit-number {
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  font-family: 'Sora', sans-serif;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.credit-footer {
+  display: flex;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.credit-field-label {
+  font-size: 0.65rem;
+  opacity: 0.7;
+  margin-bottom: 2px;
+}
+
+.credit-field-value {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ─── CARD 3: Save Widget ─── */
+.card-save .card-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.card-save .card-subtitle {
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.amount-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.currency-sign {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.amount-input-display {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #bbb;
+}
+
+.amount-range {
+  font-size: 0.7rem;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+.amount-range span {
+  font-weight: 600;
+  color: #888;
+}
+
+.select-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 11px 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.select-field:hover {
+  border-color: #c084fc;
+}
+
+.select-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.select-icon {
+  width: 26px;
+  height: 26px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.chevron {
+  color: #999;
+  font-size: 0.75rem;
+}
+
+.btn-save {
+  width: 100%;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-save:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+/* ─── FOOTER TRUST ─── */
+.trust-bar {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trust-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.trust-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2.5px solid #efefef;
+  margin-left: -8px;
+  object-fit: cover;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  color: #f59e0b;
+  font-size: 1.3rem;
+}
+
+.rating-text {
+  font-size: 0.7rem;
+  color: #999;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ─── RESPONSIVE: TABLET ─── */
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 680px;
+  }
+
+  .card-credit {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .wealth-page {
+    padding: 40px 16px 32px;
+  }
+
+  .hero {
+    margin-bottom: 32px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+
+  .card-credit {
+    grid-column: span 1;
+  }
+
+  .trust-bar {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .credit-balance {
+    font-size: 1.8rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    max-width: 260px;
+  }
+}

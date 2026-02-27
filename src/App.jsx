@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-
+import Test from "./components/Test";
 import Section1 from "./components/Section1";
 import Footer from "./components/Footer";
 import FinPulseSection from "./components/FinPulseSection";
@@ -9,13 +9,16 @@ import Outmoto from "./pages/Outmoto";
 import Ourservices from "./pages/Ourservices";
 import Products from "./pages/Products";
 import "./App.css";
+import SocialGrid from "./components/SocialGrid";
 import Hero from "./components/Hero";
+
 function Home() {
   return (
     <>
     <Hero />
       
-
+<Test />
+<SocialGrid />
       <Section1 />
 
 
