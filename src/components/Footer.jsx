@@ -1,7 +1,49 @@
 import "./Footer.css";
+import { useState } from "react";
 import { FaGoogle, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      setMessage("Please enter an email");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setMessage("");
+
+      const res = await fetch("http://localhost:5000/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setMessage("Subscribed successfully 🎉");
+        setEmail("");
+      } else {
+        setMessage(data.message);
+      }
+
+    } catch (error) {
+      console.error(error);
+      setMessage("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
 <footer className="nx-footer">
 
@@ -12,10 +54,20 @@ function Footer() {
           <p>
             Receive curated insights on crypto, structured finance, and emerging investment strategies.
           </p>
-          <div className="newsletter-input">
-            <input type="email" placeholder="Enter your professional email" />
-            <button>Subscribe</button>
-          </div>
+                <form onSubmit={handleSubscribe}>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Subscribing..." : "Subscribe"}
+        </button>
+      </form>
+      {message && <p className="message">{message}</p>}
         </div>
       </div>
 
