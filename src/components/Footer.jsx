@@ -1,54 +1,7 @@
 import "./Footer.css";
-import { useState } from "react";
 import { FaGoogle, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-
-const API_URL = "https://ciphervest-backend.onrender.com";
-
-const handleSubscribe = async (e) => {
-  e.preventDefault();
-
-  if (!email.trim()) {
-    setMessage("Please enter an email");
-    return;
-  }
-
-  try {
-    setLoading(true);
-    setMessage("");
-
-    const response = await fetch(
-      `${API_URL}/api/newsletter/subscribe`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Subscription failed");
-    }
-
-    setMessage("Subscribed successfully 🎉");
-    setEmail("");
-
-  } catch (error) {
-    console.error("Subscription Error:", error);
-    setMessage(error.message || "Unable to connect to server");
-  } finally {
-    setLoading(false);
-  }
-};
-
   return (
 <footer className="nx-footer">
 
@@ -59,20 +12,10 @@ const handleSubscribe = async (e) => {
           <p>
             Receive curated insights on crypto, structured finance, and emerging investment strategies.
           </p>
-                <form onSubmit={handleSubscribe}>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Subscribing..." : "Subscribe"}
-        </button>
-      </form>
-      {message && <p className="message">{message}</p>}
+          <div className="newsletter-input">
+            <input type="email" placeholder="Enter your professional email" />
+            <button>Subscribe</button>
+          </div>
         </div>
       </div>
 
