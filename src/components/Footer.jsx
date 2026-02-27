@@ -19,7 +19,7 @@ function Footer() {
       setLoading(true);
       setMessage("");
 
-      const res = await fetch("http://localhost:5000/api/newsletter/subscribe", {
+const res = await fetch("http://192.168.1.12:5000/api/newsletter/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
