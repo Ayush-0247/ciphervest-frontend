@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 ───────────────────────────────────────────────────── */
 
 
+
 const processSteps = [
   { num: "I", title: "Onboard in a day", body: "Sandbox credentials, complete API documentation, and a dedicated solutions engineer on call from day one. No procurement cycles, no legal bottlenecks.", icon: "◈" },
   { num: "II", title: "Integrate with one SDK", body: "A single NovaPay SDK covers payments, identity, compliance, and analytics. Unified webhooks, idempotent endpoints, and exhaustive test fixtures.", icon: "◎" },
@@ -30,17 +31,14 @@ export default function OurServices() {
    const goToContact = () => {
     navigate("/contact");
   };
-  const [visible, setVisible] = useState(new Set());
   const [heroVisible, setHeroVisible] = useState(false);
   const [processVisible, setProcessVisible] = useState(false);
   const [trustVisible, setTrustVisible] = useState(false);
   const [testimonialIdx, setTestimonialIdx] = useState(0);
 
-  const rowRefs = useRef([]);
   const heroRef = useRef(null);
   const processRef = useRef(null);
   const trustRef = useRef(null);
-  const serviceListRef = useRef(null);
 
   useEffect(() => {
     const observers = [];
@@ -57,16 +55,8 @@ export default function OurServices() {
     if (trustRef.current) trustObs.observe(trustRef.current);
     observers.push(trustObs);
 
-    const rowObs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          const idx = parseInt(e.target.dataset.index);
-          setVisible((prev) => new Set([...prev, idx]));
-        }
-      });
-    }, { threshold: 0.3 });
-    rowRefs.current.forEach((r) => { if (r) rowObs.observe(r); });
-    observers.push(rowObs);
+
+    
 
     return () => observers.forEach(o => o.disconnect());
   }, []);
@@ -125,37 +115,7 @@ Drop a query ...
         </div>
       </div>
 
-      {/* ── SERVICES LIST ── */}
-      <div className="os-list" ref={serviceListRef}>
-        {services.map((s, i) => (
-          <div key={s.num} className={`os-row ${visible.has(i) ? "visible" : ""}`} data-index={i} ref={(el) => (rowRefs.current[i] = el)}>
-            <div className="os-row-border" />
-            <div className="os-row-inner">
-              <div className="os-row-left">
-                <span className="os-row-num">{s.num}</span>
-                <span className="os-row-category">{s.category}</span>
-                <span className="os-row-tag">{s.tag}</span>
-              </div>
-              <div className="os-row-centre">
-                <h2 className="os-row-title">{s.title}</h2>
-                <p className="os-row-headline">{s.headline}</p>
-                <p className="os-row-body">{s.body}</p>
-                <p className="os-row-detail">{s.detail}</p>
-                <a className="os-row-link" href="#">{s.link} <span className="os-row-arrow">→</span></a>
-              </div>
-              <div className="os-row-right">
-                {s.metrics.map((m, mi) => (
-                  <div key={mi} className="os-metric">
-                    <span className="os-metric-value">{m.value}</span>
-                    <span className="os-metric-label">{m.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-        <div className="os-list-end-border" />
-      </div>
+      
 
       {/* ── NEW: HOW IT WORKS ── */}
       <div className={`os-process ${processVisible ? "visible" : ""}`} ref={processRef}>
