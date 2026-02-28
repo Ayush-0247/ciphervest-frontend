@@ -217,7 +217,7 @@ export default function ProductPage() {
 
         <div className="fin-products-grid">
           {products.map((p, i) => (
-            <div key={p.name} className={`fin-card fin-product-card ${p.featured ? 'fin-featured-product' : ''}`}>
+            <div key={i} className={`fin-card fin-product-card ${p.featured ? 'fin-featured-product' : ''}`}>
               <div className="fin-icon-wrapper">{p.icon}</div>
               <h3 className="fin-product-title">{p.name}</h3>
               <p className="fin-product-desc">{p.desc}</p>
@@ -317,7 +317,7 @@ export default function ProductPage() {
 
         <div className="fin-pricing-grid">
           {plans.map((p, i) => (
-            <div key={p.plan} className={`fin-card fin-price-card ${p.featured ? 'fin-price-featured' : ''}`}>
+            <div key={i} className={`fin-card fin-price-card ${p.featured ? 'fin-price-featured' : ''}`}>
               {p.badge && <div className="fin-popular-badge">{p.badge}</div>}
 
               <div className="fin-plan-name">{p.plan}</div>

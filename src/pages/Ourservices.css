@@ -1102,3 +1102,78 @@ button {
   background: var(--border-dark);
   border-radius: 10px;
 }
+
+
+
+.contactBtn {
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;margin-bottom: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+  position: relative;
+  overflow: hidden; font-family: var(--font-display);
+}
+
+/* Hover effect */
+.contactBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(79, 70, 229, 0.5);
+}
+
+/* Click effect */
+.contactBtn:active {
+  transform: scale(0.96);
+}
+
+/* Subtle shine animation */
+.contactBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.contactBtn:hover::before {
+  left: 100%;
+}
+
+/* 🔹 Tablet */
+@media (max-width: 1024px) {
+  .contactBtn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+
+/* 🔹 Mobile */
+@media (max-width: 768px) {
+  .contactBtn {
+    width: 60%;
+    margin: 0 auto;
+    padding: 14px 0;
+    font-size: 15px;
+  }
+}
+
+/* 🔹 Small Mobile */
+@media (max-width: 480px) {
+  .contactBtn {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}

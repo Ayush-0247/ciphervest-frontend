@@ -1,4 +1,4 @@
-import { useEffect, useState,  } from "react";
+import { useEffect, useState } from "react";
 
 const css = `
 @import url("https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap");
@@ -389,9 +389,11 @@ const css = `
 `;
 
 // Sparkline path generator
-function SparklinePath({ data, color = "#2563eb",  }) {
-  const w = 300, h = 56;
-  const min = Math.min(...data), max = Math.max(...data);
+function SparklinePath({ data, color = "#2563eb" }) {
+  const w = 300,
+    h = 56;
+  const min = Math.min(...data),
+    max = Math.max(...data);
   const pts = data.map((v, i) => {
     const x = (i / (data.length - 1)) * w;
     const y = h - ((v - min) / (max - min)) * (h - 8) - 4;
@@ -409,12 +411,22 @@ function SparklinePath({ data, color = "#2563eb",  }) {
         </linearGradient>
       </defs>
       <path d={areaPath} fill="url(#sparkGrad)" />
-      <path d={linePath} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d={linePath}
+        fill="none"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-const SPARK_DATA = [82, 78, 85, 80, 88, 92, 87, 95, 91, 97, 94, 100, 98, 105, 110, 108, 115, 112, 118, 124];
+const SPARK_DATA = [
+  82, 78, 85, 80, 88, 92, 87, 95, 91, 97, 94, 100, 98, 105, 110, 108, 115, 112,
+  118, 124,
+];
 
 const TICKERS = [
   { sym: "BTC", price: "67,240", chg: "+2.4%", up: true },
@@ -432,8 +444,10 @@ function animateValue(setter, end, duration, isDecimal = false) {
   const increment = end / (duration / 16);
   const counter = setInterval(() => {
     start += increment;
-    if (start >= end) { setter(end); clearInterval(counter); }
-    else setter(isDecimal ? parseFloat(start.toFixed(2)) : Math.floor(start));
+    if (start >= end) {
+      setter(end);
+      clearInterval(counter);
+    } else setter(isDecimal ? parseFloat(start.toFixed(2)) : Math.floor(start));
   }, 16);
 }
 
@@ -463,15 +477,12 @@ export default function Section1() {
           <div className="tickerTrack">
             {doubled.map((t, i) => (
               <span key={i} className="tickerItem">
-                <span className="sym">{t.sym}</span>
-                ${t.price}
+                <span className="sym">{t.sym}</span>${t.price}
                 <span className={t.up ? "up" : "dn"}>{t.chg}</span>
               </span>
             ))}
           </div>
         </div>
-
-
 
         {/* HERO */}
         <div className="s1Hero">
@@ -495,9 +506,7 @@ export default function Section1() {
               <button className="ctaPrimary">
                 Get Started <span className="ctaArrow">→</span>
               </button>
-              <button className="ctaSecondary">
-                ▶ Watch Demo
-              </button>
+              <button className="ctaSecondary">▶ Watch Demo</button>
             </div>
 
             <div className="s1TrustRow">
@@ -530,17 +539,48 @@ export default function Section1() {
 
               <div className="pcPositions">
                 {[
-                  { sym: "BTC", name: "Bitcoin", price: "$67,240", chg: "+2.4%", up: true, bar: 72, cls: "btc" },
-                  { sym: "ETH", name: "Ethereum", price: "$3,512", chg: "+1.8%", up: true, bar: 55, cls: "eth" },
-                  { sym: "NVDA", name: "Nvidia", price: "$875", chg: "-0.6%", up: false, bar: 38, cls: "nvda" },
-                ].map(p => (
+                  {
+                    sym: "BTC",
+                    name: "Bitcoin",
+                    price: "$67,240",
+                    chg: "+2.4%",
+                    up: true,
+                    bar: 72,
+                    cls: "btc",
+                  },
+                  {
+                    sym: "ETH",
+                    name: "Ethereum",
+                    price: "$3,512",
+                    chg: "+1.8%",
+                    up: true,
+                    bar: 55,
+                    cls: "eth",
+                  },
+                  {
+                    sym: "NVDA",
+                    name: "Nvidia",
+                    price: "$875",
+                    chg: "-0.6%",
+                    up: false,
+                    bar: 38,
+                    cls: "nvda",
+                  },
+                ].map((p) => (
                   <div key={p.sym} className="pcPos">
-                    <div className={`posIcon ${p.cls}`}>{p.sym.slice(0,1)}</div>
+                    <div className={`posIcon ${p.cls}`}>
+                      {p.sym.slice(0, 1)}
+                    </div>
                     <span className="posName">{p.name}</span>
                     <span className="posPrice">{p.price}</span>
-                    <span className={`posChange ${p.up ? "up" : "dn"}`}>{p.chg}</span>
+                    <span className={`posChange ${p.up ? "up" : "dn"}`}>
+                      {p.chg}
+                    </span>
                     <div className="posBar">
-                      <div className="posBarFill" style={{ width: `${p.bar}%` }} />
+                      <div
+                        className="posBarFill"
+                        style={{ width: `${p.bar}%` }}
+                      />
                     </div>
                   </div>
                 ))}
@@ -563,13 +603,12 @@ export default function Section1() {
             </div>
           </div>
         </div>
-{/* TICKER */}
+        {/* TICKER */}
         <div className="s1Ticker">
           <div className="tickerTrack">
             {doubled.map((t, i) => (
               <span key={i} className="tickerItem">
-                <span className="sym">{t.sym}</span>
-                ${t.price}
+                <span className="sym">{t.sym}</span>${t.price}
                 <span className={t.up ? "up" : "dn"}>{t.chg}</span>
               </span>
             ))}
@@ -578,19 +617,28 @@ export default function Section1() {
         {/* STATS BAND */}
         <div className="s1StatsBand">
           {[
-            { num: `${(users / 1_000_000).toFixed(1)}M+`, label: "Active Users", sub: "↑ 23% YoY" },
+            {
+              num: `${(users / 1_000_000).toFixed(1)}M+`,
+              label: "Active Users",
+              sub: "↑ 23% YoY",
+            },
             { num: `$${assets}B+`, label: "Assets Managed", sub: "↑ 41% YoY" },
-            { num: `${uptime}%`, label: "Platform Uptime", sub: "SLA guaranteed" },
+            {
+              num: `${uptime}%`,
+              label: "Platform Uptime",
+              sub: "SLA guaranteed",
+            },
           ].map((s, i) => (
-            <div key={i} className={i > 0 ? "statItem statDivider" : "statItem"}>
+            <div
+              key={i}
+              className={i > 0 ? "statItem statDivider" : "statItem"}
+            >
               <span className="statNum">{s.num}</span>
               <p>{s.label}</p>
               <div className="statSub">{s.sub}</div>
             </div>
           ))}
         </div>
-
-
       </section>
     </>
   );

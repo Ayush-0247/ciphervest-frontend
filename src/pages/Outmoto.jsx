@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import './Ourmoto.css'
-
+import {useNavigate} from "react-router-dom";
 const mottos = [
   {
     id: 1,
@@ -91,7 +91,10 @@ export default function Outmoto() {
       clearInterval(interval);
     };
   }, []);
-
+  const navigate = useNavigate();  
+   const goToContact = () => {
+    navigate("/contact");
+  };
   return (
     <section className="motto-page">
       {/* Background Elements */}
@@ -127,6 +130,9 @@ export default function Outmoto() {
             />
           ))}
         </div>
+         <button className="contactBtn" onClick={goToContact}>
+  Get in touch with us
+</button>
       </div>
 
       {/* MOTTO CARDS */}

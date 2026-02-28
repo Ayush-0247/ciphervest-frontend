@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState,  } from "react";
 import "./Ourservices.css";
+import {useNavigate} from "react-router-dom";
 /* ─────────────────────────────────────────────────────
    DATA
 ───────────────────────────────────────────────────── */
@@ -91,6 +92,10 @@ const logos = ["Stripe Atlas", "Revolut Business", "Wise Platform", "Adyen", "Br
 ───────────────────────────────────────────────────── */
 
 export default function OurServices() {
+  const navigate = useNavigate();  
+   const goToContact = () => {
+    navigate("/contact");
+  };
   const [visible, setVisible] = useState(new Set());
   const [heroVisible, setHeroVisible] = useState(false);
   const [processVisible, setProcessVisible] = useState(false);
@@ -138,7 +143,7 @@ export default function OurServices() {
     return () => clearInterval(t);
   }, []);
 
-  
+
 
   return (
     <div className="os-page">
@@ -165,9 +170,13 @@ export default function OurServices() {
           <span className="os-hero-stat"><strong>$180B</strong> processed annually</span>
           <span className="os-hero-divider" />
           <span className="os-hero-stat"><strong>2.4M</strong> businesses served</span>
+         <button className="contactBtn" onClick={goToContact}>
+Drop a query ...
+</button>
+          
         </div>
       </div>
-
+  
       {/* ── NEW: TRUST BAND ── */}
       <div className={`os-trust-band ${trustVisible ? "visible" : ""}`} ref={trustRef}>
         <div className="os-trust-inner">
