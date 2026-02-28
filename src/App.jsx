@@ -11,25 +11,22 @@ import Products from "./pages/Products";
 import "./App.css";
 import SocialGrid from "./components/SocialGrid";
 import Hero from "./components/Hero";
+import ContactPage from "./pages/Contactpage";
 
 function Home() {
   return (
     <>
-    <Hero />
-      
-<Test />
-<SocialGrid />
+      <Hero />
+      <ContactPage />
+      <Test />
+      <SocialGrid />
       <Section1 />
-
-
-   
       <FinPulseSection />
     </>
   );
 }
 
 function App() {
-  
   return (
     <Router>
       <Header />

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap");
 
 /* ─── CSS VARIABLES ─────────────────────────────────────── */
 :root {
@@ -11,12 +11,10 @@
   --card-shadow: 0 25px 60px rgba(10, 30, 80, 0.10);
   --blue-glow: rgba(26, 86, 219, 0.18);
 }
-
 /* ─── HERO SHELL ─────────────────────────────────────────── */
 .hero {
   background: var(--sand);
   min-height: 90vh;
-  margin-top: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,18 +175,19 @@
   background: var(--cream);
   color: var(--gold);
   padding: 8px 18px;
-  font-size: 12px;
-  letter-spacing: 1.5px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   border-radius: 30px;
   margin-bottom: 30px;
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Mono", monospace;   /* ← DM Mono (was DM Sans) */
   font-weight: 500;
   opacity: 0;
   animation: fadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 3.1s forwards;
 }
 
 .heading {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Cormorant Garamond", Georgia, serif;   /* ← Cormorant Garamond (was DM Sans) */
   font-size: 68px;
   font-weight: 600;
   line-height: 1.05;
@@ -199,7 +198,7 @@
 }
 
 .subHeading {
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", Georgia, serif;   /* ← Cormorant Garamond (was Playfair Display) */
   font-size: 58px;
   font-style: italic;
   color: var(--gold);
@@ -209,8 +208,9 @@
 }
 
 .description {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Outfit", sans-serif;   /* ← Outfit (was DM Sans) */
   font-size: 17px;
+  font-weight: 300;
   line-height: 1.75;
   color: var(--muted);
   margin-bottom: 40px;
@@ -230,7 +230,7 @@
   padding: 16px 28px;
   border-radius: 10px;
   font-size: 14px;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Outfit", sans-serif;   /* ← Outfit (was DM Sans) */
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
@@ -286,14 +286,6 @@
   z-index: 0.6;
 }
 
-/* ══════════════════════════════════════════════════════════
-   CARD 1 – glides from left (text side) → right
-   
-   Uses a long 1.8s duration with a true ease-in-out custom
-   bezier so acceleration and deceleration are both gradual.
-   Minimal rotation keeps it feeling weightless and smooth.
-   Only 3 keyframe stops — fewer stops = smoother interpolation.
-   ══════════════════════════════════════════════════════════ */
 .cardTop {
   top: 0;
   right: 0;
@@ -308,7 +300,6 @@
     opacity: 0;
     transform: translateX(-480px) translateY(20px) rotate(-8deg);
   }
-  /* fade in early so motion is fully visible */
   12% {
     opacity: 0.5;
   }
@@ -318,14 +309,6 @@
   }
 }
 
-/* ══════════════════════════════════════════════════════════
-   CARD 2 – drifts out from card 1's position to bottom-left.
-   
-   Starts scaled down and slightly behind card 1 (same coords).
-   Long 1.6s duration, gentle bezier, only 3 stops.
-   The scale growth from 0.82 → 1 is what sells the "emerging
-   from behind" look without any jarring snap.
-   ══════════════════════════════════════════════════════════ */
 .cardBottom {
   bottom: 0;
   left: 40px;
@@ -338,14 +321,8 @@
 @keyframes card2Drift {
   0% {
     opacity: 0;
-    /*
-      Origin: card 1's resting position, expressed as offset from card 2's rest.
-      Δx ≈ +320px (right), Δy ≈ -240px (up), scaled down + slight tilt
-      so it reads as tucked behind card 1.
-    */
     transform: translateX(320px) translateY(-240px) scale(0.82) rotate(6deg);
   }
-  /* reveal early — let the full glide be visible */
   10% {
     opacity: 1;
   }
@@ -355,7 +332,6 @@
   }
 }
 
-/* Hover: pause float */
 .cardTop:hover,
 .cardBottom:hover {
   animation-play-state: paused;
@@ -376,6 +352,7 @@
   justify-content: center;
   font-weight: 700;
   font-size: 14px;
+  font-family: "Outfit", sans-serif;   /* ← Outfit */
 }
 
 .cardBrand {
@@ -387,6 +364,7 @@
   font-weight: 600;
   color: #999;
   letter-spacing: 1px;
+  font-family: "Cormorant Garamond", Georgia, serif;   /* ← Cormorant Garamond */
 }
 
 .cardNumber {
@@ -394,7 +372,7 @@
   font-size: 18px;
   letter-spacing: 3px;
   color: #222;
-  font-family: "Courier New", monospace;
+  font-family: "DM Mono", monospace;   /* ← DM Mono (was Courier New) */
 }
 
 .cardFooter {
@@ -406,6 +384,7 @@
   justify-content: space-between;
   font-size: 13px;
   color: #888;
+  font-family: "DM Mono", monospace;   /* ← DM Mono */
 }
 
 .cardHeaderRow {
@@ -446,9 +425,7 @@
     padding: 60px 30px;
   }
 
-  .hero {
-    margin-top: 25px;
-  }
+  
 
   .heading {
     font-size: 48px;
@@ -468,3 +445,84 @@
     height: 180px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
