@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './JpMorganSection.module.css';
+import styles from './Jpmorgansection.module.css';
 
 const AssetManagementIcon = () => (
   <svg className={styles.cardIcon} viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.4">
