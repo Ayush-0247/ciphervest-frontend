@@ -76,7 +76,7 @@ button {
 .os-hero {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 120px var(--col-pad) 80px;
+  padding: 40px var(--col-pad) 80px;
   border-bottom: 1px solid var(--border);
   opacity: 0;
   transform: translateY(28px);
