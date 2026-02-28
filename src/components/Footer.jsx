@@ -1,23 +1,76 @@
 import "./Footer.css";
 import { FaGoogle, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { useState } from "react";
+
 
 function Footer() {
+
+
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+const API_URL = "https://ciphervest-backend.onrender.com";
+
+  const handleSubscribe = async () => {
+    if (!email.trim()) {
+      setMessage("Please enter an email");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setMessage("");
+
+      const res = await fetch(`${API_URL}/api/newsletter/subscribe`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage("Subscribed successfully 🎉");
+        setEmail("");
+      } else {
+        setMessage(data.message || "Something went wrong");
+      }
+    } catch  {
+      setMessage("Server error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
 <footer className="nx-footer">
 
       {/* Newsletter Card */}
-      <div className="newsletter-wrapper">
-        <div className="newsletter-card">
-          <h3>Stay Ahead of the Markets</h3>
-          <p>
-            Receive curated insights on crypto, structured finance, and emerging investment strategies.
-          </p>
-          <div className="newsletter-input">
-            <input type="email" placeholder="Enter your professional email" />
-            <button>Subscribe</button>
-          </div>
+<div className="newsletter-wrapper">
+      <div className="newsletter-card">
+        <h3>Stay Ahead of the Markets</h3>
+        <p>
+          Receive curated insights on crypto, structured finance, and emerging investment strategies.
+        </p>
+
+        <div className="newsletter-input">
+          <input
+            type="email"
+            placeholder="Enter your professional email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button onClick={handleSubscribe} disabled={loading}>
+            {loading ? "Subscribing..." : "Subscribe"}
+          </button>
         </div>
+
+        {message && <p className="newsletter-message">{message}</p>}
       </div>
+    </div>
 
       <div className="footer-container">
 
