@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./ContactPage.module.css";
+import styles from "./Contactpage.module.css";
 
 const queryTypes = [
   "Account & Onboarding",
