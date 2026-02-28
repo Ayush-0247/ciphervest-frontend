@@ -12,16 +12,19 @@ import "./App.css";
 import SocialGrid from "./components/SocialGrid";
 import Hero from "./components/Hero";
 import ContactPage from "./pages/Contactpage";
-
+import JPMorganSection from "./components/Jpmorgansection";
+import Features from "./pages/Features";
 function Home() {
   return (
     <>
       <Hero />
       <Section1 />
-      <ContactPage />
       <Test />
       <SocialGrid />
       <FinPulseSection />
+
+      <JPMorganSection />
+    
     </>
   );
 }
@@ -33,6 +36,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/features" element={<Features />} />
         <Route path="/products" element={<Products />} />
         <Route path="/outmoto" element={<Outmoto />} />
         <Route path="/contact" element={<ContactPage />} />

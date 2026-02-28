@@ -47,7 +47,7 @@ export default function Header() {
           }`}
         >
           <Link to="/products" onClick={closeMenu}>Product</Link>
-          <Link to="/" onClick={closeMenu}>Features</Link>
+          <Link to="/Features" onClick={closeMenu}>Features</Link>
           <Link to="/" onClick={closeMenu}>Partners</Link>
           <Link to="/outmoto" onClick={closeMenu}>Our Moto</Link>
           <Link to="/ourservices" onClick={closeMenu}>Our Services</Link>

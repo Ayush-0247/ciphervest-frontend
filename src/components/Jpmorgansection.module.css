@@ -1,0 +1,341 @@
+.section {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  max-height: 100vh;
+  padding: 50px;
+  font-family: 'Georgia', serif;
+  position: relative;
+}
+
+/* ── Left image column ── */
+.imageWrapper {
+  position: relative;
+  width: 350px;
+  height: 690px;
+  gap: 50px;
+  flex-shrink: 0;
+}
+
+.imageTop {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+.imageBottom {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Right side ── */
+.rightContent {
+  flex: 1;
+  padding: 44px 48px 44px 64px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.heading {
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: #3a3a3a;
+  line-height: 1.2;
+  margin: 0 0 36px 0;
+  font-family: 'Georgia', serif;
+}
+
+.heading .highlight {
+  color: #a0522d;
+}
+
+/* ── Card wrapper: extra padding so scaled card isn't clipped ── */
+.cardsWrapper {
+  padding: 20px 12px;
+  margin: 0 -12px;
+  overflow: visible;
+}
+
+.cardsRow {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* ── Individual card ── */
+.card {
+  background: #f0f4f4;
+  padding: 28px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  z-index: 0;
+  position: relative;
+}
+
+.card:hover:not(.cardActive) {
+  background: #e8f0f0;
+}
+
+.cardActive {
+  transform: scale(1.1);
+  z-index: 2;
+  background: #ddeaea;
+  box-shadow: 0 10px 36px rgba(74, 138, 138, 0.2), 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Card content ── */
+.cardIcon {
+  color: #4a8a8a;
+  margin-bottom: 16px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 12px 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.cardDesc {
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.58;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  flex: 1;
+}
+
+.learnMore {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #4a8a8a;
+  font-size: 0.85rem;
+  font-family: 'Arial', sans-serif;
+  margin-top: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.learnMore svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ── Dot + arrow row ── */
+.dotsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.arrowBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid #aaa;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+  flex-shrink: 0;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.arrowBtn:hover {
+  border-color: #4a8a8a;
+  color: #4a8a8a;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #aaa;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.dot.active {
+  background: #3a3a3a;
+  border-color: #3a3a3a;
+  width: 12px;
+  height: 12px;
+}
+
+
+/* ═══════════════════════════════════════════
+   TABLET  (≤ 1024px)
+   Layout stays side-by-side but image column
+   shrinks and right padding is reduced.
+═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .section {
+    padding: 36px 32px;
+    max-height: none;        /* let content breathe */
+  }
+
+  .imageWrapper {
+    width: 260px;
+    height: 520px;
+  }
+
+  .imageTop {
+    height: 255px;
+  }
+
+  .imageBottom {
+    height: 265px;
+  }
+
+  .rightContent {
+    padding: 20px 16px 20px 40px;
+  }
+
+  .heading {
+    font-size: 2rem;
+    margin-bottom: 28px;
+  }
+
+  /* Cards: allow them to wrap if three feels too cramped */
+  .cardsRow {
+    flex-wrap: wrap;
+  }
+
+  .card {
+    flex: 1 1 calc(50% - 8px);  /* max 2 per row on tablet */
+    min-width: 180px;
+  }
+
+  /* Suppress the scale pop on touch devices to avoid layout jump */
+  .cardActive {
+    transform: scale(1.05);
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   MOBILE  (≤ 680px)
+   Stack vertically: images become a horizontal
+   strip on top, content fills below.
+═══════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .section {
+    flex-direction: column;
+    padding: 24px 16px 32px;
+    max-height: none;
+  }
+
+  /* ── Image strip: side-by-side thumbnails ── */
+  .imageWrapper {
+    width: 100%;
+    height: 200px;           /* fixed strip height */
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .imageTop,
+  .imageBottom {
+    width: 50%;
+    height: 100%;
+    flex-shrink: 0;
+  }
+
+  /* ── Right content stacks below images ── */
+  .rightContent {
+    padding: 28px 0 0 0;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+    margin-bottom: 22px;
+  }
+
+  .cardsWrapper {
+    padding: 16px 8px;
+    margin: 0 -8px;
+  }
+
+  /* Single column cards */
+  .cardsRow {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card {
+    flex: none;
+    width: 100%;
+    padding: 22px 18px 18px;
+  }
+
+  /* No scale animation on mobile – avoid layout shift */
+  .cardActive {
+    transform: none;
+    box-shadow: 0 6px 20px rgba(74, 138, 138, 0.18), 0 2px 6px rgba(0, 0, 0, 0.07);
+  }
+
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .cardDesc {
+    font-size: 0.78rem;
+  }
+
+  .dotsRow {
+    margin-top: 28px;
+    gap: 10px;
+  }
+
+  .arrowBtn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   SMALL MOBILE  (≤ 400px)
+   Extra tweaks for very narrow screens.
+═══════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .section {
+    padding: 20px 12px 28px;
+  }
+
+  .imageWrapper {
+    height: 160px;
+  }
+
+  .heading {
+    font-size: 1.35rem;
+  }
+
+  .learnMore {
+    font-size: 0.8rem;
+  }
+}

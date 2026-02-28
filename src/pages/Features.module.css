@@ -1,0 +1,691 @@
+/* ── Reset & Base ── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.page {
+  font-family: 'Arial', sans-serif;
+  background: #fff;
+  color: #222;
+}
+
+
+/* ════════════════════════════════
+   HERO BANNER
+════════════════════════════════ */
+.hero {
+  position: relative;
+  height: 410px;
+  overflow: hidden;
+  margin: 0 48px;
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.55);
+}
+
+.heroOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.45) 40%, transparent 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px 56px;
+}
+
+.heroTitle {
+  font-family: 'Georgia', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.heroDesc {
+  font-size: 0.85rem;
+  color: #e8e8e8;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* ════════════════════════════════
+   GET IN TOUCH SIDEBAR
+════════════════════════════════ */
+.getInTouch {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.getInTouchBtn {
+  background: #2e8b8b;
+  color: #fff;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  padding: 20px 12px;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border: none;
+  font-family: 'Arial', sans-serif;
+}
+
+.getInTouchArrow {
+  background: #1a6e6e;
+  color: #fff;
+  width: 40px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+/* ════════════════════════════════
+   INDUSTRY CARDS GRID
+════════════════════════════════ */
+.industrySection {
+  padding: 48px 64px 64px;
+  background: #f7f8f8;
+  margin: 32px 0;
+}
+
+.industryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  background: transparent;
+}
+
+.industryCard {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e8e8e8;
+  transition: box-shadow 0.2s;
+}
+
+.industryCard:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+}
+
+.industryCardImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.industryCardBody {
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 220px;
+}
+
+.industryCardTitle {
+  font-family: 'Georgia', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #222;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.industryCardDesc {
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.learnMoreLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #2e8b8b;
+  font-size: 0.82rem;
+  text-decoration: none;
+  margin-top: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.learnMoreLink:hover { text-decoration: underline; }
+
+/* ════════════════════════════════
+   CLIENT STORIES
+════════════════════════════════ */
+.storiesSection {
+  padding: 64px 48px 72px;
+  background: #fff;
+}
+
+.sectionHeading {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #3a3a3a;
+  margin-bottom: 10px;
+}
+
+.seeAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2e8b8b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 36px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.storiesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Large left card */
+.storyCardLarge {
+  position: relative;
+  overflow: hidden;
+  background: #222;
+  cursor: pointer;
+}
+
+.storyCardLargeImg {
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.55);
+}
+
+.storyCardLargeOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 28px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 60%, transparent);
+  color: #fff;
+}
+
+.storyTag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.storyTagDot {
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.storyTitle {
+  font-family: 'Georgia', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.storyTitleChevron {
+  color: #fff;
+  flex-shrink: 0;
+  font-size: 1rem;
+  margin-top: 3px;
+}
+
+.storyDate {
+  font-size: 0.78rem;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.storyDesc {
+  font-size: 0.78rem;
+  color: #ddd;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.storyReadMore {
+  font-size: 0.78rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Middle story card */
+.storyCardMid {
+  display: flex;
+  flex-direction: column;
+  background: #f5f0e8;
+  cursor: pointer;
+}
+
+.storyCardMidImg {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.storyCardMidBody {
+  padding: 24px 24px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.storyTagLight {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.storyTitleDark {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #222;
+  margin-bottom: 8px;
+  line-height: 1.35;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.storyTitleChevronDark {
+  color: #555;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+.storyDateDark {
+  font-size: 0.78rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.storyDescDark {
+  font-size: 0.78rem;
+  color: #555;
+  line-height: 1.55;
+  flex: 1;
+}
+
+.storyReadMoreDark {
+  font-size: 0.78rem;
+  color: #2e8b8b;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 14px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Right list panel */
+.storyListPanel {
+  border-left: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+}
+
+.storyListItem {
+  padding: 22px 28px;
+  border-bottom: 1px solid #e8e8e8;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.storyListItem:last-child { border-bottom: none; }
+.storyListItem:hover { background: #f9f9f9; }
+
+.storyListMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  color: #777;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.storyListMetaSep { color: #aaa; }
+
+.storyListTitle {
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  color: #222;
+  line-height: 1.4;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.storyListChevron { color: #2e8b8b; font-size: 0.85rem; flex-shrink: 0; }
+
+.storyListWatch {
+  font-size: 0.75rem;
+  color: #2e8b8b;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ════════════════════════════════
+   RELATED INSIGHTS
+════════════════════════════════ */
+.insightsSection {
+  padding: 64px 48px 80px;
+  background: #fff;
+  border-top: 1px solid #e8e8e8;
+}
+
+.insightsHeading {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #3a3a3a;
+  margin-bottom: 10px;
+}
+
+.insightsHeading span {
+  color: #b87333;
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 36px;
+}
+
+/* Left & Middle insight card */
+.insightCard {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding-right: 32px;
+}
+
+.insightCardImg {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.insightCategory {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.insightTitle {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #222;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.insightTitleChevron { color: #555; font-size: 0.9rem; flex-shrink: 0; }
+
+.insightDate {
+  font-size: 0.78rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.insightDesc {
+  font-size: 0.78rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.insightReadMore {
+  font-size: 0.78rem;
+  color: #2e8b8b;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 14px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: block;
+}
+
+/* Right list panel for insights */
+.insightListPanel {
+  border-left: 1px solid #e8e8e8;
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.insightListItem {
+  padding: 20px 0;
+  border-bottom: 1px solid #e8e8e8;
+  cursor: pointer;
+}
+
+.insightListItem:first-child { padding-top: 0; }
+.insightListItem:last-child { border-bottom: none; }
+
+.insightListCategory {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.insightListTitle {
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  color: #222;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.insightListChevron { color: #2e8b8b; font-size: 0.85rem; flex-shrink: 0; }
+
+.insightListRead {
+  font-size: 0.75rem;
+  color: #2e8b8b;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ════════════════════════════════
+   RESPONSIVE — TABLET (≤ 900px)
+════════════════════════════════ */
+@media (max-width: 900px) {
+
+  /* Hero */
+  .hero {
+    height: 300px;
+    margin: 0 24px;
+  }
+  .heroOverlay { padding: 32px 32px; }
+  .heroTitle { font-size: 1.9rem; }
+  .heroDesc { font-size: 0.8rem; max-width: 100%; }
+
+  /* Get in touch — smaller on tablet */
+  .getInTouchBtn { padding: 16px 10px; font-size: 0.72rem; }
+
+  /* Industry grid: 2 columns */
+  .industrySection { padding: 32px 24px 40px; margin: 20px 0; }
+  .industryGrid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .industryCardBody { min-height: 180px; padding: 20px 20px 18px; }
+
+  /* Stories: stack to 1 column */
+  .storiesSection { padding: 40px 24px 48px; }
+  .sectionHeading { font-size: 1.6rem; }
+  .storiesGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .storyCardLargeImg { min-height: 280px; }
+  .storyListPanel { border-left: none; border-top: 1px solid #e8e8e8; }
+  .storyListItem { padding: 18px 0; }
+
+  /* Insights: 2 columns then list below */
+  .insightsSection { padding: 40px 24px 56px; }
+  .insightsHeading { font-size: 1.6rem; }
+  .insightsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .insightListPanel {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: 1px solid #e8e8e8;
+    padding-left: 0;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .insightListItem { padding: 0; border-bottom: none; border-right: 1px solid #e8e8e8; padding-right: 16px; }
+  .insightListItem:last-child { border-right: none; padding-right: 0; }
+  .insightCard { padding-right: 0; }
+}
+
+/* ════════════════════════════════
+   RESPONSIVE — PHONE (≤ 540px)
+════════════════════════════════ */
+@media (max-width: 540px) {
+
+  /* Hero */
+  .hero {
+    height: 240px;
+    margin: 0;
+  }
+  .heroOverlay { padding: 20px 20px; }
+  .heroTitle { font-size: 1.4rem; margin-bottom: 10px; }
+  .heroDesc { font-size: 0.75rem; }
+
+  /* Get in touch — hide label on phone, keep arrow only */
+  .getInTouchBtn { padding: 14px 9px; font-size: 0.68rem; }
+  .getInTouchArrow { width: 32px; height: 30px; font-size: 0.9rem; }
+
+  /* Industry grid: 1 column */
+  .industrySection { padding: 20px 16px 28px; margin: 12px 0; }
+  .industryGrid { grid-template-columns: 1fr; gap: 14px; }
+  .industryCardImg { height: 180px; }
+  .industryCardBody { min-height: unset; padding: 18px 16px 16px; }
+  .industryCardTitle { font-size: 1rem; }
+
+  /* Stories */
+  .storiesSection { padding: 28px 16px 36px; }
+  .sectionHeading { font-size: 1.4rem; }
+  .storiesGrid { grid-template-columns: 1fr; gap: 14px; }
+  .storyCardLargeImg { min-height: 220px; }
+  .storyCardMidImg { height: 160px; }
+  .storyCardMidBody { padding: 16px 16px 14px; }
+  .storyListItem { padding: 14px 0; }
+  .storyListPanel { padding: 0; border-top: 1px solid #e8e8e8; }
+
+  /* Insights */
+  .insightsSection { padding: 28px 16px 40px; }
+  .insightsHeading { font-size: 1.4rem; }
+  .insightsGrid { grid-template-columns: 1fr; gap: 20px; }
+  .insightCard { padding-right: 0; }
+  .insightCardImg { height: 160px; }
+  .insightListPanel {
+    grid-column: 1;
+    border-left: none;
+    border-top: 1px solid #e8e8e8;
+    padding-left: 0;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .insightListItem {
+    padding: 16px 0;
+    border-bottom: 1px solid #e8e8e8;
+    border-right: none;
+    padding-right: 0;
+  }
+  .insightListItem:first-child { padding-top: 0; }
+  .insightListItem:last-child { border-bottom: none; }
+}
