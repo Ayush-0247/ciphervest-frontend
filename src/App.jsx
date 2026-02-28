@@ -17,10 +17,10 @@ function Home() {
   return (
     <>
       <Hero />
+      <Section1 />
       <ContactPage />
       <Test />
       <SocialGrid />
-      <Section1 />
       <FinPulseSection />
     </>
   );
