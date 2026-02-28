@@ -62,25 +62,81 @@
   height: 175px;
   transform-style: preserve-3d;
   animation: flyIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    will-change: transform;
+  backface-visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.envelope {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  animation: flyIn 1.9s cubic-bezier(0.22, 0.9, 0.3, 1) forwards;
 }
 
 @keyframes flyIn {
   0% {
-    transform: translateY(-300px) rotateX(50deg) scale(0.6);
+    transform: translate(70vw, -70vh) rotate(180deg) scale(0.01);
     opacity: 0;
-    filter: blur(4px);
   }
-  60% {
-    transform: translateY(14px) rotateX(6deg) scale(1.02);
-    opacity: 1;
-    filter: blur(0px);
-  }
-  80% {
-    transform: translateY(-5px) rotateX(-2deg) scale(0.99);
-    opacity: 1;
-  }
+
   100% {
-    transform: translateY(0) rotateX(0deg) scale(1);
+    transform: translate(0, 0) rotate(0deg) scale(1);
     opacity: 1;
   }
 }
@@ -457,61 +513,19 @@
 
 
 
+@media (max-width: 768px) {
+  @keyframes flyIn {
+    0% {
+      transform: translate(80vw, -140vh) rotate(180deg) scale(0.01);
+      opacity: 0;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+  }
+}
 
 
 
