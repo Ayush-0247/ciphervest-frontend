@@ -79,49 +79,6 @@ const css = `
   100% { transform: translateX(-50%); }
 }
 
-/* ─── NAV ─── */
-.s1Nav {
-  position: relative; z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.navLogo {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.navLinks {
-  display: flex;
-  gap: 32px;
-}
-.navLinks a {
-  font-size: 14px;
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.navLinks a:hover { color: var(--text); }
-.navCta {
-  padding: 9px 22px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  background: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-  color: var(--text);
-}
-.navCta:hover { background: var(--surface2); }
 
 /* ─── HERO ─── */
 .s1Hero {
@@ -514,17 +471,7 @@ export default function Section1() {
           </div>
         </div>
 
-        {/* NAV */}
-        <nav className="s1Nav">
-          <div className="navLogo">Vortex</div>
-          <div className="navLinks">
-            <a href="#">Markets</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Crysghstpto</a>
-            <a href="#">Learn</a>
-          </div>
-          <button className="navCta">Sign In</button>
-        </nav>
+
 
         {/* HERO */}
         <div className="s1Hero">
@@ -616,7 +563,18 @@ export default function Section1() {
             </div>
           </div>
         </div>
-
+{/* TICKER */}
+        <div className="s1Ticker">
+          <div className="tickerTrack">
+            {doubled.map((t, i) => (
+              <span key={i} className="tickerItem">
+                <span className="sym">{t.sym}</span>
+                ${t.price}
+                <span className={t.up ? "up" : "dn"}>{t.chg}</span>
+              </span>
+            ))}
+          </div>
+        </div>
         {/* STATS BAND */}
         <div className="s1StatsBand">
           {[
@@ -631,6 +589,8 @@ export default function Section1() {
             </div>
           ))}
         </div>
+
+
       </section>
     </>
   );
