@@ -10,7 +10,7 @@ function Footer() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-const API_URL = "https://ciphervest-backend.onrender.com";
+const API_URL = "https://ciphervest-backend-1.onrender.com";
 
   const handleSubscribe = async () => {
     if (!email.trim()) {
