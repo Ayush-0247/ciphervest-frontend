@@ -30,6 +30,12 @@ function FloatField({ id, label, required, type, value, onChange, onFocus, onBlu
 }
 
 export default function ContactPage() {
+
+
+ 
+
+
+
   const [form, setForm] = useState({
     name: "", email: "", phone: "", company: "",
     queryType: "", subject: "", message: "",
@@ -42,11 +48,32 @@ export default function ContactPage() {
   const handleFocus = (name) => setFocused((f) => ({ ...f, [name]: true }));
   const handleBlur = (name) => setFocused((f) => ({ ...f, [name]: false }));
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1800);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    const response = await fetch("https://ciphervest-backend-1.onrender.com/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong");
+    }
+
+    setSubmitted(true);
+  } catch (error) {
+    alert(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
   if (submitted) {
     return (
