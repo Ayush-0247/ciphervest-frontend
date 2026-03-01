@@ -396,22 +396,18 @@
   overflow: hidden;
   transform-style: preserve-3d;
 
-  /* Ultra Silver Layered Gradient */
-  background:
-    linear-gradient(
-      125deg,
-      #ffffff 0%,
-      #e8e8ec 8%,
-      #c8c8d0 18%,
-      #f4f4f6 28%,
-      #d0d0d8 38%,
-      #f8f8fa 50%,
-      #b8b8c4 62%,
-      #e4e4ea 72%,
-      #d8d8e0 82%,
-      #f0f0f4 90%,
-      #ffffff 100%
-    );
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f2f4f8 20%,
+    #cfd3db 40%,
+    #ffffff 55%,
+    #bfc5cf 70%,
+    #eef1f5 85%,
+    #ffffff 100%
+  );
+
+  transition: transform 0.4s ease;
 }
 
 /* ───────────────── ENTRY ANIMATIONS ───────────────── */
@@ -452,6 +448,13 @@
   }
 }
 
+
+
+
+
+
+
+
 /* ───────────────── BRUSHED ALUMINUM TEXTURE ───────────────── */
 
 .cardTop::before,
@@ -460,19 +463,15 @@
   position: absolute;
   inset: 0;
 
-  background:
-    repeating-linear-gradient(
-      92deg,
-      rgba(255,255,255,0.22) 0px,
-      rgba(255,255,255,0.22) 1px,
-      rgba(0,0,0,0.03) 1px,
-      rgba(0,0,0,0.03) 2px,
-      transparent 2px,
-      transparent 4px
-    );
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.8) 0%,
+    rgba(255,255,255,0.4) 30%,
+    rgba(255,255,255,0.1) 55%,
+    transparent 75%
+  );
 
-  mix-blend-mode: overlay;
-  opacity: 0.7;
+  border-radius: 18px;
   pointer-events: none;
 }
 
@@ -482,28 +481,30 @@
 .cardBottom::after {
   content: "";
   position: absolute;
-  top: -60%;
-  left: -80%;
-  width: 260%;
-  height: 260%;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
 
   background: linear-gradient(
-    118deg,
-    transparent 30%,
-    rgba(255,255,255,0.0) 38%,
-    rgba(255,255,255,0.55) 48%,
-    rgba(255,255,255,0.85) 50%,
-    rgba(255,255,255,0.55) 52%,
-    rgba(255,255,255,0.0) 60%,
-    transparent 70%
+    115deg,
+    transparent 0%,
+    rgba(255,255,255,0.6) 45%,
+    rgba(255,255,255,0.95) 50%,
+    rgba(255,255,255,0.6) 55%,
+    transparent 100%
   );
 
-  animation: shine 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  opacity: 0.6;
+  transform: skewX(-25deg);
+  transition: left 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cardBottom::after {
   animation-delay: -2.5s;
+}
+.cardTop:hover::after,
+.cardBottom:hover::after {
+  left: 150%;transform: translateY(-6px) scale(1.02);
 }
 
 @keyframes shine {
