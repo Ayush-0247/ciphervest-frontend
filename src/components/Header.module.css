@@ -5,6 +5,7 @@
   z-index: 1000;
   background: rgb(255, 255, 255);
   padding: 15px 10px;
+  position: relative; /* ✅ FIXED: needed so absolute nav positions correctly */
 }
 
 .container {
@@ -13,6 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative; /* ✅ FIXED: nav absolute positioning anchors to this */
 }
 
 .logo {
@@ -84,6 +86,7 @@
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
+  z-index: 1001; /* ✅ FIXED: ensures toggle stays above the nav overlay */
 }
 
 .menuToggle span {
@@ -106,23 +109,6 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ============================= */
 /* Tablet                       */
 /* ============================= */
@@ -137,35 +123,11 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 768px) {
- .header {
+  .header {
     padding: 10px 20px;
   }
+
   .menuToggle {
     display: flex;
   }
@@ -176,7 +138,7 @@
 
   .nav {
     position: absolute;
-    top: 80px;
+    top: 100%; /* ✅ FIXED: use 100% instead of fixed 80px so it always sits right below the header */
     left: 0;
     width: 100%;
     background: white;
