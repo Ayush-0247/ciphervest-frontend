@@ -262,6 +262,67 @@ export default function Outmoto() {
         </button>
       </div>
 
+      {/* ── Core Team ───────────────────────────────── */}
+      <section className="ct-section">
+        <div className="ct-blob-1" />
+        <div className="ct-blob-2" />
+
+        <div className="ct-container">
+          <header className="ct-header">
+            <div>
+              <div className="ct-eyebrow">
+                <span className="ct-eyebrow-line" />
+                <span className="ct-eyebrow-text">The People Behind It</span>
+              </div>
+              <h2 className="ct-headline">
+                Minds that move
+                <br />
+                <em>money forward</em>
+              </h2>
+            </div>
+
+            <div className="ct-header-right">
+              <p className="ct-desc">
+                Our leadership blends deep financial expertise with engineering
+                velocity — purpose-built to serve the next generation of global
+                commerce.
+              </p>
+              <div className="ct-stats">
+                <div>
+                  <span className="ct-stat-num">60+</span>
+                  <span className="ct-stat-label">Years experience</span>
+                </div>
+                <div>
+                  <span className="ct-stat-num">3</span>
+                  <span className="ct-stat-label">Continents covered</span>
+                </div>
+                <div>
+                  <span className="ct-stat-num">$2B+</span>
+                  <span className="ct-stat-label">Volume processed</span>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div className="ct-grid">
+            {TEAM.map((member) => (
+              <TeamCard key={member.name} member={member} />
+            ))}
+          </div>
+
+          <footer className="ct-footer">
+            <p className="ct-footer-text">
+              <strong>We're hiring.</strong>&nbsp; Join a team rewriting the
+              rules of global finance.
+            </p>
+            <a href="#" className="ct-cta">
+              View open roles <span className="ct-cta-arrow">→</span>
+            </a>
+          </footer>
+        </div>
+      </section>
+
+      
       {/* ── Motto Cards ─────────────────────────────── */}
       <div className="motto-grid">
         {mottos.map((m, index) => (
@@ -356,65 +417,7 @@ export default function Outmoto() {
 
      
 
-      {/* ── Core Team ───────────────────────────────── */}
-      <section className="ct-section">
-        <div className="ct-blob-1" />
-        <div className="ct-blob-2" />
 
-        <div className="ct-container">
-          <header className="ct-header">
-            <div>
-              <div className="ct-eyebrow">
-                <span className="ct-eyebrow-line" />
-                <span className="ct-eyebrow-text">The People Behind It</span>
-              </div>
-              <h2 className="ct-headline">
-                Minds that move
-                <br />
-                <em>money forward</em>
-              </h2>
-            </div>
-
-            <div className="ct-header-right">
-              <p className="ct-desc">
-                Our leadership blends deep financial expertise with engineering
-                velocity — purpose-built to serve the next generation of global
-                commerce.
-              </p>
-              <div className="ct-stats">
-                <div>
-                  <span className="ct-stat-num">60+</span>
-                  <span className="ct-stat-label">Years experience</span>
-                </div>
-                <div>
-                  <span className="ct-stat-num">3</span>
-                  <span className="ct-stat-label">Continents covered</span>
-                </div>
-                <div>
-                  <span className="ct-stat-num">$2B+</span>
-                  <span className="ct-stat-label">Volume processed</span>
-                </div>
-              </div>
-            </div>
-          </header>
-
-          <div className="ct-grid">
-            {TEAM.map((member) => (
-              <TeamCard key={member.name} member={member} />
-            ))}
-          </div>
-
-          <footer className="ct-footer">
-            <p className="ct-footer-text">
-              <strong>We're hiring.</strong>&nbsp; Join a team rewriting the
-              rules of global finance.
-            </p>
-            <a href="#" className="ct-cta">
-              View open roles <span className="ct-cta-arrow">→</span>
-            </a>
-          </footer>
-        </div>
-      </section>
     </section>
   );
 }

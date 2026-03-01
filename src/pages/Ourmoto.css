@@ -101,13 +101,8 @@ html { scroll-behavior: smooth; }
    HERO
 ═══════════════════════════════════════════════════════ */
 .motto-hero {
-  position: relative;
-  z-index: 1;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 140px 40px 100px;
+  margin-top: 10px;
   text-align: center;
-  opacity: 0;
   transform: translateY(36px);
   transition: opacity 1s ease, transform 1s ease;
 }
