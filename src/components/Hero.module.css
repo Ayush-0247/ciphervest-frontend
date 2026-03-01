@@ -455,7 +455,7 @@
 
 
 
-/* ───────────────── BRUSHED ALUMINUM TEXTURE ───────────────── */
+/* ───── BRUSHED ALUMINUM TEXTURE ────── */
 
 .cardTop::before,
 .cardBottom::before {
@@ -475,7 +475,7 @@
   pointer-events: none;
 }
 
-/* ───────────────── SOFT LIGHT SWEEP ───────────────── */
+/* ───── SOFT LIGHT SWEEP ───── */
 
 .cardTop::after,
 .cardBottom::after {
@@ -575,13 +575,13 @@
   bottom: 22px;
   left: 25px;
   right: 25px;
-
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
 
   font-size: 13px;
   color: #6f7b88;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);
 
   font-family: "DM Mono", monospace;
 }
@@ -648,7 +648,10 @@
     padding: 60px 30px;
   }
 
+  .cardNumber {
   
+  font-size: 16px;
+}
 
   .heading {
     font-size: 48px;
@@ -661,6 +664,20 @@
   .right {
     height: 380px;
   }
+
+
+
+
+  .cardTop {
+  top: 0;
+  right: 20px;
+ 
+}
+
+.cardBottom {
+  bottom: 0;
+  left: 70px;
+}
 
   .cardTop,
   .cardBottom {
