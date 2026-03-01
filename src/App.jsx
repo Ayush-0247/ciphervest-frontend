@@ -14,6 +14,7 @@ import Hero from "./components/Hero";
 import ContactPage from "./pages/Contactpage";
 import JPMorganSection from "./components/Jpmorgansection";
 import Features from "./pages/Features";
+
 function Home() {
   return (
     <>

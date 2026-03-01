@@ -324,22 +324,43 @@
   height: 450px;
 }
 
+
 .floatWrapper {
-  perspective: 1000px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  perspective: 1200px;
 }
 
+/* Shared Card Styling */
 .cardTop,
 .cardBottom {
+  position: relative;
   width: 360px;
-  height: 210px;
-  background: #ffffff;
-  border-radius: 22px;
-  box-shadow: var(--card-shadow);
-  padding: 25px;
-  position: absolute;
-  box-sizing: border-box;
-  will-change: transform, opacity;
-  z-index: 0.6;
+  height: 220px;
+  border-radius: 18px;
+  padding: 22px;
+  overflow: hidden;
+  color: #ffffff;
+  transform-style: preserve-3d;
+  
+  /* Metallic Base Gradient */
+  background: linear-gradient(
+    135deg,
+    #2e2e2e 0%,
+    #4f4f4f 25%,
+    #1f1f1f 50%,
+    #6e6e6e 75%,
+    #2a2a2a 100%
+  );
+
+  box-shadow:
+    inset 0 0 12px rgba(255,255,255,0.15),
+    inset 0 0 25px rgba(0,0,0,0.6),
+    0 20px 40px rgba(0,0,0,0.5);
+
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
 .cardTop {
@@ -388,14 +409,49 @@
   }
 }
 
-.cardTop:hover,
-.cardBottom:hover {
-  animation-play-state: paused;
-  transform: scale(1.04) rotate(1deg) !important;
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.14);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+
+/* Brushed Metal Effect */
+.cardTop::before,
+.cardBottom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 0px,
+    rgba(255,255,255,0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.6;
+  mix-blend-mode: overlay;
 }
 
+/* Shiny Reflection Sweep */
+.cardTop::after,
+.cardBottom::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 60%
+  );
+  transform: rotate(25deg);
+  animation: shine 6s infinite linear;
+  opacity: 0.5;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
 /* ─── CARD INTERNALS ─────────────────────────────────────── */
 .cardChip {
   width: 32px;
@@ -448,6 +504,8 @@
   justify-content: space-between;
   align-items: center;
 }
+
+
 
 /* ─── SHARED KEYFRAMES ───────────────────────────────────── */
 @keyframes fadeUp {
@@ -526,15 +584,6 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 
