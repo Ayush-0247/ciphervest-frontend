@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 export default function Header() {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  const navigatetologin = () => {
+    navigate("/login");
+  }
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +59,7 @@ export default function Header() {
           </button>
         </nav>
 
-        <button className={styles.enterBtn}>Login</button>
+        <button className={styles.enterBtn} onClick={navigatetologin}>Login</button>
       </div>
     </header>
   );
