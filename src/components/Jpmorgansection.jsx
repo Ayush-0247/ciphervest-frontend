@@ -121,18 +121,16 @@ export default function JPMorganSection() {
   return (
     <div className={styles.section}>
       {/* Left image column */}
-      <div className={styles.imageWrapper}>
-        <img
-          className={styles.imageTop}
-          src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80"
-          alt="Stock market financial data"
-        />
-        <img
-          className={styles.imageBottom}
-          src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&q=80"
-          alt="Financial trading and market gaps"
-        />
-      </div>
+
+
+
+<div className={styles.imageWrapper}>
+  <img
+    className={styles.phoneImage}
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQdHHcyseLuMwU1hCmCuMUQl-6xz77qolElQ&s"
+    alt="Mobile trading and tax dashboard"
+  />
+</div>
 
       {/* Right content */}
       <div className={styles.rightContent}>

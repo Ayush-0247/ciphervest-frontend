@@ -1,7 +1,7 @@
 .section {
   display: flex;
   align-items: flex-start;
-  background: #fff;
+  background: #ffffff;
   max-height: 100vh;
   padding: 50px;
   font-family: 'Georgia', serif;
@@ -10,26 +10,23 @@
 
 /* ── Left image column ── */
 .imageWrapper {
-  position: relative;
-  width: 350px;
-  height: 690px;
-  gap: 50px;
-  flex-shrink: 0;
+  position: relative;   
+  overflow: hidden;background: #ffffff;
+ margin-top: 220px;
+  transition: transform 0.5s ease;
 }
 
-.imageTop {
-  width: 100%;
-  height: 340px;
-  object-fit: cover;
+.phoneImage {
+  height: 200px;
+  border-radius: 22px;
+  object-fit: contain;
   display: block;
 }
 
-.imageBottom {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  display: block;
+.imageWrapper:hover {
+  transform: translateY(-8px) scale(1.03);
 }
+
 
 /* ── Right side ── */
 .rightContent {
@@ -195,22 +192,16 @@
 @media (max-width: 1024px) {
   .section {
     padding: 36px 32px;
-    max-height: none;        /* let content breathe */
+    max-height: none;      /* let content breathe */
   }
+.imageWrapper {
+  position: relative;   
+  overflow: hidden;background: #ffffff;
+ margin-top: 0;
+}
+ 
 
-  .imageWrapper {
-    width: 260px;
-    height: 520px;
-  }
-
-  .imageTop {
-    height: 255px;
-  }
-
-  .imageBottom {
-    height: 265px;
-  }
-
+ 
   .rightContent {
     padding: 20px 16px 20px 40px;
   }

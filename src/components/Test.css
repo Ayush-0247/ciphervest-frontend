@@ -668,7 +668,7 @@ body {
   height: 460px;
   background: #111;
   border-radius: 30px;
-  padding: 7px;
+  padding: 1.5px;
   box-shadow:
     0 30px 70px rgba(0,0,0,0.15);
   position: relative;
@@ -676,18 +676,18 @@ body {
 
 .notch {
   width: 80px;
-  height: 12px;
+  height: 8px;
   background: #111;
   border-radius: 40px;
   position: absolute;
   top: 0;
-  left:30%;
+  left:35%;
 }
 
 .screen {
   background: #f9f9f9;
   height: 100%;
-  border-radius: 22px;
+  border-radius: 29px;
   padding: 24px 18px;
   display: flex;
   flex-direction: column;
