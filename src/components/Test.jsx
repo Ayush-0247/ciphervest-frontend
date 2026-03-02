@@ -94,96 +94,178 @@ export default function WealthPlanner() {
         </div>
       </section>
 
-      {/* ── CARDS ── */}
-      <div className="cards-grid">
+<section className="preview-section">
 
-        {/* Card 1: Expense Tracker */}
-        <div className="card card-tracker">
-          <p className="card-title">Understand Your Money Better</p>
-          <p className="card-subtitle">Track Income and expense at a glance.</p>
+  <div className="preview-wrapper">
 
-          <DonutChart />
 
-          <div className="expense-row">
-            <div className="expense-tag">
-              <div className="expense-dot dot-dark">60%</div>
-              <span className="expense-name">Rent &amp; Living</span>
-            </div>
-            <span className="expense-amount">$4,140</span>
+
+
+
+    {/* ───────── PHONE 1 ───────── */}
+    <div className="phone">
+      <div className="notch"></div>
+
+<div className="screen">
+
+  <div className="screen-header">
+    <span>9:41</span>
+    <span>📶 🔋</span>
+  </div>
+
+  <div className="screen-content">
+
+    <div className="market-pill">
+      <span>🔥 Trending</span>
+      <span className="green">BTC +2.4%</span>
+    </div>
+
+    <h2>Buy & Sell Crypto</h2>
+
+    <div className="live-price">
+      <h3>$42,518.21</h3>
+      <span className="green">+1,245.33 (2.9%)</span>
+    </div>
+
+    <div className="mini-chart">
+      <div className="line"></div>
+    </div>
+
+    <div className="quick-actions">
+      <button>Buy</button>
+      <button>Sell</button>
+      <button>Convert</button>
+    </div>
+
+    <div className="feature-list">
+      <div>⚡ Instant Execution</div>
+      <div>🔐 Cold Wallet Security</div>
+      <div>📊 Real-Time Charts</div>
+    </div>
+
+  </div>
+
+  <button className="primary-btn">Open Trading Account</button>
+
+</div>
+
+
+    </div>
+
+
+
+
+
+
+    {/* ───────── PHONE 2 ───────── */}
+    <div className="phone">
+      <div className="notch"></div>
+
+      <div className="screen">
+
+  <div className="screen-header">
+    <span>Portfolio</span>
+    <span className="green">+3.18%</span>
+  </div>
+
+  <h2 className="balance">$12,854.40</h2>
+  <p className="small">+$427.12 this week</p>
+
+  <div className="portfolio-stats">
+    <div>
+      <strong>Assets</strong>
+      <span>8 Coins</span>
+    </div>
+    <div>
+      <strong>Risk</strong>
+      <span>Moderate</span>
+    </div>
+  </div>
+
+  <div className="bar-chart">
+    <div className="bar h1"></div>
+    <div className="bar h2"></div>
+    <div className="bar h3"></div>
+    <div className="bar h4"></div>
+    <div className="bar h5"></div>
+  </div>
+
+  <div className="wallet-actions">
+    <button className="dark-btn">Deposit</button>
+    <button className="light-btn">Withdraw</button>
+  </div>
+
+  <div className="asset">
+    <div>
+      <strong>Bitcoin</strong>
+      <p className="small">0.45 BTC</p>
+    </div>
+    <span className="green">$24,520</span>
+  </div>
+
+  <div className="asset">
+    <div>
+      <strong>Ethereum</strong>
+      <p className="small">3.2 ETH</p>
+    </div>
+    <span>$1,650</span>
+  </div>
+
+  
+
+</div>
+
+
+    </div>
+
+
+    {/* ───────── PHONE 3 ───────── */}
+    <div className="phone3">
+      <div className="phone">
+      <div className="notch"></div>
+
+      <div className="screen">
+
+        <div className="screen-header">
+          <span>Smart Save</span>
+          <span>💰</span>
+        </div>
+
+        <h2>Create Saving Goals</h2>
+        <p className="subtitle">
+          Split funds into automated pockets and grow wealth faster.
+        </p>
+
+        <div className="goal-box">
+          <div>
+            <strong>Travel Fund</strong>
+            <span>₹1,20,000 / ₹3,00,000</span>
           </div>
-          <div className="expense-row">
-            <div className="expense-tag">
-              <div className="expense-dot dot-purple">30%</div>
-              <span className="expense-name">Shopping</span>
-            </div>
-            <span className="expense-amount">$4,140</span>
-          </div>
-          <div className="expense-row">
-            <div className="expense-tag">
-              <div className="expense-dot dot-light">10%</div>
-              <span className="expense-name">Kids &amp; Education</span>
-            </div>
-            <span className="expense-amount">$4,140</span>
+          <div className="progress-bar">
+            <div className="progress"></div>
           </div>
         </div>
 
-        {/* Card 2: Credit Card */}
-        <div className="card card-credit">
-          <div className="mastercard-icon">
-            <div className="mc-circle mc-red" />
-            <div className="mc-circle mc-yellow" />
+        <div className="goal-box">
+          <div>
+            <strong>Emergency</strong>
+            <span>₹40,000 / ₹1,00,000</span>
           </div>
-
-          <p className="credit-label">Available Balance</p>
-          <p className="credit-balance">$48,092</p>
-
-          <p className="credit-number">**** **** **** 4848</p>
-
-          <div className="credit-footer">
-            <div>
-              <p className="credit-field-label">Card holder</p>
-              <p className="credit-field-value">Gillian Peter</p>
-            </div>
-            <div>
-              <p className="credit-field-label">Expiry Date</p>
-              <p className="credit-field-value">12/30</p>
-            </div>
+          <div className="progress-bar">
+            <div className="progress two"></div>
           </div>
         </div>
 
-        {/* Card 3: Save Widget */}
-        <div className="card card-save">
-          <p className="card-title">Save Smarter, Live Better</p>
-          <p className="card-subtitle">Easily split your money into custom pockets</p>
-
-          <div className="amount-input-wrapper">
-            <span className="currency-sign">$</span>
-            <span className="amount-input-display">|00.00</span>
-          </div>
-          <p className="amount-range">
-            min <span>18.00 USD</span> &nbsp; max <span>500,000.00 USD</span>
-          </p>
-
-          <div className="select-field">
-            <div className="select-left">
-              <span className="select-icon">💳</span>
-              <span>*****887</span>
-            </div>
-            <span className="chevron">▾</span>
-          </div>
-
-          <div className="select-field">
-            <div className="select-left">
-              <span className="select-icon">✈️</span>
-              <span>Travel &amp; Tour</span>
-            </div>
-            <span className="chevron">▾</span>
-          </div>
-
-          <button className="btn-save">Save Now</button>
-        </div>
+        <button className="primary-btn">Add Goal</button>
 
       </div>
+    </div>
+    </div>
+    
+
+  </div>
+
+</section>
 
       {/* ── TRUST BAR ── */}
       <div className="trust-bar">
@@ -203,6 +285,13 @@ export default function WealthPlanner() {
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
 
     </div>
   );
