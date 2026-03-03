@@ -257,7 +257,7 @@ export default function Outmoto() {
           ))}
         </div>
 
-        <button className="contactBtn" onClick={goToContact}>
+        <button className="contactBtnn" onClick={goToContact}>
           Get in touch with us
         </button>
       </div>
@@ -315,8 +315,8 @@ export default function Outmoto() {
               <strong>We're hiring.</strong>&nbsp; Join a team rewriting the
               rules of global finance.
             </p>
-            <a href="#" className="ct-cta">
-              View open roles <span className="ct-cta-arrow">→</span>
+            <a onClick={goToContact} className="ct-cta">
+              Drop your info<span className="ct-cta-arrow">→</span>
             </a>
           </footer>
         </div>
