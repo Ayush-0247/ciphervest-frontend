@@ -4,46 +4,65 @@ import "./FinPulseSection.css";
 export default function FinPulseSection() {
   return (
     <section className="fp-wrapper">
-      <div className="fp-left">
-        <p className="fp-brand-sub">QuantEdge Analytics</p>
-        <h1 className="fp-brand-title">
-          Capital <span>Signals</span>
-        </h1>
+      <div className="fp-overlay"></div>
 
-        <div className="fp-audio-bars">
-          <div className="fp-bar fp-b1"></div>
-          <div className="fp-bar fp-b2"></div>
-          <div className="fp-bar fp-b3"></div>
-          <div className="fp-bar fp-b4"></div>
-          <div className="fp-bar fp-b5"></div>
-          <div className="fp-bar fp-b6"></div>
+      <div className="fp-container">
+        {/* LEFT CONTENT */}
+        <div className="fp-left">
+          <p className="fp-brand-sub">QuantEdge Analytics</p>
+
+          <h1 className="fp-brand-title">
+            Capital <span>Signals</span>
+          </h1>
+
+          <p className="fp-tagline">
+            Institutional-grade intelligence for crypto, equities, and macro
+            capital flows.
+          </p>
+
+          <div className="fp-buttons">
+            <a href="#" className="fp-btn primary">
+              Explore Research
+            </a>
+            <a href="#" className="fp-btn secondary">
+              Book Consultation
+            </a>
+          </div>
+
+          {/* TRUST LOGOS */}
+      
         </div>
-      </div>
 
-      <div className="fp-right">
-        <p className="fp-episode-time">🎙 00:21:10</p>
+        {/* RIGHT SIDE */}
+        <div className="fp-right">
+          <img
+            className="fp-hero-img"
+            src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=1400&auto=format&fit=crop"
+            alt="Fintech dashboard"
+          />
 
-        <h2 className="fp-main-heading">
-          Expansion or Pullback: Where Is FinTech Capital Flowing Next?
-        </h2>
+          <div className="fp-card">
+            <h2 className="fp-main-heading">
+              Where Is Global FinTech Capital Flowing Next?
+            </h2>
 
-        <a href="#" className="fp-link">
-          Browse all market briefings
-        </a>
+            <p className="fp-summary">
+              We decode macro liquidity cycles, AI-driven strategies, digital
+              asset integration, and regulatory momentum to deliver
+              forward-looking capital intelligence for modern investors.
+            </p>
 
-        <p className="fp-summary">
-          As digital finance continues to evolve, investors are navigating
-          liquidity shifts, AI-driven trading systems, decentralized finance
-          growth, and regulatory transformation. Our research desk examines
-          macro indicators, fintech earnings resilience, and global capital
-          rotation trends shaping the next phase of innovation-led markets.
-        </p>
+            <ul className="fp-features">
+              <li>AI-Enhanced Market Signals</li>
+              <li>Cross-Asset Flow Tracking</li>
+              <li>Institutional Risk Intelligence</li>
+              <li>Crypto & Equity Strategy Insights</li>
+            </ul>
 
-        <div className="fp-actions">
-          <button className="fp-play-btn">▶</button>
-          <a href="#" className="fp-transcript">
-            VIEW TRANSCRIPT
-          </a>
+            <a href="#" className="fp-link">
+              Read Full Market Brief →
+            </a>
+          </div>
         </div>
       </div>
     </section>

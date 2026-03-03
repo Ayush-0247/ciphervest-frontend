@@ -33,7 +33,7 @@ const API_URL = "https://ciphervest-backend-1.onrender.com";
       const data = await res.json();
 
       if (res.ok) {
-        setMessage("Subscribed successfully 🎉");
+        setMessage("Subscribed successfully to our newsletter");
         setEmail("");
       } else {
         setMessage(data.message || "Something went wrong");
