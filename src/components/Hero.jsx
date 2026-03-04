@@ -90,7 +90,7 @@ export default function Hero() {
           <div className={styles.cardTop}>
             <div className={styles.cardChip}>C</div>
             <div className={styles.cardBrand}>VISA</div>
-            <div className={styles.cardNumber}>•••• •••• •••• 1001</div>
+            <div className={styles.cardNumber}>•••• •••• •••• 1207</div>
             <div className={styles.cardFooter}>
               <span>John Doe</span>
               <span>Exp 09/27</span>
@@ -100,7 +100,7 @@ export default function Hero() {
           <div className={styles.cardBottom}>
             <div className={styles.cardBrand}>VISA</div>
             <div className={styles.cardChip}>C</div>
-            <div className={styles.cardNumber}>•••• •••• •••• 1001</div>
+            <div className={styles.cardNumber}>•••• •••• •••• 2407</div>
             <div className={styles.cardFooter}>
               <span>Exp 09/27</span>
               <span>Tony Starc</span>
