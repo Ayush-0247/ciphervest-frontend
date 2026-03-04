@@ -1,21 +1,28 @@
 /* ══════════════════════════════
    NOTICE X FOOTER SYSTEM — PRO
+   Improved Design & Responsiveness
 ══════════════════════════════ */
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
 .nx-footer {
-  --blue-deep:   #0f1b3d;
-  --blue-mid:    #1e3a8a;
-  --blue-accent: #3b82f6;
-  --blue-pale:   #eff6ff;
-  --blue-light:  #dbeafe;
+  --blue-deep:    #0a1628;
+  --blue-mid:     #1e3a8a;
+  --blue-accent:  #3b82f6;
+  --blue-vivid:   #355dfc;
+  --blue-pale:    #eff6ff;
+  --blue-light:   #dbeafe;
 
-  --text-dark:   #0f172a;
-  --text-muted:  #64748b;
-  --text-light:  #94a3b8;
+  --text-dark:    #0f172a;
+  --text-muted:   #64748b;
+  --text-light:   #94a3b8;
 
-  --border:      #e2e8f0;
-  --white:       #ffffff;
-  --bg:          #f8fafc;
+  --border:       #e2e8f0;
+  --white:        #ffffff;
+  --bg:           #f8fafc;
+
+  --radius-card:  20px;
+  --radius-pill:  50px;
 
   font-family: 'DM Sans', sans-serif;
   background: var(--white);
@@ -26,77 +33,143 @@
 /* ══════════════════════════════
    NEWSLETTER SECTION
 ══════════════════════════════ */
-.nx-footer{
-  margin: 0;
-}
+
 .nx-footer .newsletter-wrapper {
-  background: linear-gradient(135deg, #dbeafe, #eff6ff);
-  padding: 100px 20px;
-  border-top-left-radius: 260px;
-  border-bottom-right-radius: 260px;
+  background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 50%, #e0e7ff 100%);
+  padding: clamp(60px, 8vw, 100px) clamp(16px, 4vw, 40px);
+  border-top-left-radius: 200px;
+  border-bottom-right-radius: 200px;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
 }
-.newsletter-wrapper{
-  margin-bottom: 40px;
+
+/* Subtle decorative blobs */
+.nx-footer .newsletter-wrapper::before,
+.nx-footer .newsletter-wrapper::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  opacity: 0.35;
 }
+
+.nx-footer .newsletter-wrapper::before {
+  width: 300px;
+  height: 300px;
+  background: #93c5fd;
+  top: -80px;
+  left: -80px;
+}
+
+.nx-footer .newsletter-wrapper::after {
+  width: 250px;
+  height: 250px;
+  background: #a5b4fc;
+  bottom: -60px;
+  right: -60px;
+}
+
 .nx-footer .newsletter-card {
-  max-width: 920px;
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #141a2e, #355dfc);
-  padding: 60px 50px;
-  border-radius: 24px;
+  background: linear-gradient(135deg, #111827 0%, #1e3799 60%, #355dfc 100%);
+  padding: clamp(36px, 5vw, 60px) clamp(24px, 5vw, 60px);
+  border-radius: 28px;
   text-align: center;
   color: white;
-  box-shadow: 0 25px 70px rgba(53, 93, 252, 0.25);
+  box-shadow:
+    0 30px 80px rgba(53, 93, 252, 0.3),
+    0 0 0 1px rgba(255,255,255,0.07) inset;
 }
 
 .nx-footer .newsletter-card h3 {
-  font-size: 30px;
-  font-weight: 600;
-  margin-bottom: 14px;
-  letter-spacing: -0.02em;
+  font-size: clamp(20px, 3.5vw, 32px);
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 .nx-footer .newsletter-card p {
-  font-size: 15px;
-  opacity: 0.9;
-  margin-bottom: 30px;
+  font-size: clamp(13px, 1.5vw, 15px);
+  opacity: 0.85;
+  margin: 0 0 28px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
 
-.nx-footer .newsletter-input {
+/* Newsletter Form */
+.nx-footer form {
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
+  margin-top: 0;
 }
 
-.nx-footer .newsletter-input input {
-  padding: 15px 20px;
-  border-radius: 50px;
-  border: none;
-  width: 300px;
+.nx-footer form input {
+  padding: 14px 22px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  width: clamp(200px, 40vw, 300px);
   font-size: 14px;
+  font-family: inherit;
   outline: none;
-  transition: box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 
-.nx-footer .newsletter-input input:focus {
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.4);
+.nx-footer form input::placeholder {
+  color: rgba(255,255,255,0.55);
 }
 
-.nx-footer .newsletter-input button {
-  padding: 15px 30px;
-  border-radius: 50px;
+.nx-footer form input:focus {
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.1);
+}
+
+.nx-footer form button {
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
   border: none;
   background: white;
-  color: #355dfc;
-  font-weight: 600;
+  color: var(--blue-vivid);
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 14px;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
-.nx-footer .newsletter-input button:hover {
+.nx-footer form button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+.nx-footer form button:active {
+  transform: translateY(0);
+}
+
+.nx-footer form button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nx-footer .message {
+  margin-top: 16px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  min-height: 20px;
 }
 
 /* ══════════════════════════════
@@ -106,34 +179,43 @@
 .nx-footer .footer-container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 clamp(20px, 4vw, 40px) 60px;
   display: grid;
-  grid-template-columns: 1.4fr 2.6fr;
-  gap: 80px;
+  grid-template-columns: 1.3fr 2.7fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
 }
 
-/* Left Brand */
+/* ── Left: Brand ── */
+
+.nx-footer .footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 
 .nx-footer .footer-brand h3 {
   font-size: 16px;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 12px;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
 }
 
 .nx-footer .footer-brand p {
   font-size: 14px;
   color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 28px;
-  max-width: 280px;
+  line-height: 1.75;
+  margin: 0 0 24px;
+  max-width: 260px;
 }
 
 /* Social Icons */
 
 .nx-footer .social-icons {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .nx-footer .social-icons > * {
@@ -147,7 +229,9 @@
   justify-content: center;
   color: var(--text-muted);
   font-size: 15px;
+  text-decoration: none;
   transition: all 0.25s ease;
+  flex-shrink: 0;
 }
 
 .nx-footer .social-icons > *:hover {
@@ -155,24 +239,25 @@
   background: var(--blue-pale);
   color: var(--blue-accent);
   transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(59,130,246,0.15);
 }
 
-/* Right Columns */
+/* ── Right: Columns ── */
 
 .nx-footer .right {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 50px;
+  gap: clamp(24px, 3vw, 50px);
 }
 
 .nx-footer .footer-links h4,
 .nx-footer .footer-contact h4 {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-dark);
-  margin-bottom: 20px;
+  margin: 0 0 18px;
 }
 
 .nx-footer .footer-links ul {
@@ -181,14 +266,15 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
 }
 
 .nx-footer .footer-links li {
   font-size: 14px;
   color: var(--text-muted);
   cursor: pointer;
-  transition: color 0.25s ease, transform 0.25s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
+  line-height: 1.4;
 }
 
 .nx-footer .footer-links li:hover {
@@ -201,8 +287,14 @@
 .nx-footer .footer-contact p {
   font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 10px;
-  transition: color 0.25s;
+  margin: 0 0 10px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nx-footer .footer-contact p:last-child {
+  margin-bottom: 0;
 }
 
 .nx-footer .footer-contact p:hover {
@@ -215,18 +307,19 @@
 
 .nx-footer .footer-payments {
   max-width: 1240px;
- display: flex;
- justify-content: center;align-items: center;
-  margin: 40px auto;padding: 20px;padding-bottom: 10px;
-  margin-bottom: 20px;
-  gap: 20px;
+  margin: 0 auto;
+  padding: 24px clamp(20px, 4vw, 40px) 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 24px);
   flex-wrap: wrap;
   border-top: 1px solid var(--border);
 }
 
 .nx-footer .footer-payments img {
-  height: 42px;
-  opacity: 0.7;
+  height: 36px;
+  opacity: 0.65;
   transition: opacity 0.3s, transform 0.3s;
 }
 
@@ -242,7 +335,7 @@
 .nx-footer .footer-bottom {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 22px 40px;
+  padding: 20px clamp(20px, 4vw, 40px);
   border-top: 1px solid var(--border);
   text-align: center;
   font-size: 13px;
@@ -251,110 +344,146 @@
 }
 
 /* ══════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — TABLET (≤1024px)
 ══════════════════════════════ */
 
 @media (max-width: 1024px) {
   .nx-footer .footer-container {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 48px;
+    padding-bottom: 48px;
   }
-  .nx-footer{
-    padding: 12px;
+
+  .nx-footer .footer-brand p {
+    max-width: 100%;
   }
 
   .nx-footer .right {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  .nx-footer .newsletter-wrapper {
+    border-top-left-radius: 120px;
+    border-bottom-right-radius: 120px;
   }
 }
 
+/* ══════════════════════════════
+   RESPONSIVE — LARGE PHONE (≤768px)
+══════════════════════════════ */
+
 @media (max-width: 768px) {
+  .nx-footer {
+    padding: 0;
+    margin-top: 60px;
+  }
 
   .nx-footer .newsletter-wrapper {
-    padding: 70px 20px;
-    border-radius: 60px;
+    padding: 56px 20px;
+    border-top-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+    margin-bottom: 48px;
   }
 
   .nx-footer .newsletter-card {
-    padding: 40px 25px;
+    padding: 36px 24px;
+    border-radius: 22px;
   }
 
-  .nx-footer .newsletter-card h3 {
-    font-size: 22px;
-  }
-
-  .nx-footer .newsletter-input {
+  .nx-footer form {
     flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 
-  .nx-footer .newsletter-input input,
-  .nx-footer .newsletter-input button {
+  .nx-footer form input,
+  .nx-footer form button {
     width: 100%;
+    max-width: 380px;
   }
 
   .nx-footer .right {
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 32px 24px;
   }
 
   .nx-footer .footer-payments {
-    justify-content: center;
+    gap: 12px;
+  }
+
+  .nx-footer .footer-payments img {
+    height: 30px;
   }
 
   .nx-footer .footer-bottom {
     font-size: 12px;
+    padding: 18px 20px;
   }
 }
 
+/* ══════════════════════════════
+   RESPONSIVE — SMALL PHONE (≤480px)
+══════════════════════════════ */
 
-/* Newsletter Form Fix */
-.nx-footer form {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
+@media (max-width: 480px) {
+  .nx-footer .newsletter-wrapper {
+    padding: 48px 16px;
+    border-top-left-radius: 48px;
+    border-bottom-right-radius: 48px;
+    margin-bottom: 40px;
+  }
 
-.nx-footer form input {
-  padding: 15px 20px;
-  border-radius: 50px;
-  border: none;
-  width: 300px;
-  font-size: 14px;
-  outline: none;
-  transition: box-shadow 0.3s;
-}
+  .nx-footer .newsletter-card {
+    padding: 30px 20px;
+    border-radius: 18px;
+  }
 
-.nx-footer form input:focus {
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.4);
-}
+  .nx-footer .newsletter-card h3 {
+    font-size: 20px;
+  }
 
-.nx-footer form button {
-  padding: 15px 30px;
-  border-radius: 50px;
-  border: none;
-  background: white;
-  color: #355dfc;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
+  .nx-footer .newsletter-card p {
+    font-size: 13px;
+  }
 
-.nx-footer form button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
+  .nx-footer .footer-container {
+    padding: 0 16px 40px;
+    gap: 36px;
+  }
 
-.nx-footer form button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+  .nx-footer .right {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+  }
 
-/* Message Styling */
-.nx-footer .message {
-  margin-top: 15px;
-  font-size: 14px;
-  color: white;
+  .nx-footer .footer-links h4,
+  .nx-footer .footer-contact h4 {
+    margin-bottom: 14px;
+  }
+
+  .nx-footer .footer-links li,
+  .nx-footer .footer-contact p {
+    font-size: 13px;
+  }
+
+  .nx-footer .social-icons > * {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .nx-footer .footer-payments {
+    gap: 10px;
+    padding: 20px 16px 16px;
+  }
+
+  .nx-footer .footer-payments img {
+    height: 26px;
+  }
+
+  .nx-footer .footer-bottom {
+    padding: 16px;
+    font-size: 11px;
+  }
 }
