@@ -37,7 +37,7 @@ export default function FinPulseSection() {
         <div className="fp-right">
           <img
             className="fp-hero-img"
-            src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=1400&auto=format&fit=crop"
+           src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1400&q=80"
             alt="Fintech dashboard"
           />
 
