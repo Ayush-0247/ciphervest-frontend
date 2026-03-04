@@ -386,6 +386,99 @@ const css = `
   .s1TrustRow { justify-content: center; }
   .navLinks { display: none; }
 }
+
+/* STATS BAND */
+.s1StatsBand {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+/* Individual Stat */
+.statItem {
+  text-align: center;
+  padding: 25px 20px;
+  position: relative;
+}
+
+/* Divider for desktop */
+.statDivider::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(0,0,0,0.1);
+}
+
+/* Number */
+.statNum {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0a2540;
+  display: block;
+}
+
+/* Label */
+.statItem p {
+  font-size: 15px;
+  color: #444;
+  margin-top: 6px;
+}
+
+/* Sub text */
+.statSub {
+  font-size: 13px;
+  color: #1a73e8;
+  margin-top: 6px;
+}
+
+/* -------- Tablet -------- */
+@media (max-width: 900px) {
+
+  .s1StatsBand {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statDivider::before {
+    display: none;
+  }
+
+}
+
+/* -------- Mobile -------- */
+@media (max-width: 600px) {
+
+  .s1StatsBand {
+    grid-template-columns: 1fr;
+    padding: 30px 18px;
+  }
+
+  .statItem {
+    padding: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .statItem:last-child {
+    border-bottom: none;
+  }
+
+  .statNum {
+    font-size: 26px;
+  }
+
+}
+  
 `;
 
 // Sparkline path generator

@@ -715,3 +715,345 @@
 
 
 
+
+
+
+/* ════════════════════════════════════════════════════
+   IPAD RESPONSIVE FIXES
+   Targets: iPad Mini (768px), iPad (820px), iPad Pro (1024px)
+   ════════════════════════════════════════════════════ */
+
+/* ─── iPAD PRO 12.9" landscape + iPad Pro 11" ─────── */
+@media (min-width: 1024px) and (max-width: 1180px) {
+  .container {
+    padding: 0 40px;
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .heading {
+    font-size: 52px;
+  }
+
+  .subHeading {
+    font-size: 44px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .right {
+    height: 420px;
+  }
+
+  .cardTop,
+  .cardBottom {
+    width: 320px;
+    height: 195px;
+  }
+
+  .cardTop {
+    right: 0;
+  }
+
+  .cardBottom {
+    left: 30px;
+  }
+
+  .floatWrapper {
+    gap: 36px;
+  }
+}
+
+/* ─── iPAD / iPAD AIR (768–1023px) ────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero {
+    min-height: 100svh;
+    align-items: flex-start;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 52px;
+    padding: 40px 48px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* Left: cap width, center on single column */
+  .left {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .heading {
+    font-size: 56px;
+    line-height: 1.06;
+  }
+
+  .subHeading {
+    font-size: 46px;
+    margin-bottom: 24px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 560px;
+  }
+
+  .buttons {
+    gap: 16px;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    padding: 15px 26px;
+  }
+
+  /* Right: constrain and center the card stack */
+  .right {
+    height: 440px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .floatWrapper {
+    gap: 40px;
+    align-items: center;
+  }
+
+  .cardTop {
+    width: 340px;
+    height: 210px;
+    top: 0;
+    right: auto;
+    left: 40px;
+  }
+
+  .cardBottom {
+    width: 340px;
+    height: 210px;
+    bottom: 0;
+    left: 0;
+  }
+
+  .cardNumber {
+    font-size: 17px;
+    letter-spacing: 2.5px;
+    margin-top: 32px;
+  }
+
+  .cardFooter {
+    font-size: 12px;
+  }
+
+  .cardBrand {
+    font-size: 12px;
+  }
+
+  @keyframes card1Glide {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px) translateY(25px) rotate(-360deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-180px) translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes card2Drift {
+  0% {
+    opacity: 0;
+    transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(120px) translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+
+}
+
+/* ─── iPAD MINI / SMALL TABLET (600–767px) ────────── */
+@media (min-width: 600px) and (max-width: 767px) {
+  .hero {
+    min-height: 100svh;
+    padding: 40px 0;
+  }
+
+  
+  @keyframes card1Glide {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px) translateY(25px) rotate(-360deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-180px) translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes card2Drift {
+  0% {
+    opacity: 0;
+    transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(120px) translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    padding: 32px 36px;
+  }
+
+  .heading {
+    font-size: 46px;
+  }
+
+  .subHeading {
+    font-size: 38px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .right {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .floatWrapper {
+    gap: 32px;
+  }
+
+  .cardTop {
+    width: 300px;
+    height: 185px;
+    right: auto;
+    left: 30px;
+  }
+
+  .cardBottom {
+    width: 300px;
+    height: 185px;
+    left: 0;
+  }
+
+  .cardNumber {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-top: 28px;
+  }
+}
+
+/* ─── iPAD LANDSCAPE (all iPad sizes) ─────────────── */
+@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding: 30px 0;
+  }
+
+  .container {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 50px;
+    padding: 0 52px;
+    align-items: center;
+  }
+
+  .left {
+    max-width: 500px;
+  }
+
+  .heading {
+    font-size: 48px;
+  }
+
+  .subHeading {
+    font-size: 40px;
+  }
+
+  .description {
+    font-size: 14.5px;
+    margin-bottom: 28px;
+  }
+
+  .right {
+    height: 400px;
+  }
+
+  .floatWrapper {
+    gap: 32px;
+  }
+
+  .cardTop,
+  .cardBottom {
+    width: 305px;
+    height: 188px;
+  }
+
+  .cardTop {
+    right: 0;
+  }
+
+  .cardBottom {
+    left: 30px;
+  }
+
+  .cardNumber {
+    font-size: 15px;
+    margin-top: 28px;
+  }
+}
+
+  @keyframes card1Glide {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px) translateY(25px) rotate(-360deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-180px) translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes card2Drift {
+  0% {
+    opacity: 0;
+    transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(120px) translateY(0) scale(1) rotate(0deg);
+  }
+}
+/* ─── ENVELOPE: iPad safe flyIn ───────────────────── */
+@media (min-width: 600px) and (max-width: 1180px) {
+  @keyframes flyIn {
+    0% {
+      transform: translate(60vw, -60vh) rotate(160deg) scale(0.05);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .envelope {
+    width: 240px;
+    height: 150px;
+  }
+}
