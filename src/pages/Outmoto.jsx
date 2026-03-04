@@ -9,78 +9,94 @@ const mottos = [
     id: 1,
     icon: "◈",
     tagline: "PRINCIPLE 01",
-    title: "Security Is the Foundation of Wealth",
-    body: "From cold-storage crypto vaults to institutional-grade equity execution, every transaction is fortified with layered encryption, compliance monitoring, and real-time risk control. Capital is protected before it is multiplied.",
+    title: "Protect Capital Before Growing It",
+    body: "True wealth begins with disciplined risk management. From diversified portfolios to secure crypto asset custody, every investment strategy we design begins with protecting capital before pursuing growth.",
     accent: "trust",
   },
   {
     id: 2,
     icon: "⬡",
     tagline: "PRINCIPLE 02",
-    title: "All Markets. One Intelligent Core.",
-    body: "Crypto, global equities, structured assets, and alternative investments — unified under a single intelligent system. We eliminate fragmentation so your portfolio moves as one cohesive strategy, not scattered positions.",
+    title: "One Portfolio. Multiple Markets.",
+    body: "Modern wealth is no longer confined to one asset class. We combine equities, digital assets, and strategic allocations into one intelligent portfolio designed for resilience and long-term performance.",
     accent: "clarity",
   },
   {
     id: 3,
     icon: "◉",
     tagline: "PRINCIPLE 03",
-    title: "Advisory Backed by Data, Not Hype",
-    body: "Our financial advisory and tax strategies are driven by analytics, regulatory insight, and macro modeling — not speculation. We align every recommendation with long-term wealth architecture, not short-term noise.",
+    title: "Data-Driven Investment Strategy",
+    body: "Our advisory is built on research, market analytics, and macroeconomic insights. Every recommendation is backed by data, not speculation or hype.",
     accent: "bold",
   },
   {
     id: 4,
     icon: "⬟",
     tagline: "PRINCIPLE 04",
-    title: "Global Assets. Local Intelligence.",
-    body: "Whether navigating Indian capital gains, U.S. equities, or decentralized protocols, our infrastructure adapts to jurisdictional compliance, taxation, and reporting standards — so growth never clashes with regulation.",
+    title: "Growth That Survives Taxation",
+    body: "Investment returns are only meaningful when optimized for taxation. Our strategies integrate tax planning, regulatory compliance, and financial structuring to maximize net wealth.",
     accent: "global",
   },
 ];
 
 const TEAM = [
   {
-    name: "Arjun Mehta",
-    role: "CEO & Co-Founder",
-    bio: "Former Goldman Sachs VP. Built cross-border payment rails across 40+ markets over 15 years.",
-    initials: "AM",
-    tags: [{ label: "Strategy", variant: "blue" }, { label: "Payments" }],
+    name: "Ayush Raj",
+    role: "Founder & Chief Technical Officer",
+     bio: "Leads the firm's strategic growth, investment vision, and development of financial services across crypto, equities, and portfolio management.",
+    initials: "AR",
+    tags: [
+      { label: "Strategy", variant: "blue" },
+      { label: "Investments" }
+    ],
     dark: true,
     verified: true,
-    linkedin: "#",
+linkedin: "https://www.linkedin.com/in/ayushraj2407",
     twitter: "#",
   },
+
   {
-    name: "Priya Kapoor",
-    role: "Chief Technology Officer",
-    bio: "Ex-Stripe engineering lead. Scaled infrastructure to 10M+ daily transactions with 99.99% uptime.",
-    initials: "PK",
-    tags: [{ label: "Engineering", variant: "blue" }, { label: "Scale" }],
+    name: "Ananya Karnwal",
+    role: "Chief Management Officer",
+    bio: "Oversees operations and client experience, ensuring smooth execution of portfolio management and advisory services.",
+    initials: "AK",
+    tags: [
+      { label: "Operations", variant: "blue" },
+      { label: "Management" }
+    ],
     verified: true,
-    linkedin: "#",
+   linkedin: "https://www.linkedin.com/in/ayushraj2407",
     twitter: "#",
   },
+
   {
-    name: "Marcus Selin",
-    role: "Head of Risk & Compliance",
-    bio: "14 years navigating regulatory frameworks across EU, US and APAC fintech corridors.",
-    initials: "MS",
-    tags: [{ label: "Compliance", variant: "amber" }, { label: "Risk" }],
-    linkedin: "#",
+    name: "Ayush",
+    role: "Public Relations Officer",
+    bio: "Handles investor communication, partnerships, and public engagement to strengthen the firm's market presence.",
+    initials: "A",
+    tags: [
+      { label: "Communications", variant: "amber" },
+      { label: "Outreach" }
+    ],
+    verified: true,
+   linkedin: "https://www.linkedin.com/in/ayushraj2407",
     twitter: "#",
   },
+
   {
-    name: "Léa Fontaine",
-    role: "Chief Product Officer",
-    bio: "Designer-turned-PM from Revolut & Wise. Products she shipped are used by 8M+ consumers.",
-    initials: "LF",
-    tags: [{ label: "Product", variant: "blue" }, { label: "UX" }],
-    linkedin: "#",
+    name: "Dhruv Srivastava",
+    role: "Chief Financial Officer",
+    bio: "Oversees financial planning, risk management, and tax-efficient investment strategies for client portfolios.",
+    initials: "DS",
+    tags: [
+      { label: "Finance", variant: "blue" },
+      { label: "Risk" }
+    ],
+    verified: true,
+ linkedin: "https://www.linkedin.com/in/ayushraj2407",
     twitter: "#",
   },
 ];
-
 // ─── Icons ─────────────────────────────────────────────────────────────────────
 
 function LinkedInIcon() {
@@ -134,9 +150,15 @@ function TeamCard({ member }) {
         </div>
         <div className="ct-overlay" />
         <div className="ct-socials">
-          <a href={member.linkedin} className="ct-social-btn" aria-label="LinkedIn">
-            <LinkedInIcon />
-          </a>
+          <a
+  href={member.linkedin}
+  className="ct-social-btn"
+  aria-label="LinkedIn"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <LinkedInIcon />
+</a>
           <a href={member.twitter} className="ct-social-btn" aria-label="X / Twitter">
             <XIcon />
           </a>
@@ -241,15 +263,15 @@ export default function Outmoto() {
         </div>
 
         <h1 className="hero-title">
-          <span className="title-line">Finance,</span>
-          <span className="title-line accent-text">Reimagined.</span>
+         <span className="title-line">Wealth,</span>
+<span className="title-line accent-text">Engineered.</span>
         </h1>
 
         <p className="hero-sub">
-          We don't move money. We move possibilities. Every feature, every
-          decision, every line of code is written against one measure — does
-          this make financial freedom more accessible?
-        </p>
+We help investors navigate the modern financial landscape — from global equities
+to digital assets — through disciplined strategy, portfolio intelligence, and
+tax-efficient wealth management.
+</p>
 
         <div className="hero-divider">
           {Array.from({ length: 40 }).map((_, i) => (
@@ -315,8 +337,8 @@ export default function Outmoto() {
               <strong>We're hiring.</strong>&nbsp; Join a team rewriting the
               rules of global finance.
             </p>
-            <a onClick={goToContact} className="ct-cta">
-              Drop your info<span className="ct-cta-arrow">→</span>
+            <a onClick={goToContact} className="contactBtnnforteam">
+              Drop your info<span className="arrow">→</span>
             </a>
           </footer>
         </div>
@@ -346,11 +368,11 @@ export default function Outmoto() {
 
       {/* ── Manifesto ───────────────────────────────── */}
       <div className="manifesto-strip">
-        <p className="manifesto-quote">
-          "We believe the most powerful financial tool ever built
-          <em> should fit in your pocket</em> — and work for everyone."
-        </p>
-        <span className="manifesto-sig">— Founders, NovaPay</span>
+     <p className="manifesto-quote">
+"We believe wealth is not created by chance —
+<em> it is engineered through strategy, discipline, and intelligent investment.</em>"
+</p>
+<span className="manifesto-sig">— Founders</span>
       </div>
 
       {/* ── Who We Are ──────────────────────────────── */}
@@ -359,37 +381,35 @@ export default function Outmoto() {
           {/* Left */}
           <div className="who-left">
             <h1>Who we are</h1>
-            <p className="who-description">
-              In a fast-moving and increasingly complex global economy, our
-              success depends on how faithfully we adhere to our core
-              principles: delivering exceptional client service, acting with
-              integrity and responsibility and supporting the growth of our
-              employees.
-            </p>
+           <p className="who-description">
+In today's rapidly evolving financial landscape, investors need more than
+access to markets — they need strategy. Our firm combines expertise in
+equities, digital assets, and tax planning to help clients build resilient,
+future-ready portfolios.
+</p>
             <div className="who-columns">
               <div className="who-col">
                 <h3>Our business</h3>
                 <p>
-                  We are a leading global fintech services firm with advanced
-                  digital infrastructure and secure financial operations
-                  worldwide.
-                </p>
+We specialize in crypto investments, stock trading, portfolio management,
+and strategic financial advisory designed for long-term wealth creation.
+</p>
                 <a href="#">LEARN MORE</a>
               </div>
               <div className="who-col">
                 <h3>Global presence</h3>
                 <p>
-                  We serve clients across 60+ markets with a distributed
-                  technology network and strategic global partnerships.
-                </p>
+Our investment strategies track global market opportunities while adapting
+to regional taxation and regulatory frameworks.
+</p>
                 <a href="#">TAKE A LOOK</a>
               </div>
               <div className="who-col">
                 <h3>Our history</h3>
-                <p>
-                  Built on innovation and transparency, we continue to redefine
-                  digital finance through scalable technology.
-                </p>
+              <p>
+Built on research, discipline, and financial insight, our firm was created
+to help investors navigate both traditional and digital markets with clarity.
+</p>
                 <a href="#">EXPLORE HERE</a>
               </div>
             </div>
@@ -406,9 +426,9 @@ export default function Outmoto() {
               <h2>Our impact</h2>
               <span className="impact-date">November 04, 2024</span>
               <p>
-                Powering financial inclusion by breaking barriers and enabling
-                economic opportunities across emerging markets.
-              </p>
+Expanding financial literacy and enabling smarter investment decisions
+through transparent advisory and responsible wealth management.
+</p>
               <a href="#">Read more</a>
             </div>
           </div>
