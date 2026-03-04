@@ -3,7 +3,7 @@
   align-items: flex-start;
   background: #ffffff;
   max-height: 100vh;
-  padding: 50px;
+  padding: 50px;margin: 0;
   font-family: 'Georgia', serif;
   position: relative;
 }

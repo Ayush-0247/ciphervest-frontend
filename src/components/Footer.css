@@ -26,14 +26,18 @@
 /* ══════════════════════════════
    NEWSLETTER SECTION
 ══════════════════════════════ */
-
+.nx-footer{
+  margin: 0;
+}
 .nx-footer .newsletter-wrapper {
   background: linear-gradient(135deg, #dbeafe, #eff6ff);
   padding: 100px 20px;
   border-top-left-radius: 260px;
   border-bottom-right-radius: 260px;
 }
-
+.newsletter-wrapper{
+  margin-bottom: 40px;
+}
 .nx-footer .newsletter-card {
   max-width: 920px;
   margin: 0 auto;
@@ -102,7 +106,7 @@
 .nx-footer .footer-container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 80px 40px 0;
+  padding: 0;
   display: grid;
   grid-template-columns: 1.4fr 2.6fr;
   gap: 80px;
@@ -211,10 +215,10 @@
 
 .nx-footer .footer-payments {
   max-width: 1240px;
-  margin: 60px auto 0;
-  padding: 28px 40px;
-  display: flex;
-  align-items: center;
+ display: flex;
+ justify-content: center;align-items: center;
+  margin: 0 auto;padding: 12px;
+  
   gap: 20px;
   flex-wrap: wrap;
   border-top: 1px solid var(--border);
@@ -254,6 +258,9 @@
   .nx-footer .footer-container {
     grid-template-columns: 1fr;
     gap: 60px;
+  }
+  .nx-footer{
+    padding: 12px;
   }
 
   .nx-footer .right {
