@@ -2,37 +2,33 @@
 
 /* Reset and Base Properties */
 .fin-root {
-  --bg-color: #FDFBF7;
-  /* Very clean, warm off-white */
-  --bg-card: #FFFFFF;
-  --text-main: #1C1917;
-  /* Slate charcoal */
-  --text-muted: #78716C;
-  /* Warm gray */
-  --accent-primary: #A88251;
-  /* Reserved muted gold/bronze */
-  --accent-light: rgba(168, 130, 81, 0.1);
-  --border-color: rgba(28, 25, 23, 0.08);
-  /* Faint gray border */
+  --bg-color: #FFFFFF;          /* Pure white background */
+  --bg-card: #FFFFFF;           /* Card background */
+
+  --text-main: #0F172A;         /* Deep fintech black */
+  --text-muted: #64748B;        /* Soft gray text */
+
+  --accent-primary: #2563EB;    /* Fintech blue */
+  --accent-light: rgba(37, 99, 235, 0.08);
+
+  --border-color: rgba(15, 23, 42, 0.08);
 
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Newsreader', serif;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,0.08);
 
   font-family: var(--font-sans);
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
 
-  /* Remove bounded constraints that break scrolling */
   width: 100%;
   position: relative;
   overflow: visible;
 }
-
 .fin-root * {
   box-sizing: border-box;
   margin: 0;
@@ -46,7 +42,7 @@
   left: 0;
   right: 0;
   height: 600px;
-  background: radial-gradient(ellipse at top, rgba(168, 130, 81, 0.08), transparent 70%);
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.08), transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -119,7 +115,7 @@
 }
 
 .fin-btn-primary {
-  background: var(--text-main);
+  background: var(--accent-primary);
   color: #fff;
   border: none;
   padding: 14px 28px;
@@ -133,7 +129,7 @@
 }
 
 .fin-btn-primary:hover {
-  background: #333;
+ background: #1D4ED8;
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
@@ -284,8 +280,8 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #E8F5E9;
-  color: #2E7D32;
+ background: rgba(37,99,235,0.12);
+color: #2563EB;
   padding: 4px 12px;
   border-radius: 100px;
   font-size: 0.75rem;
@@ -317,7 +313,8 @@
 }
 
 .fin-trend-up {
-  color: #2E7D32;
+  background: rgba(37,99,235,0.12);
+color: #2563EB;
   font-size: 0.75rem;
 }
 
@@ -351,7 +348,8 @@
 }
 
 .fin-text-green {
-  color: #2E7D32;
+  background: rgba(37,99,235,0.12);
+color: #2563EB;
 }
 
 /* ─── TRUST ─── */
@@ -359,7 +357,7 @@
   padding: 60px 5%;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  background: #fff;
+  background: #ffffff;
   text-align: center;
 }
 
@@ -510,7 +508,7 @@
 
 /* ─── HOW IT WORKS ─── */
 .fin-how {
-  padding: 120px 5%;
+  padding: 60px 5%;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -523,7 +521,9 @@
 }
 
 .fin-step-card {
-  position: relative;
+  padding: 12px;
+  border-radius: 25px;
+  background: rgba(231, 231, 231, 0.436);
 }
 
 .fin-step-number {
@@ -554,7 +554,7 @@
 
 /* ─── TESTIMONIALS ─── */
 .fin-testi {
-  padding: 80px 5%;
+  padding: 40px 5%;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -803,6 +803,21 @@
     max-width: 500px;
     margin: 0 auto;
   }
+
+  .fin-trust {
+  padding: 15px 1%;
+}
+
+
+
+.fin-trust-logos {
+  gap: 30px;
+}
+
+.fin-trust-logo {
+  font-size: 1rem;
+ 
+}
 }
 
 @media (max-width: 768px) {

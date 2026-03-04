@@ -34,92 +34,133 @@ function Sparkline() {
 // ─── DATA ───
 const products = [
   {
-    icon: "🏦",
-    name: "Vault Savings",
-    desc: "Intelligent savings accounts that optimize returns automatically, adapting to market conditions in real time.",
-    features: ["Up to 5.2% APY, compounded daily", "AI-driven rebalancing", "FDIC insured up to $2M", "Zero minimum balance"],
+    icon: "🪙",
+    name: "Crypto Investment Desk",
+    desc: "Strategic cryptocurrency investment services with market research, risk management, and long-term digital asset portfolio planning.",
+    features: [
+      "Bitcoin, Ethereum & major altcoin strategies",
+      "Market analysis & trade signals",
+      "Portfolio diversification guidance",
+      "Secure asset custody advisory"
+    ],
     featured: false,
   },
   {
-    icon: "📈",
-    name: "Meridian Invest",
-    desc: "Institutional-grade portfolio management, now accessible to everyone. Algorithmic precision without the complexity.",
-    features: ["Fractional shares from $1", "Tax-loss harvesting", "ESG-aligned portfolios", "Real-time risk analytics"],
+    icon: "📊",
+    name: "Equity Market Advisory",
+    desc: "Professional stock market guidance designed to help investors navigate domestic and global equity markets with confidence.",
+    features: [
+      "NSE & global stock market insights",
+      "Short-term and long-term trade strategies",
+      "Technical & fundamental research",
+      "Sector-based investment opportunities"
+    ],
     featured: true,
   },
   {
-    icon: "💳",
-    name: "Tempo Card",
-    desc: "A beautifully crafted metal card that earns you more. Smart cashback tiers that reward how you actually spend your money.",
-    features: ["Up to 4% cashback on all spend", "No foreign transaction fees", "Concierge service 24/7", "Travel lounge access"],
+    icon: "💼",
+    name: "Portfolio Management",
+    desc: "End-to-end portfolio construction and monitoring to help investors grow wealth through diversified, data-driven strategies.",
+    features: [
+      "Personalized asset allocation",
+      "Risk management frameworks",
+      "Quarterly portfolio rebalancing",
+      "Performance analytics & reporting"
+    ],
     featured: false,
   },
 ];
 
 const steps = [
-  { num: "01", title: "Create Account", desc: "Sign up in under 3 minutes. No paperwork, no branch visits, no friction." },
-  { num: "02", title: "Connect & Verify", desc: "Link your existing accounts securely with bank-level 256-bit encryption." },
-  { num: "03", title: "Set Your Goals", desc: "Tell us what you're working toward. Our AI builds a plan tailored to you." },
-  { num: "04", title: "Watch It Grow", desc: "Automated strategies work continuously while you focus on what matters." },
+  { num: "01", title: "Register with Us", desc: "Create your investment profile and share your financial goals." },
+  { num: "02", title: "Risk & Portfolio Assessment", desc: "Our experts evaluate your risk appetite and investment timeline." },
+  { num: "03", title: "Strategy Development", desc: "We build a diversified strategy across crypto, equities, and other assets." },
+  { num: "04", title: "Monitor & Grow", desc: "Track performance while our advisors continuously optimize your portfolio." },
 ];
-
 const stats = [
-  { num: "$48", suffix: "B+", desc: "Assets under management across all product categories" },
-  { num: "1.2", suffix: "M+", desc: "Active users trust Aurum with their financial future" },
-  { num: "99.9", suffix: "%", desc: "Platform uptime with enterprise-grade infrastructure" },
-  { num: "4.8", suffix: "★", desc: "Average rating from 280,000+ verified customer reviews" },
+  { num: "₹36", suffix: "K+", desc: "Assets managed across client portfolios" },
+  { num: "11+", suffix: "", desc: "Active investors using our advisory services" },
+  { num: "15+", suffix: "", desc: "Markets tracked including crypto & global equities" },
+  { num: "96", suffix: "%", desc: "Client satisfaction across advisory services" },
 ];
 
 const testimonials = [
   {
-    text: "Aurum's Meridian Invest completely transformed how I think about wealth. I've grown my portfolio by 34% in 14 months without lifting a finger.",
-    name: "Priya Nair",
-    role: "UX Director, Bangalore",
-    initials: "PN",
+    text: "Their crypto and equity strategies helped me diversify my investments and achieve consistent returns.",
+    name: "Rohit Sharma",
+    role: "Entrepreneur, Patna",
+    initials: "RS",
     large: true,
   },
   {
-    text: "The Vault account beats every savings rate I've found. Moving my emergency fund here was the easiest financial decision I've made.",
-    name: "Marcus Bell",
-    role: "Software Engineer, Austin",
-    initials: "MB",
+    text: "The portfolio advisory service simplified investing for me. Everything is structured and transparent.",
+    name: "Piyush Kumar",
+    role: "Startup Founder, Delhi",
+    initials: "PK",
     large: false,
   },
   {
-    text: "Tempo Card's cashback on my business expenses alone paid for itself in the first month.",
-    name: "Layla Hassan",
-    role: "Founder, Dubai",
-    initials: "LH",
+    text: "Their tax planning insights helped me legally reduce my capital gains tax significantly.",
+    name: "Amit Verma",
+    role: "Transportation Businessman, Gorakhpur",
+    initials: "AV",
     large: false,
   },
 ];
 
 const plans = [
   {
-    plan: "Essential",
+    plan: "Starter",
     price: "₹0",
-    period: "Forever free",
-    features: ["Vault Savings (3.8% APY)", "Basic debit card", "Up to 2 linked accounts", "Standard support"],
+    period: "Basic access",
+    features: [
+      "Market insights & newsletters",
+      "Basic crypto & stock updates",
+      "Limited advisory support",
+      "Educational resources"
+    ],
     featured: false,
   },
   {
-    plan: "Premium",
-    price: "₹799",
-    period: "per month, billed annually",
-    features: ["Vault+ Savings (5.2% APY)", "Meridian Invest (full access)", "Tempo Metal Card", "Unlimited accounts", "Priority 24/7 support", "Tax reports & insights"],
+    plan: "Pro Advisory",
+    price: "₹1999",
+    period: "per month",
+    features: [
+      "Full crypto & equity advisory",
+      "Personalized portfolio strategies",
+      "Trade signals & research reports",
+      "Tax planning insights",
+      "Priority support"
+    ],
     featured: true,
     badge: "Most Popular",
   },
   {
-    plan: "Private",
+    plan: "Private Wealth",
     price: "Custom",
-    period: "for HNIs & businesses",
-    features: ["Dedicated relationship manager", "Custom investment mandates", "White-glove concierge", "API access", "Multi-entity management"],
+    period: "For HNIs & institutions",
+    features: [
+      "Dedicated relationship manager",
+      "Custom investment mandates",
+      "Advanced tax structuring",
+      "Private investment opportunities",
+      "Portfolio analytics dashboard"
+    ],
     featured: false,
   },
 ];
-
-const logos = ["Softbank", "Sequoia", "Y Combinator", "Tiger Global", "Bessemer"];
+const logos = [
+  "State Bank of India",
+  "HDFC Bank",
+  "ICICI Bank",
+  "NSE India",
+  "BSE India",
+  "Binance",
+  "Coinbase",
+  "WazirX",
+  "Zerodha",
+  
+];
 
 // ─── MAIN COMPONENT ───
 export default function ProductPage() {
@@ -145,13 +186,13 @@ export default function ProductPage() {
             </div>
 
             <h1 className="fin-title">
-              Finance that works <br />
-              <span className="fin-italic-serif">as hard as you do.</span>
+              Build wealth through <br />
+              <span className="fin-italic-serif"> smarter investments.</span>
             </h1>
 
             <p className="fin-subtitle">
-              Aurum is the all-in-one financial platform for the ambitious.
-              Save smarter, invest better, and spend with confidence — all from one beautifully simple app.
+              A modern investment platform combining crypto markets, stock trading insights,
+portfolio management, and tax advisory to help investors grow wealth with confidence.
             </p>
 
             <div className="fin-actions">
@@ -193,16 +234,19 @@ export default function ProductPage() {
       </section>
 
       {/* TRUST / LOGOS */}
-      <section className="fin-trust">
-        <div className="fin-trust-inner">
-          <p className="fin-trust-label">Backed by industry leaders</p>
-          <div className="fin-trust-logos">
-            {logos.map((l) => (
-              <span key={l} className="fin-trust-logo">{l}</span>
-            ))}
-          </div>
-        </div>
-      </section>
+{/* TRUST / LOGOS */}
+<section className="fin-trust">
+  <div className="fin-trust-inner">
+    <p className="fin-trust-label">Connected to leading financial ecosystems</p>
+
+    <div className="fin-trust-logos">
+      {logos.map((l) => (
+        <span key={l} className="fin-trust-logo">{l}</span>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       {/* PRODUCTS */}
       <section className="fin-products">
@@ -243,26 +287,36 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="fin-stats">
-        <div className="fin-stats-container">
-          <div className="fin-stats-info">
-            <div className="fin-tag">By the Numbers</div>
-            <h2 className="fin-h2">Trusted at <br /><span className="fin-italic-serif">scale.</span></h2>
-            <p className="fin-sub">Millions of users. Billions under management. Uptime you can bank on.</p>
+{/* STATS */}
+<section className="fin-stats">
+  <div className="fin-stats-container">
+    <div className="fin-stats-info">
+      <div className="fin-tag">By the Numbers</div>
+
+      <h2 className="fin-h2">
+        Performance at <br />
+        <span className="fin-italic-serif">scale.</span>
+      </h2>
+
+      <p className="fin-sub">
+        Trusted by investors seeking disciplined strategies across crypto markets,
+        equities, and diversified portfolios.
+      </p>
+    </div>
+
+    <div className="fin-stats-grid">
+      {stats.map((s, i) => (
+        <div key={i} className="fin-stat-box">
+          <div className="fin-stat-number">
+            {s.num}
+            <span className="fin-stat-suffix">{s.suffix}</span>
           </div>
-          <div className="fin-stats-grid">
-            {stats.map((s, i) => (
-              <div key={i} className="fin-stat-box">
-                <div className="fin-stat-number">
-                  {s.num}<span className="fin-stat-suffix">{s.suffix}</span>
-                </div>
-                <div className="fin-stat-desc">{s.desc}</div>
-              </div>
-            ))}
-          </div>
+          <div className="fin-stat-desc">{s.desc}</div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* HOW IT WORKS */}
       <section className="fin-how">
@@ -349,20 +403,30 @@ export default function ProductPage() {
       </section>
 
       {/* CTA */}
-      <section className="fin-cta">
-        <div className="fin-card fin-cta-box">
-          <h2 className="fin-h2">Ready to upgrade your <br /><span className="fin-italic-serif">finances?</span></h2>
-          <p className="fin-sub fin-cta-sub">Join over 1.2 million people who have already made the switch to smarter, more rewarding banking.</p>
-          <div className="fin-actions fin-center">
-            <button className="fin-btn-primary">Open your free account</button>
-          </div>
-          <div className="fin-trust-badges">
-            <span>🔒 256-bit encryption</span>
-            <span>✦ RBI registered</span>
-            <span>⚡ Instant setup</span>
-          </div>
-        </div>
-      </section>
+{/* CTA */}
+<section className="fin-cta">
+  <div className="fin-card fin-cta-box">
+    <h2 className="fin-h2">
+      Ready to grow your <br />
+      <span className="fin-italic-serif">investments?</span>
+    </h2>
+
+    <p className="fin-sub fin-cta-sub">
+      Start your journey with expert guidance across crypto markets,
+      global equities, portfolio management, and tax-efficient investment strategies.
+    </p>
+
+    <div className="fin-actions fin-center">
+      <button className="fin-btn-primary">Start Your Investment Journey</button>
+    </div>
+
+    <div className="fin-trust-badges">
+      <span>🔒 Secure financial infrastructure</span>
+      <span>📊 Data-driven investment strategies</span>
+      <span>⚡ Expert advisory support</span>
+    </div>
+  </div>
+</section>
 
     </div>
   );

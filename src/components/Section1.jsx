@@ -429,14 +429,14 @@ const SPARK_DATA = [
 ];
 
 const TICKERS = [
-  { sym: "BTC", price: "67,240", chg: "+2.4%", up: true },
-  { sym: "ETH", price: "3,512", chg: "+1.8%", up: true },
-  { sym: "NVDA", price: "875.20", chg: "-0.6%", up: false },
-  { sym: "AAPL", price: "189.40", chg: "+0.9%", up: true },
-  { sym: "SOL", price: "142.80", chg: "+5.2%", up: true },
-  { sym: "TSLA", price: "241.30", chg: "-1.1%", up: false },
-  { sym: "SPY", price: "524.60", chg: "+0.4%", up: true },
-  { sym: "MSFT", price: "415.20", chg: "+0.7%", up: true },
+  { sym: "BTC", price: "66,300", chg: "-1.9%", up: false },
+  { sym: "ETH", price: "1,955", chg: "-3.8%", up: false },
+  { sym: "NVDA", price: "184.87", chg: "-5.47%", up: false },
+  { sym: "AAPL", price: "272.95", chg: "-0.47%", up: false },
+  { sym: "SOL", price: "138.40", chg: "-4.6%", up: false },
+  { sym: "TSLA", price: "408.59", chg: "-2.11%", up: false },
+  { sym: "SPY", price: "678.34", chg: "+0.49%", up: true },
+  { sym: "MSFT", price: "401.72", chg: "+0.28%", up: true },
 ];
 
 function animateValue(setter, end, duration, isDecimal = false) {
