@@ -4,36 +4,40 @@
 :root {
   --sand: #f5f7fa;
   --cream: #dde6f5;
-  --gold: #1a56db;          /* professional blue */
-  --gold-light: #3b7cff;    /* lighter blue accent */
-  --ink: #0d1117;           /* near-black */
+  --gold: #1a56db;
+  --gold-light: #3b7cff;
+  --ink: #0d1117;
   --muted: #3d4a5c;
   --card-shadow: 0 25px 60px rgba(10, 30, 80, 0.10);
   --blue-glow: rgba(26, 86, 219, 0.18);
 }
-/* ─── HERO SHELL ─────────────────────────────────────────── */
-.hero {
-  background: var(--sand);
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  perspective: 1200px;
-  position: relative;
-  z-index: 1;
+
+/* ─── SHARED KEYFRAMES ───────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Subtle blue-tinted mesh background */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 700px 500px at 75% 40%, rgba(59, 124, 255, 0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 400px 400px at 15% 80%, rgba(26, 86, 219, 0.05) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+@keyframes flyIn {
+  0%   { transform: translate(70vw, -70vh) rotate(180deg) scale(0.01); opacity: 0; }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+}
+
+@keyframes card1Glide {
+  0%   { opacity: 0; transform: translateX(-500px) translateY(25px) rotate(-360deg); }
+  100% { opacity: 1; transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes card2Drift {
+  0%   { opacity: 0; transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg); }
+  100% { opacity: 1; transform: translateX(0) translateY(0) scale(1) rotate(0deg); }
+}
+
+@keyframes shine {
+  0%   { transform: translateX(-50%) rotate(20deg); }
+  40%  { transform: translateX(-50%) rotate(20deg); }
+  60%  { transform: translateX(50%)  rotate(20deg); }
+  100% { transform: translateX(50%)  rotate(20deg); }
 }
 
 /* ─── ENVELOPE INTRO OVERLAY ─────────────────────────────── */
@@ -48,7 +52,8 @@
   pointer-events: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.8s ease;
 }
 
 .mailScene.fadeOut {
@@ -61,84 +66,10 @@
   width: 280px;
   height: 175px;
   transform-style: preserve-3d;
-  animation: flyIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    will-change: transform;
-  backface-visibility: hidden;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.envelope {
   will-change: transform, opacity;
   backface-visibility: hidden;
   transform: translateZ(0);
   animation: flyIn 1.9s cubic-bezier(0.22, 0.9, 0.3, 1) forwards;
-}
-
-@keyframes flyIn {
-  0% {
-    transform: translate(70vw, -70vh) rotate(180deg) scale(0.01);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-    opacity: 1;
-  }
 }
 
 .envelopeBody {
@@ -150,17 +81,6 @@
   overflow: hidden;
 }
 
-.envelopeBody::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 88px;
-  background: #e7dfd4;
-  clip-path: polygon(0 100%, 50% 0%, 100% 100%);
-}
-
 .envelopeBody::before {
   content: "";
   position: absolute;
@@ -170,6 +90,17 @@
   height: 100%;
   background: #ede7dc;
   clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.envelopeBody::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 88px;
+  background: #e7dfd4;
+  clip-path: polygon(0 100%, 50% 0%, 100% 100%);
 }
 
 .envelopeRight {
@@ -199,6 +130,30 @@
   transform: rotateX(-165deg);
 }
 
+/* ─── HERO SHELL ─────────────────────────────────────────── */
+.hero {
+  background: var(--sand);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1200px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 700px 500px at 75% 40%, rgba(59, 124, 255, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 15% 80%, rgba(26, 86, 219, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ─── MAIN CONTAINER ─────────────────────────────────────── */
 .container {
   max-width: 1300px;
@@ -211,7 +166,8 @@
   gap: 80px;
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 1s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 1;
 }
@@ -236,14 +192,14 @@
   text-transform: uppercase;
   border-radius: 30px;
   margin-bottom: 30px;
-  font-family: "DM Mono", monospace;   /* ← DM Mono (was DM Sans) */
+  font-family: "DM Mono", monospace;
   font-weight: 500;
   opacity: 0;
   animation: fadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 3.1s forwards;
 }
 
 .heading {
-  font-family: "Cormorant Garamond", Georgia, serif;   /* ← Cormorant Garamond (was DM Sans) */
+  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 68px;
   font-weight: 600;
   line-height: 1.05;
@@ -254,7 +210,7 @@
 }
 
 .subHeading {
-  font-family: "Cormorant Garamond", Georgia, serif;   /* ← Cormorant Garamond (was Playfair Display) */
+  font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 58px;
   font-style: italic;
   color: var(--gold);
@@ -264,7 +220,7 @@
 }
 
 .description {
-  font-family: "Outfit", sans-serif;   /* ← Outfit (was DM Sans) */
+  font-family: "Outfit", sans-serif;
   font-size: 17px;
   font-weight: 300;
   line-height: 1.75;
@@ -286,7 +242,7 @@
   padding: 16px 28px;
   border-radius: 10px;
   font-size: 14px;
-  font-family: "Outfit", sans-serif;   /* ← Outfit (was DM Sans) */
+  font-family: "Outfit", sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
@@ -324,58 +280,6 @@
   height: 450px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ───────────────── FLOAT WRAPPER ───────────────── */
-
 .floatWrapper {
   position: relative;
   display: flex;
@@ -384,8 +288,7 @@
   perspective: 1600px;
 }
 
-/* ───────────────── SILVER METAL CARDS ───────────────── */
-
+/* ─── CARDS ──────────────────────────────────────────────── */
 .cardTop,
 .cardBottom {
   position: relative;
@@ -395,22 +298,13 @@
   padding: 22px;
   overflow: hidden;
   transform-style: preserve-3d;
-
   background: linear-gradient(
     135deg,
-    #ffffff 0%,
-    #f2f4f8 20%,
-    #cfd3db 40%,
-    #ffffff 55%,
-    #bfc5cf 70%,
-    #eef1f5 85%,
-    #ffffff 100%
+    #ffffff 0%, #f2f4f8 20%, #cfd3db 40%,
+    #ffffff 55%, #bfc5cf 70%, #eef1f5 85%, #ffffff 100%
   );
-
   transition: transform 0.4s ease;
 }
-
-/* ───────────────── ENTRY ANIMATIONS ───────────────── */
 
 .cardTop {
   top: 0;
@@ -426,57 +320,22 @@
   animation: card2Drift 1.5s cubic-bezier(0.45, 0, 0.15, 1) 5.2s forwards;
 }
 
-@keyframes card1Glide {
-  0% {
-    opacity: 0;
-    transform: translateX(-500px) translateY(25px) rotate(-360deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) translateY(0) rotate(0deg);
-  }
-}
-
-@keyframes card2Drift {
-  0% {
-    opacity: 0;
-    transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) translateY(0) scale(1) rotate(0deg);
-  }
-}
-
-
-
-
-
-
-
-
-/* ───── BRUSHED ALUMINUM TEXTURE ────── */
-
+/* Brushed aluminum texture overlay */
 .cardTop::before,
 .cardBottom::before {
   content: "";
   position: absolute;
   inset: 0;
-
   background: linear-gradient(
     to bottom,
-    rgba(255,255,255,0.8) 0%,
-    rgba(255,255,255,0.4) 30%,
-    rgba(255,255,255,0.1) 55%,
-    transparent 75%
+    rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 30%,
+    rgba(255,255,255,0.1) 55%, transparent 75%
   );
-
   border-radius: 18px;
   pointer-events: none;
 }
 
-/* ───── SOFT LIGHT SWEEP ───── */
-
+/* Light sweep on hover */
 .cardTop::after,
 .cardBottom::after {
   content: "";
@@ -485,59 +344,35 @@
   left: -120%;
   width: 80%;
   height: 100%;
-
   background: linear-gradient(
     115deg,
-    transparent 0%,
-    rgba(255,255,255,0.6) 45%,
-    rgba(255,255,255,0.95) 50%,
-    rgba(255,255,255,0.6) 55%,
+    transparent 0%, rgba(255,255,255,0.6) 45%,
+    rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.6) 55%,
     transparent 100%
   );
-
   transform: skewX(-25deg);
   transition: left 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.cardBottom::after {
-  animation-delay: -2.5s;
-}
 .cardTop:hover::after,
 .cardBottom:hover::after {
-  left: 150%;transform: translateY(-6px) scale(1.02);
+  left: 150%;
+  transform: translateY(-6px) scale(1.02);
 }
 
-@keyframes shine {
-  0%   { transform: translateX(-50%) rotate(20deg); }
-  40%  { transform: translateX(-50%) rotate(20deg); }
-  60%  { transform: translateX(50%)  rotate(20deg); }
-  100% { transform: translateX(50%)  rotate(20deg); }
-}
-
-/* ───────────────── CARD INTERNALS ───────────────── */
-
+/* ─── CARD INTERNALS ─────────────────────────────────────── */
 .cardChip {
   width: 32px;
   height: 32px;
-
-  background: linear-gradient(
-    135deg,
-    #dfe6ed,
-    #b8c2cc
-  );
-
+  background: linear-gradient(135deg, #dfe6ed, #b8c2cc);
   border-radius: 8px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-weight: 700;
   font-size: 14px;
   font-family: "Outfit", sans-serif;
-
   color: #1a1f26;
-
   box-shadow:
     inset 0 2px 4px rgba(255,255,255,0.8),
     inset 0 -2px 4px rgba(0,0,0,0.15);
@@ -547,14 +382,11 @@
   position: absolute;
   top: 25px;
   right: 25px;
-
   font-size: 13px;
   font-style: italic;
   font-weight: 600;
-
   color: #7a8794;
   letter-spacing: 1px;
-
   font-family: "Cormorant Garamond", Georgia, serif;
   text-shadow: 0 1px 0 rgba(255,255,255,0.8);
 }
@@ -563,10 +395,8 @@
   margin-top: 38px;
   font-size: 18px;
   letter-spacing: 3px;
-
   color: #2a2f35;
   text-shadow: 0 1px 0 rgba(255,255,255,0.9), 0 -1px 0 rgba(0,0,0,0.08);
-
   font-family: "DM Mono", monospace;
 }
 
@@ -575,14 +405,11 @@
   bottom: 22px;
   left: 25px;
   right: 25px;
-  margin-top: 20px;
   display: flex;
   justify-content: space-between;
-
   font-size: 13px;
   color: #6f7b88;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);
-
+  text-shadow: 0 1px 0 rgba(0,0,0,0.9);
   font-family: "DM Mono", monospace;
 }
 
@@ -593,180 +420,20 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ─── SHARED KEYFRAMES ───────────────────────────────────── */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 60px;
-    padding: 60px 30px;
-  }
-
-  .cardNumber {
-  
-  font-size: 16px;
-}
-
-  .heading {
-    font-size: 48px;
-  }
-
-  .subHeading {
-    font-size: 40px;
-  }
-
-  .right {
-    height: 380px;
-  }
-
-
-
-
-  .cardTop {
-  top: 0;
-  right: 20px;
- 
-}
-
-.cardBottom {
-  bottom: 0;
-  left: 70px;
-}
-
-  .cardTop,
-  .cardBottom {
-    width: 300px;
-    height: 180px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 768px) {
-  @keyframes flyIn {
-    0% {
-      transform: translate(80vw, -140vh) rotate(180deg) scale(0.01);
-      opacity: 0;
-    }
-
-    100% {
-      transform: translate(0, 0) rotate(0deg) scale(1);
-      opacity: 1;
-    }
-  }
-}
-
-
-
-
-
-
-
-
-/* ════════════════════════════════════════════════════
-   IPAD RESPONSIVE FIXES
-   Targets: iPad Mini (768px), iPad (820px), iPad Pro (1024px)
-   ════════════════════════════════════════════════════ */
-
-/* ─── iPAD PRO 12.9" landscape + iPad Pro 11" ─────── */
-@media (min-width: 1024px) and (max-width: 1180px) {
-  .container {
-    padding: 0 40px;
-    gap: 40px;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .heading {
-    font-size: 52px;
-  }
-
-  .subHeading {
-    font-size: 44px;
-  }
-
-  .description {
-    font-size: 15px;
-  }
-
-  .right {
-    height: 420px;
-  }
-
-  .cardTop,
-  .cardBottom {
-    width: 320px;
-    height: 195px;
-  }
-
-  .cardTop {
-    right: 0;
-  }
-
-  .cardBottom {
-    left: 30px;
-  }
-
-  .floatWrapper {
-    gap: 36px;
-  }
-}
-
-/* ─── iPAD / iPAD AIR (768–1023px) ────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — THREE DISTINCT LAYOUTS
+   ═══════════════════════════════════════════════════════════
+
+   PHONE   : max-width 767px
+   TABLET  : 768px – 1023px
+   LAPTOP  : 1024px+  (base styles above)
+   ═══════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────────────────────
+   TABLET  (768px – 1023px)
+   Single-column, centred, generous card stack
+   ────────────────────────────────────────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero {
     min-height: 100svh;
@@ -783,7 +450,6 @@
     margin: 0 auto;
   }
 
-  /* Left: cap width, center on single column */
   .left {
     max-width: 100%;
     text-align: left;
@@ -815,7 +481,6 @@
     padding: 15px 26px;
   }
 
-  /* Right: constrain and center the card stack */
   .right {
     height: 440px;
     display: flex;
@@ -827,17 +492,19 @@
     align-items: center;
   }
 
-  .cardTop {
+  .cardTop,
+  .cardBottom {
     width: 340px;
     height: 210px;
+  }
+
+  .cardTop {
     top: 0;
     right: auto;
     left: 40px;
   }
 
   .cardBottom {
-    width: 340px;
-    height: 210px;
     bottom: 0;
     left: 0;
   }
@@ -848,212 +515,138 @@
     margin-top: 32px;
   }
 
-  .cardFooter {
-    font-size: 12px;
+  .cardFooter { font-size: 12px; }
+  .cardBrand  { font-size: 12px; }
+
+  /* Envelope */
+  .envelope {
+    width: 240px;
+    height: 150px;
   }
 
-  .cardBrand {
-    font-size: 12px;
+  @keyframes flyIn {
+    0%   { transform: translate(60vw, -60vh) rotate(160deg) scale(0.05); opacity: 0; }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
   }
 
   @keyframes card1Glide {
-  0% {
-    opacity: 0;
-    transform: translateX(-500px) translateY(25px) rotate(-360deg);
+    0%   { opacity: 0; transform: translateX(-500px) translateY(25px) rotate(-360deg); }
+    100% { opacity: 1; transform: translateX(90) translateY(0) rotate(0deg); }
   }
-  100% {
-    opacity: 1;
-    transform: translateX(-180px) translateY(0) rotate(0deg);
-  }
-}
 
-@keyframes card2Drift {
-  0% {
-    opacity: 0;
-    transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(120px) translateY(0) scale(1) rotate(0deg);
+  @keyframes card2Drift {
+    0%   { opacity: 0; transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg); }
+    100% { opacity: 1; transform: translateX(0) translateY(0) scale(1) rotate(0deg); }
   }
 }
 
 
-}
-
-/* ─── iPAD MINI / SMALL TABLET (600–767px) ────────── */
-@media (min-width: 600px) and (max-width: 767px) {
+/* ──────────────────────────────────────────────────────────
+   PHONE  (max-width 767px)
+   Full-width single column, compact cards, tighter type
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
   .hero {
     min-height: 100svh;
+    align-items: flex-start;
     padding: 40px 0;
   }
 
-  
-  @keyframes card1Glide {
-  0% {
-    opacity: 0;
-    transform: translateX(-500px) translateY(25px) rotate(-360deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-180px) translateY(0) rotate(0deg);
-  }
-}
-
-@keyframes card2Drift {
-  0% {
-    opacity: 0;
-    transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(120px) translateY(0) scale(1) rotate(0deg);
-  }
-}
-
   .container {
     grid-template-columns: 1fr;
-    gap: 44px;
-    padding: 32px 36px;
+    gap: 40px;
+    padding: 32px 24px;
+  }
+
+  .left {
+    max-width: 100%;
+    text-align: left;
   }
 
   .heading {
-    font-size: 46px;
+    font-size: 38px;
+    line-height: 1.08;
   }
 
   .subHeading {
-    font-size: 38px;
+    font-size: 32px;
+    margin-bottom: 20px;
   }
 
   .description {
     font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
   }
 
   .right {
-    height: 400px;
+    height: 360px;
     display: flex;
     justify-content: center;
   }
 
   .floatWrapper {
-    gap: 32px;
-  }
-
-  .cardTop {
-    width: 300px;
-    height: 185px;
-    right: auto;
-    left: 30px;
-  }
-
-  .cardBottom {
-    width: 300px;
-    height: 185px;
-    left: 0;
-  }
-
-  .cardNumber {
-    font-size: 15px;
-    letter-spacing: 2px;
-    margin-top: 28px;
-  }
-}
-
-/* ─── iPAD LANDSCAPE (all iPad sizes) ─────────────── */
-@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
-  .hero {
-    min-height: 100vh;
-    padding: 30px 0;
-  }
-
-  .container {
-    grid-template-columns: 1.15fr 1fr;
-    gap: 50px;
-    padding: 0 52px;
+    gap: 28px;
     align-items: center;
-  }
-
-  .left {
-    max-width: 500px;
-  }
-
-  .heading {
-    font-size: 48px;
-  }
-
-  .subHeading {
-    font-size: 40px;
-  }
-
-  .description {
-    font-size: 14.5px;
-    margin-bottom: 28px;
-  }
-
-  .right {
-    height: 400px;
-  }
-
-  .floatWrapper {
-    gap: 32px;
   }
 
   .cardTop,
   .cardBottom {
-    width: 305px;
-    height: 188px;
+    width: 270px;
+    height: 168px;
   }
 
   .cardTop {
-    right: 0;
+    top: 0;
+    right: auto;
+    left: 20px;
   }
 
   .cardBottom {
-    left: 30px;
+    bottom: 0;
+    left: 0;
   }
 
   .cardNumber {
-    font-size: 15px;
-    margin-top: 28px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-top: 24px;
   }
-}
+
+  .cardFooter { font-size: 11px; }
+  .cardBrand  { font-size: 11px; top: 18px; right: 18px; }
+  .cardChip   { width: 26px; height: 26px; font-size: 12px; }
+
+  /* Envelope */
+  .envelope {
+    width: 200px;
+    height: 125px;
+  }
+
+  @keyframes flyIn {
+    0%   { transform: translate(80vw, -140vh) rotate(180deg) scale(0.01); opacity: 0; }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+  }
 
   @keyframes card1Glide {
-  0% {
-    opacity: 0;
-    transform: translateX(-500px) translateY(25px) rotate(-360deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-180px) translateY(0) rotate(0deg);
-  }
-}
-
-@keyframes card2Drift {
-  0% {
-    opacity: 0;
-    transform: translateX(350px) translateY(260px) scale(0.85) rotate(5deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(120px) translateY(0) scale(1) rotate(0deg);
-  }
-}
-/* ─── ENVELOPE: iPad safe flyIn ───────────────────── */
-@media (min-width: 600px) and (max-width: 1180px) {
-  @keyframes flyIn {
-    0% {
-      transform: translate(60vw, -60vh) rotate(160deg) scale(0.05);
-      opacity: 0;
-    }
-    100% {
-      transform: translate(0, 0) rotate(0deg) scale(1);
-      opacity: 1;
-    }
+    0%   { opacity: 0; transform: translateX(-300px) translateY(20px) rotate(-180deg); }
+    100% { opacity: 1; transform: translateX(0) translateY(0) rotate(0deg); }
   }
 
-  .envelope {
-    width: 240px;
-    height: 150px;
+  @keyframes card2Drift {
+    0%   { opacity: 0; transform: translateX(250px) translateY(180px) scale(0.85) rotate(5deg); }
+    100% { opacity: 1; transform: translateX(0) translateY(0) scale(1) rotate(0deg); }
   }
 }
