@@ -7,7 +7,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigatetologin = () => {
-    navigate("/login");
+    navigate("/dashboard");
   }
   // Scroll effect
   useEffect(() => {
@@ -55,11 +55,11 @@ export default function Header() {
           <Link to="/outmoto" onClick={closeMenu}>Our Moto</Link>
           <Link to="/ourservices" onClick={closeMenu}>Our Services</Link>
           <button className={styles.mobileBtn} onClick={closeMenu}>
-            Login
+      Market
           </button>
         </nav>
 
-        <button className={styles.enterBtn} onClick={navigatetologin}>Login</button>
+        <button className={styles.enterBtn} onClick={navigatetologin}>Market</button>
       </div>
     </header>
   );

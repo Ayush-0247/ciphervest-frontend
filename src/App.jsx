@@ -13,7 +13,7 @@ import SocialGrid from "./components/SocialGrid";
 import Hero from "./components/Hero";
 import ContactPage from "./pages/Contactpage";
 import JPMorganSection from "./components/Jpmorgansection";
-
+import Dashboard from "./pages/Dashboard";
 import FAQ from "./pages/FAQSection";
 function Home() {
   return (
@@ -43,6 +43,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/outmoto" element={<Outmoto />} />
         <Route path="/contact" element={<ContactPage />} />
+         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/ourservices" element={<Ourservices />} />
       </Routes>
       <Footer />
