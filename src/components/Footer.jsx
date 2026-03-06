@@ -63,7 +63,7 @@ const API_URL = "https://ciphervest-backend-1.onrender.com";
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button onClick={handleSubscribe} disabled={loading}>
+          <button className="subscribebtn" onClick={handleSubscribe} disabled={loading}>
             {loading ? "Subscribing..." : "Subscribe"}
           </button>
         </div>

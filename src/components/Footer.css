@@ -3,28 +3,28 @@
    Improved Design & Responsiveness
 ══════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
 
 .nx-footer {
-  --blue-deep:    #0a1628;
-  --blue-mid:     #1e3a8a;
-  --blue-accent:  #3b82f6;
-  --blue-vivid:   #355dfc;
-  --blue-pale:    #eff6ff;
-  --blue-light:   #dbeafe;
+  --blue-deep: #0a1628;
+  --blue-mid: #1e3a8a;
+  --blue-accent: #3b82f6;
+  --blue-vivid: #355dfc;
+  --blue-pale: #eff6ff;
+  --blue-light: #dbeafe;
 
-  --text-dark:    #0f172a;
-  --text-muted:   #64748b;
-  --text-light:   #94a3b8;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
 
-  --border:       #e2e8f0;
-  --white:        #ffffff;
-  --bg:           #f8fafc;
+  --border: #e2e8f0;
+  --white: #ffffff;
+  --bg: #f8fafc;
 
-  --radius-card:  20px;
-  --radius-pill:  50px;
+  --radius-card: 20px;
+  --radius-pill: 50px;
 
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   background: var(--white);
   border-top: 1px solid var(--border);
   margin-top: 100px;
@@ -47,7 +47,7 @@
 /* Subtle decorative blobs */
 .nx-footer .newsletter-wrapper::before,
 .nx-footer .newsletter-wrapper::after {
-  content: '';
+  content: "";
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
@@ -83,7 +83,7 @@
   color: white;
   box-shadow:
     0 30px 80px rgba(53, 93, 252, 0.3),
-    0 0 0 1px rgba(255,255,255,0.07) inset;
+    0 0 0 1px rgba(255, 255, 255, 0.07) inset;
 }
 
 .nx-footer .newsletter-card h3 {
@@ -104,74 +104,78 @@
   line-height: 1.6;
 }
 
-/* Newsletter Form */
-.nx-footer form {
+.newsletter-input{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 0;
 }
 
-.nx-footer form input {
-  padding: 14px 22px;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.1);
+/* INPUT FIELD */
+
+.newsletter-input input{
+  width: 260px;
+  padding: 12px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
   color: white;
-  width: clamp(200px, 40vw, 300px);
   font-size: 14px;
-  font-family: inherit;
+  text-align: center;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
-.nx-footer form input::placeholder {
-  color: rgba(255,255,255,0.55);
+/* placeholder */
+
+.newsletter-input input::placeholder{
+  color: rgba(255,255,255,0.6);
 }
 
-.nx-footer form input:focus {
-  border-color: rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.18);
-  box-shadow: 0 0 0 4px rgba(255,255,255,0.1);
+/* focus effect */
+
+.newsletter-input input:focus{
+  border: 1px solid #4d73ff;
+  box-shadow: 0 0 12px rgba(77,115,255,0.6);
+  background: rgba(255,255,255,0.12);
 }
 
-.nx-footer form button {
-  padding: 14px 28px;
-  border-radius: var(--radius-pill);
+
+/* SUBSCRIBE BUTTON */
+
+.subscribebtn{
+  padding: 12px 32px;
+  background: linear-gradient(135deg,#355dfc,#6f8dff);
   border: none;
-  background: white;
-  color: var(--blue-vivid);
-  font-weight: 700;
-  font-family: inherit;
-  font-size: 14px;
+  border-radius: 50px;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.3px;
   cursor: pointer;
-  transition: all 0.25s ease;
-  white-space: nowrap;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 18px rgba(53,93,252,0.35);
 }
 
-.nx-footer form button:hover {
+/* hover animation */
+
+.subscribebtn:hover{
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 24px rgba(53,93,252,0.5);
 }
 
-.nx-footer form button:active {
-  transform: translateY(0);
+/* click effect */
+
+.subscribebtn:active{
+  transform: scale(0.96);
 }
 
-.nx-footer form button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  transform: none;
-}
+/* message */
 
-.nx-footer .message {
-  margin-top: 16px;
+.newsletter-message{
   font-size: 14px;
-  color: rgba(255,255,255,0.9);
-  min-height: 20px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.3px;
 }
-
 /* ══════════════════════════════
    MAIN GRID
 ══════════════════════════════ */
@@ -239,7 +243,7 @@
   background: var(--blue-pale);
   color: var(--blue-accent);
   transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(59,130,246,0.15);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.15);
 }
 
 /* ── Right: Columns ── */
@@ -273,7 +277,9 @@
   font-size: 14px;
   color: var(--text-muted);
   cursor: pointer;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
   line-height: 1.4;
 }
 
@@ -320,7 +326,9 @@
 .nx-footer .footer-payments img {
   height: 36px;
   opacity: 0.65;
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 }
 
 .nx-footer .footer-payments img:hover {
