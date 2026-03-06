@@ -381,7 +381,7 @@ export default function Dashboard() {
 
         <footer style={s.footer}>
           <span style={s.footerNote}>
-            Powered by Binance public API (data-api.binance.vision) · no API key · refreshes every 15s · max {MAX_SELECTED} assets
+            Powered by Binance public API 
           </span>
         </footer>
       </div>
