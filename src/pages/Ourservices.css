@@ -194,7 +194,7 @@ button {
 
 .os-logos-scroll {
   display: flex;
-  gap: 56px;
+  gap: 100px;
   align-items: center;
   animation: logoScroll 26s linear infinite;
   width: max-content;

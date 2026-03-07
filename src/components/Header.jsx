@@ -45,6 +45,7 @@ export default function Header() {
             menuOpen ? styles.navActive : ""
           }`}
         >
+          <Link to="/" onClick={closeMenu}>Home</Link>
           <Link to="/products" onClick={closeMenu}>Product</Link>
           <Link to="/FAQ" onClick={closeMenu}>FAQ</Link>
           <Link to="/outmoto" onClick={closeMenu}>Our Moto</Link>
