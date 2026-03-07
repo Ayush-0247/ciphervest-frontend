@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 export default function Header() {
-  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navigatetologin = () => {
-    navigate("/dashboard");
-  }
+  
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -51,15 +47,14 @@ export default function Header() {
         >
           <Link to="/products" onClick={closeMenu}>Product</Link>
           <Link to="/FAQ" onClick={closeMenu}>FAQ</Link>
-          <Link to="/" onClick={closeMenu}>Partners</Link>
           <Link to="/outmoto" onClick={closeMenu}>Our Moto</Link>
           <Link to="/ourservices" onClick={closeMenu}>Our Services</Link>
-          <button className={styles.mobileBtn} onClick={closeMenu}>
-      Market
-          </button>
+          
+
+          <Link to="/dashboard" onClick={closeMenu}>Markets</Link>
         </nav>
 
-        <button className={styles.enterBtn} onClick={navigatetologin}>Market</button>
+        
       </div>
     </header>
   );
