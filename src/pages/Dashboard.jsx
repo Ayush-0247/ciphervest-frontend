@@ -560,8 +560,7 @@ export default function Dashboard() {
         {/* Header */}
         <header style={s.header}>
           <div style={s.headerLeft}>
-            <span style={s.eyebrow}>Binance · No Key · 12h Chart</span>
-            <h1 style={s.title}>Crypto <span style={s.titleAccent}>Dashboard</span></h1>
+            <h1 style={s.title}>Market <span style={s.titleAccent}>Dashboard</span></h1>
           </div>
           <div style={s.liveBadge}>
             <div style={{ ...s.liveDot, opacity: loading ? 0.25 : 1 }} />
