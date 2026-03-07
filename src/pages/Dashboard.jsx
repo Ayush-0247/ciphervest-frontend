@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { LineChart, Line, ResponsiveContainer, Tooltip, YAxis, XAxis } from "recharts";
 
-// ─── Coin list (20 coins) ─────────────────────────────────────────────────────
-// symbol = Binance trading pair (USDT quoted)
 const coinOptions = [
   { id: "bitcoin",           symbol: "BTC",  pair: "BTCUSDT",  name: "Bitcoin",       color: "#F7931A" },
   { id: "ethereum",          symbol: "ETH",  pair: "ETHUSDT",  name: "Ethereum",      color: "#627EEA" },
@@ -44,103 +42,332 @@ const fmt = {
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 const s = {
+  // ── SHELL ──────────────────────────────────────────────────────────────────
   container: {
-    minHeight: "100vh", background: "rgb(231, 254, 255)", color: "#07090f",
+    minHeight: "100dvh",
+    background: "rgb(231, 254, 255)",
+    color: "#07090f",
     fontFamily: "'Syne', 'Helvetica Neue', sans-serif",
+    // safe-area insets for notched phones
+    paddingBottom: "env(safe-area-inset-bottom)",
   },
-  inner: { maxWidth: 1280, margin: "0 auto", padding: "3rem 2.5rem 5rem" },
-  header: {
-    display: "flex", alignItems: "flex-end", justifyContent: "space-between",
-    gap: "1rem", paddingBottom: "2rem", borderBottom: "2px solid #07090f", marginBottom: "2rem",
-  },
-  headerLeft: { display: "flex", flexDirection: "column", gap: "0.25rem" },
-  eyebrow: {
-    fontFamily: "'DM Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.14em",
-    textTransform: "uppercase", color: "#1a4ef0", fontWeight: 500,
-  },
-  title: {
-    fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-    fontWeight: 400, color: "#07090f", letterSpacing: "-0.02em", lineHeight: 1,
-  },
-  titleAccent: { color: "#1a4ef0", fontStyle: "italic" },
-  liveBadge: {
-    display: "inline-flex", alignItems: "center", gap: "0.45rem",
-    fontFamily: "'DM Mono', monospace", fontSize: "0.66rem", letterSpacing: "0.1em",
-    textTransform: "uppercase", color: "#4a5068", background: "#f5f6fa",
-    border: "1px solid #e2e5ef", borderRadius: "99px", padding: "0.4rem 0.85rem",
-  },
-  liveDot: { width: 7, height: 7, borderRadius: "50%", background: "#1a4ef0" },
 
+  inner: {
+    maxWidth: 1280,
+    margin: "0 auto",
+    // tight on mobile, generous on desktop
+    padding: "clamp(1rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem) clamp(2rem, 6vw, 5rem)",
+  },
+
+  // ── HEADER ─────────────────────────────────────────────────────────────────
+  header: {
+    display: "flex",
+    alignItems: "center",          // centre-align on mobile (not flex-end)
+    justifyContent: "space-between",
+    gap: "0.75rem",
+    paddingBottom: "clamp(1rem, 3vw, 2rem)",
+    borderBottom: "2px solid #07090f",
+    marginBottom: "clamp(1rem, 3vw, 2rem)",
+    // allow badge to wrap below title on very narrow screens
+    flexWrap: "wrap",
+  },
+
+  headerLeft: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.2rem",
+    flex: 1,
+    minWidth: 0,                   // allow text truncation inside flex child
+  },
+
+  eyebrow: {
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.58rem, 1.8vw, 0.68rem)",
+    letterSpacing: "0.14em",
+    textTransform: "uppercase",
+    color: "#1a4ef0",
+    fontWeight: 500,
+  },
+
+  title: {
+    fontFamily: "'DM Serif Display', Georgia, serif",
+    // tighter floor so it doesn't overflow on 320 px screens
+    fontSize: "clamp(1.45rem, 6vw, 2.8rem)",
+    fontWeight: 400,
+    color: "#07090f",
+    letterSpacing: "-0.02em",
+    lineHeight: 1,
+    whiteSpace: "nowrap",          // keep "Crypto / Dashboard" on one line
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+
+  titleAccent: { color: "#1a4ef0", fontStyle: "italic" },
+
+  liveBadge: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "0.4rem",
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.58rem, 1.6vw, 0.66rem)",
+    letterSpacing: "0.1em",
+    textTransform: "uppercase",
+    color: "#4a5068",
+    background: "#f5f6fa",
+    border: "1px solid #e2e5ef",
+    borderRadius: "99px",
+    // taller tap target on mobile (min 36 px recommended)
+    padding: "0.5rem 0.9rem",
+    flexShrink: 0,
+  },
+
+  liveDot: {
+    width: 7,
+    height: 7,
+    borderRadius: "50%",
+    background: "#1a4ef0",
+    // pulse animation hook — add keyframe "pulse" in your global CSS
+    animation: "pulse 2s ease-in-out infinite",
+  },
+
+  // ── COIN PICKER PANEL ──────────────────────────────────────────────────────
   pickerPanel: {
-    background: "#f5f6fa", border: "1.5px solid #e2e5ef", borderRadius: 14,
-    padding: "1.1rem 1.4rem", marginBottom: "1.75rem",
+    background: "#f5f6fa",
+    border: "1.5px solid #e2e5ef",
+    borderRadius: "clamp(10px, 2vw, 14px)",
+    // less horizontal padding on mobile so coins don't get squished
+    padding: "clamp(0.75rem, 2.5vw, 1.1rem) clamp(0.75rem, 2.5vw, 1.4rem)",
+    marginBottom: "clamp(1rem, 3vw, 1.75rem)",
   },
+
   pickerTitle: {
-    fontFamily: "'DM Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.12em",
-    textTransform: "uppercase", color: "#4a5068", marginBottom: "0.85rem", fontWeight: 500,
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.6rem, 1.8vw, 0.68rem)",
+    letterSpacing: "0.12em",
+    textTransform: "uppercase",
+    color: "#4a5068",
+    marginBottom: "0.75rem",
+    fontWeight: 500,
   },
-  coinGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))", gap: "0.45rem" },
+
+  coinGrid: {
+    display: "grid",
+    // 2 columns on phones, auto-fill above ~480 px
+    gridTemplateColumns: "repeat(auto-fill, minmax(clamp(90px, 22vw, 110px), 1fr))",
+    gap: "clamp(0.35rem, 1.2vw, 0.45rem)",
+  },
+
   pickerFooter: {
-    display: "flex", alignItems: "center", justifyContent: "space-between",
-    marginTop: "0.9rem", paddingTop: "0.7rem", borderTop: "1px solid #e2e5ef",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: "0.75rem",
+    paddingTop: "0.65rem",
+    borderTop: "1px solid #e2e5ef",
   },
-  pickerCount: { fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", color: "#8b91a8" },
+
+  pickerCount: {
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.62rem, 1.8vw, 0.7rem)",
+    color: "#8b91a8",
+  },
+
   clearBtn: {
-    fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", color: "#b81a2d",
-    background: "none", border: "none", cursor: "pointer",
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.62rem, 1.8vw, 0.7rem)",
+    color: "#b81a2d",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    // bigger tap target
+    padding: "0.4rem 0.2rem",
+    margin: "-0.4rem -0.2rem",
   },
+
+  // ── EMPTY STATE ────────────────────────────────────────────────────────────
   emptyState: {
-    display: "flex", flexDirection: "column", alignItems: "center",
-    justifyContent: "center", gap: "0.75rem", padding: "5rem 2rem",
-    border: "1.5px dashed #c9cfe0", borderRadius: 18, background: "#f5f6fa",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "0.65rem",
+    // shorter on mobile so it doesn't push everything off screen
+    padding: "clamp(2.5rem, 10vw, 5rem) clamp(1rem, 5vw, 2rem)",
+    border: "1.5px dashed #c9cfe0",
+    borderRadius: "clamp(12px, 3vw, 18px)",
+    background: "#f5f6fa",
   },
-  emptyIcon: { fontSize: "2.5rem", opacity: 0.3, lineHeight: 1 },
-  emptyTitle: { fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.4rem", color: "#1c2033" },
-  emptySubtitle: { fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: "#8b91a8", letterSpacing: "0.06em" },
-  grid: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(270px, 1fr))", gap: "1.1rem" },
+
+  emptyIcon: { fontSize: "clamp(1.8rem, 6vw, 2.5rem)", opacity: 0.3, lineHeight: 1 },
+
+  emptyTitle: {
+    fontFamily: "'DM Serif Display', Georgia, serif",
+    fontSize: "clamp(1.1rem, 4vw, 1.4rem)",
+    color: "#1c2033",
+    textAlign: "center",
+  },
+
+  emptySubtitle: {
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.65rem, 2vw, 0.75rem)",
+    color: "#8b91a8",
+    letterSpacing: "0.06em",
+    textAlign: "center",
+  },
+
+  // ── CARD GRID ──────────────────────────────────────────────────────────────
+  grid: {
+    display: "grid",
+    // 1 col on phone (<480), 2 on tablet, 3+ on desktop
+    gridTemplateColumns: "repeat(auto-fill, minmax(clamp(240px, 44vw, 270px), 1fr))",
+    gap: "clamp(0.65rem, 2vw, 1.1rem)",
+  },
+
+  // ── INDIVIDUAL CARD ────────────────────────────────────────────────────────
   card: {
-    background: "#ffffff", borderRadius: 16,
+    background: "#ffffff",
+    borderRadius: "clamp(12px, 2.5vw, 16px)",
     boxShadow: "0 0 0 1px #e2e5ef, 0 4px 18px rgba(10,53,184,.06)",
-    padding: "1.1rem 1.1rem 0.9rem", display: "flex", flexDirection: "column", gap: "0.8rem",
-    position: "relative", overflow: "hidden",
+    // a touch more padding on phone so content breathes
+    padding: "clamp(0.9rem, 2.5vw, 1.1rem) clamp(0.9rem, 2.5vw, 1.1rem) clamp(0.75rem, 2vw, 0.9rem)",
+    display: "flex",
+    flexDirection: "column",
+    gap: "clamp(0.55rem, 1.5vw, 0.8rem)",
+    position: "relative",
+    overflow: "hidden",
+    // subtle lift on tap — pair with :active CSS pseudo-class
+    transition: "transform 0.12s ease, box-shadow 0.12s ease",
   },
-  cardHeader: { display: "flex", alignItems: "center", justifyContent: "space-between" },
-  coinInfo: { display: "flex", alignItems: "center", gap: "0.6rem" },
-  coinName: { fontFamily: "'Syne', sans-serif", fontSize: "0.86rem", fontWeight: 700, color: "#07090f" },
-  coinPair: { fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: "#8b91a8", marginTop: 1 },
+
+  cardHeader: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
+  coinInfo: {
+    display: "flex",
+    alignItems: "center",
+    gap: "clamp(0.4rem, 1.5vw, 0.6rem)",
+    minWidth: 0,
+    flex: 1,
+  },
+
+  coinName: {
+    fontFamily: "'Syne', sans-serif",
+    fontSize: "clamp(0.8rem, 2.5vw, 0.86rem)",
+    fontWeight: 700,
+    color: "#07090f",
+    // prevent long names from overflowing
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+
+  coinPair: {
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.58rem, 1.6vw, 0.62rem)",
+    color: "#8b91a8",
+    marginTop: 1,
+  },
+
   removeBtn: {
-    width: 24, height: 24, display: "flex", alignItems: "center", justifyContent: "center",
-    background: "transparent", border: "1.5px solid #e2e5ef", borderRadius: 5,
-    color: "#8b91a8", fontSize: "0.9rem", cursor: "pointer", flexShrink: 0,
+    // minimum 44×44 px visual+touch area recommended by Apple HIG
+    width: "clamp(32px, 6vw, 36px)",
+    height: "clamp(32px, 6vw, 36px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "transparent",
+    border: "1.5px solid #e2e5ef",
+    borderRadius: "clamp(5px, 1.5vw, 7px)",
+    color: "#8b91a8",
+    fontSize: "clamp(0.85rem, 2.5vw, 0.9rem)",
+    cursor: "pointer",
+    flexShrink: 0,
+    // respond to touch
+    WebkitTapHighlightColor: "transparent",
+    touchAction: "manipulation",
   },
+
   price: {
-    fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "1.55rem",
-    fontWeight: 400, color: "#07090f", letterSpacing: "-0.02em", lineHeight: 1,
+    fontFamily: "'DM Serif Display', Georgia, serif",
+    fontSize: "clamp(1.3rem, 5vw, 1.55rem)",
+    fontWeight: 400,
+    color: "#07090f",
+    letterSpacing: "-0.02em",
+    lineHeight: 1,
   },
+
   changePositive: {
-    display: "inline-flex", alignItems: "center", fontFamily: "'DM Mono', monospace",
-    fontSize: "0.72rem", fontWeight: 500, color: "#0a7c52", background: "#e8f7f1",
-    borderRadius: 5, padding: "0.18rem 0.45rem", marginTop: "0.35rem",
+    display: "inline-flex",
+    alignItems: "center",
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.65rem, 2vw, 0.72rem)",
+    fontWeight: 500,
+    color: "#0a7c52",
+    background: "#e8f7f1",
+    borderRadius: "clamp(4px, 1vw, 5px)",
+    padding: "0.2rem 0.45rem",
+    marginTop: "0.3rem",
   },
+
   changeNegative: {
-    display: "inline-flex", alignItems: "center", fontFamily: "'DM Mono', monospace",
-    fontSize: "0.72rem", fontWeight: 500, color: "#b81a2d", background: "#fce9eb",
-    borderRadius: 5, padding: "0.18rem 0.45rem", marginTop: "0.35rem",
+    display: "inline-flex",
+    alignItems: "center",
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.65rem, 2vw, 0.72rem)",
+    fontWeight: 500,
+    color: "#b81a2d",
+    background: "#fce9eb",
+    borderRadius: "clamp(4px, 1vw, 5px)",
+    padding: "0.2rem 0.45rem",
+    marginTop: "0.3rem",
   },
-  chartWrap: { margin: "0 -0.1rem", borderTop: "1px solid #f0f1f5", paddingTop: "0.6rem" },
+
+  chartWrap: {
+    margin: "0 -0.1rem",
+    borderTop: "1px solid #f0f1f5",
+    paddingTop: "clamp(0.45rem, 1.5vw, 0.6rem)",
+  },
+
   chartLabel: {
-    fontFamily: "'DM Mono', monospace", fontSize: "0.58rem", color: "#c9cfe0",
-    letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: "0.2rem",
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.54rem, 1.5vw, 0.58rem)",
+    color: "#c9cfe0",
+    letterSpacing: "0.07em",
+    textTransform: "uppercase",
+    marginBottom: "0.2rem",
   },
+
   loadingChart: {
-    height: 72, display: "flex", alignItems: "center", justifyContent: "center",
-    color: "#d4d7e3", fontFamily: "'DM Mono', monospace", fontSize: "0.66rem",
+    // shorter on mobile so the card height stays compact
+    height: "clamp(52px, 10vw, 72px)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#d4d7e3",
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.6rem, 1.8vw, 0.66rem)",
   },
+
+  // ── FOOTER ─────────────────────────────────────────────────────────────────
   footer: {
-    marginTop: "3rem", paddingTop: "1.25rem", borderTop: "1.5px solid #e2e5ef",
-    display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "0.5rem",
+    marginTop: "clamp(1.5rem, 4vw, 3rem)",
+    paddingTop: "clamp(0.75rem, 2.5vw, 1.25rem)",
+    borderTop: "1.5px solid #e2e5ef",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: "0.5rem",
   },
-  footerNote: { fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: "#8b91a8" },
+
+  footerNote: {
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "clamp(0.58rem, 1.6vw, 0.65rem)",
+    color: "#8b91a8",
+  },
 };
 
 // ─── Coin chip ────────────────────────────────────────────────────────────────
