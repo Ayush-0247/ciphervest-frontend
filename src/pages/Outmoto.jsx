@@ -56,10 +56,10 @@ linkedin: "https://www.linkedin.com/in/ayushraj2407",
   },
 
   {
-    name: "Ananya Karnwal",
+    name: "**************",
     role: "Chief Management Officer",
     bio: "Oversees operations and client experience, ensuring smooth execution of portfolio management and advisory services.",
-    initials: "AK",
+    initials: "*",
     tags: [
       { label: "Operations", variant: "blue" },
       { label: "Management" }
@@ -70,10 +70,10 @@ linkedin: "https://www.linkedin.com/in/ayushraj2407",
   },
 
   {
-    name: "Ayush",
+    name: "*****",
     role: "Public Relations Officer",
     bio: "Handles investor communication, partnerships, and public engagement to strengthen the firm's market presence.",
-    initials: "A",
+    initials: "*",
     tags: [
       { label: "Communications", variant: "amber" },
       { label: "Outreach" }
@@ -84,10 +84,10 @@ linkedin: "https://www.linkedin.com/in/ayushraj2407",
   },
 
   {
-    name: "Dhruv Srivastava",
+    name: "****************",
     role: "Chief Financial Officer",
     bio: "Oversees financial planning, risk management, and tax-efficient investment strategies for client portfolios.",
-    initials: "DS",
+    initials: "*",
     tags: [
       { label: "Finance", variant: "blue" },
       { label: "Risk" }

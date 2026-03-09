@@ -65,28 +65,29 @@ const ChevronRight = () => (
 const allCards = [
   {
     icon: <AssetManagementIcon />,
-    title: 'Asset Management',
-    desc: 'At J.P. Morgan Asset Management, we believe investors deserve an expert global partner they can trust to step up and deliver strong outcomes.',
+   title: "Crypto Trading",
+    desc: "Execute digital asset trades with powerful analytics, real-time market data, and intelligent tools designed for modern crypto investors.",
   },
   {
     icon: <CommercialBankingIcon />,
-    title: 'Commercial Banking',
-    desc: 'We provide credit, financing, treasury and payment solutions to help your business succeed. We also offer best-in-class commercial real estate services for investors and developers.',
+    title: "Portfolio Management",
+    desc: "Track and optimize your crypto portfolio with performance insights, asset allocation analysis, and risk monitoring tools.",
   },
   {
     icon: <InvestmentBankingIcon />,
-    title: 'Investment Banking',
-    desc: 'Providing investment banking solutions, including mergers and acquisitions, capital raising and risk management, for a broad range of corporations, institutions and governments.',
+    
+    title: "Market Intelligence",
+    desc: "Access curated market research, price trend analysis, and data-driven insights to help you navigate volatile crypto markets.",
   },
   {
     icon: <MarketsIcon />,
-    title: 'Markets',
-    desc: 'Direct access to market leading liquidity harnessed through world-class research, tools, data and analytics.',
+       title: "Automated Strategies",
+    desc: "Deploy algorithmic trading strategies and automation tools designed to capture opportunities across global crypto markets.",
   },
   {
     icon: <PrivateBankingIcon />,
-    title: 'Private Banking',
-    desc: 'Comprehensive wealth management services tailored for individuals and families, offering personalized investment strategies, estate planning, and exclusive financial solutions.',
+   title: "Crypto Tax Solutions",
+    desc: "Simplify crypto tax reporting with automated transaction tracking, profit-loss summaries, and compliance-ready reports.",
   },
 ];
 

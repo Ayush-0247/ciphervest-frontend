@@ -9,24 +9,25 @@ import Outmoto from "./pages/Outmoto";
 import Ourservices from "./pages/Ourservices";
 import Products from "./pages/Products";
 import "./App.css";
-import SocialGrid from "./components/SocialGrid";
+
 import Hero from "./components/Hero";
 import ContactPage from "./pages/Contactpage";
 import JPMorganSection from "./components/Jpmorgansection";
 import Dashboard from "./pages/Dashboard";
 import FAQ from "./pages/FAQSection";
+import Testing from "./components/testing";
 function Home() {
   return (
     <>
       <Hero />
       <Section1 />
       <Test />
-      <SocialGrid />
+      
       <FinPulseSection />
 
       <JPMorganSection />
 
-    
+    <Testing />
     
     </>
   );

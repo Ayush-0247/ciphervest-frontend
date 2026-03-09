@@ -28,7 +28,7 @@
 .phoneImage {
   height: 220px;
   border-radius: 22px;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
