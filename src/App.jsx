@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Test from "./components/Test";
 import Section1 from "./components/Section1";
 import Footer from "./components/Footer";
-import FinPulseSection from "./components/FinPulseSection";
 import Outmoto from "./pages/Outmoto";
 import Ourservices from "./pages/Ourservices";
 import Products from "./pages/Products";
@@ -15,19 +14,17 @@ import ContactPage from "./pages/Contactpage";
 import JPMorganSection from "./components/Jpmorgansection";
 import Dashboard from "./pages/Dashboard";
 import FAQ from "./pages/FAQSection";
-import Testing from "./components/testing";
 function Home() {
   return (
     <>
       <Hero />
       <Section1 />
       <Test />
-      
-      <FinPulseSection />
+   
 
       <JPMorganSection />
 
-    <Testing />
+ 
     
     </>
   );
