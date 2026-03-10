@@ -79,9 +79,7 @@ export default function WealthPlanner() {
       {/* ── HERO ── */}
       <section className="hero">
         <h1 className="hero-title">
-          Power{' '}
-          <span className="emoji-badge">📈</span>
-          {' '}Your Wealth<br />
+          Power Your Wealth<br />
           with Smart Planning
         </h1>
         <p className="hero-subtitle">
