@@ -79,7 +79,7 @@ export default function WealthPlanner() {
       {/* ── HERO ── */}
       <section className="hero">
         <h1 className="hero-title">
-          Power Your Wealth<br />
+          Power Your <br />Wealth<br />
           with Smart Planning
         </h1>
         <p className="hero-subtitle">
