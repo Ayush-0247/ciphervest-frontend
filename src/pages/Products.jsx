@@ -72,10 +72,26 @@ const products = [
 ];
 
 const steps = [
-  { num: "01", title: "Register with Us", desc: "Create your investment profile and share your financial goals." },
-  { num: "02", title: "Risk & Portfolio Assessment", desc: "Our experts evaluate your risk appetite and investment timeline." },
-  { num: "03", title: "Strategy Development", desc: "We build a diversified strategy across crypto, equities, and other assets." },
-  { num: "04", title: "Monitor & Grow", desc: "Track performance while our advisors continuously optimize your portfolio." },
+  {
+    num: "01",
+    title: "Create Your Account",
+    desc: "Sign up in under 2 minutes. No paperwork, no branch visits — just your phone and a few details to get started."
+  },
+  {
+    num: "02",
+    title: "Build Your Profile",
+    desc: "Tell us your goals — saving, growing wealth, or entering crypto. We tailor everything to where you are financially right now."
+  },
+  {
+    num: "03",
+    title: "Get Your Strategy",
+    desc: "We craft a personalized mix of crypto assets, equities, and smart payment tools designed to grow with your lifestyle."
+  },
+  {
+    num: "04",
+    title: "Track & Level Up",
+    desc: "Watch your money move in real time. Our advisors keep optimizing your portfolio so you stay ahead — not just afloat."
+  },
 ];
 const stats = [
   { num: "₹36", suffix: "K+", desc: "Assets managed across client portfolios" },
@@ -177,7 +193,9 @@ export default function ProductPage() {
       navigate("/outmoto");
     };
 
-
+    const gotomarket = () => {
+      navigate("/dashboard");
+    }
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -223,9 +241,9 @@ portfolio management, and tax advisory to help investors grow wealth with confid
                   <span className="fin-status-dot"></span> Active
                 </span>
               </div>
-              <div className="fin-dash-balance">₹24,81,200</div>
+              <div className="fin-dash-balance">₹31,200</div>
               <div className="fin-dash-change">
-                <span className="fin-trend-up">▲</span> +₹3,42,800 (16.0%) this year
+                <span className="fin-trend-up">▲</span> +₹3,800 (12.0%) this year
               </div>
 
               <Sparkline />
@@ -291,7 +309,9 @@ portfolio management, and tax advisory to help investors grow wealth with confid
                 ))}
               </ul>
 
-              <button className="fin-link-btn">
+              <button
+              onClick={gotomarket}
+              className="fin-link-btn">
                 Explore {p.name} <span className="fin-arr">→</span>
               </button>
             </div>
@@ -406,7 +426,9 @@ portfolio management, and tax advisory to help investors grow wealth with confid
                 ))}
               </ul>
 
-              <button className={`fin-plan-btn ${p.featured ? 'fin-plan-btn-primary' : 'fin-plan-btn-secondary'}`}>
+              <button
+              onClick={goToContactus}
+              className={`fin-plan-btn ${p.featured ? 'fin-plan-btn-primary' : 'fin-plan-btn-secondary'}`}>
                 {p.plan === 'Private' ? 'Talk to sales' : 'Get started'}
               </button>
             </div>
@@ -429,7 +451,9 @@ portfolio management, and tax advisory to help investors grow wealth with confid
     </p>
 
     <div className="fin-actions fin-center">
-      <button className="fin-btn-primary">Start Your Investment Journey</button>
+      <button 
+      onClick={goToContactus}
+      className="fin-btn-primary">Start Your Journey with Ciphervest</button>
     </div>
 
     <div className="fin-trust-badges">
