@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./Products.css";
-
+import { useNavigate } from "react-router-dom";
 // ─── Sparkline SVG ───
 function Sparkline() {
   const points = [30, 45, 35, 60, 50, 70, 58, 75, 65, 82, 72, 88];
@@ -166,6 +166,18 @@ const logos = [
 export default function ProductPage() {
   // Removed IntersectionObserver (useReveal) to ensure 100% visibility 
   // and fix scrolling/visibility bugs caused by components failing to appear.
+
+    const navigate = useNavigate();
+  
+    const goToContactus = () => {
+      navigate("/contact");
+    };
+  
+    const goToOutmoto = () => {
+      navigate("/outmoto");
+    };
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -196,9 +208,9 @@ portfolio management, and tax advisory to help investors grow wealth with confid
             </p>
 
             <div className="fin-actions">
-              <button className="fin-btn-primary">Open free account</button>
-              <button className="fin-btn-secondary">
-                Book a demo <span className="fin-arr">→</span>
+              <button onClick={goToContactus} className="fin-btn-primary">Drop a query</button>
+              <button onClick={goToOutmoto} className="fin-btn-secondary">
+                Know about us <span className="fin-arr">→</span>
               </button>
             </div>
           </div>

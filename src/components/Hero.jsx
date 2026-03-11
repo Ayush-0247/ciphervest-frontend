@@ -28,7 +28,7 @@ export default function Hero() {
     };
   }, []);
 
-  const goToProduct = () => navigate("/products");
+  const goToServices = () => navigate("/ourservices");
   const goToOurMoto = () => navigate("/outmoto");
 
   return (
@@ -73,7 +73,7 @@ export default function Hero() {
           </p>
 
           <div className={styles.buttons}>
-            <button className={styles.primaryBtn} onClick={goToProduct}>
+            <button className={styles.primaryBtn} onClick={goToServices}>
               Explore Our Services
             </button>
             <button className={styles.secondaryBtn} onClick={goToOurMoto}>

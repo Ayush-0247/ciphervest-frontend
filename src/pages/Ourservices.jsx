@@ -77,6 +77,9 @@ export default function OurServices() {
     navigate("/contact");
   };
 
+  const goToOutmoto = () => {
+    navigate("/outmoto");
+  };
   const [heroVisible, setHeroVisible] = useState(false);
   const [processVisible, setProcessVisible] = useState(false);
   const [trustVisible, setTrustVisible] = useState(false);
@@ -169,6 +172,10 @@ export default function OurServices() {
 
           <span className="os-hero-stat">
             <strong>Portfolio</strong> management
+          </span>
+
+          <span className="os-hero-stat">
+            <strong>Tax</strong> Consultancy
           </span>
 
           <button className="contactBtn" onClick={goToContact}>
@@ -344,8 +351,8 @@ export default function OurServices() {
               Book Consultation
             </button>
 
-            <button className="os-btn-ghost">
-              Learn More →
+            <button className="os-btn-ghost" onClick={goToOutmoto}>
+              Learn More about us →
             </button>
 
           </div>
