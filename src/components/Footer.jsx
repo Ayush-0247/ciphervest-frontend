@@ -1,8 +1,26 @@
 import "./Footer.css";
 import { FaGoogle, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+    const navigate = useNavigate();
+    const Gotoproductpage = () => {
+        navigate("/products");
+    }
+    const gotocontactus = () => {
+        navigate("/contact");
+    }
+    const Gotoservicepage = () => {
+        navigate("/ourservices");
+    }
+    const gotomoto = ()=>{
+      navigate("/outmoto");
+    }
+
+    const gotomarket = () => {
+      navigate("/dashboard");
+    }
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -96,38 +114,38 @@ function Footer() {
           <div className="footer-links">
             <h4>Products</h4>
             <ul>
-              <li>Crypto Trading</li>
-              <li>Portfolio Management</li>
-              <li>Market Analytics</li>
-              <li>Automated Strategies</li>
-              <li>Digital Asset Research</li>
+              <li onClick={Gotoproductpage}>Crypto Trading</li>
+              <li onClick={Gotoproductpage}>Portfolio Management</li>
+              <li onClick={Gotoproductpage}>Market Analytics</li>
+              <li onClick={Gotoproductpage}>Automated Strategies</li>
+              <li onClick={Gotoproductpage}>Digital Asset Research</li>
             </ul>
           </div>
 
           <div className="footer-links">
             <h4>Services</h4>
             <ul>
-              <li>Crypto Tax Consultancy</li>
-              <li>Investment Advisory</li>
-              <li>Risk Management</li>
-              <li>Blockchain Consulting</li>
-              <li>Financal Advisory</li>
+              <li onClick={Gotoservicepage}>Crypto Tax Consultancy</li>
+              <li onClick={Gotoservicepage}>Investment Advisory</li>
+               <li onClick={Gotoservicepage}>Risk Management</li>
+              <li onClick={Gotoservicepage}>Blockchain Consulting</li>
+                <li onClick={Gotoservicepage}>Financal Advisory</li>
             </ul>
           </div>
 
           <div className="footer-links">
             <h4>Company</h4>
             <ul>
-              <li>About Us</li>
-              <li>Careers</li>
-              <li>Insights & Research</li>
-              <li>Security & Compliance</li>
+              <li onClick={gotomoto} >About Us</li>
+              <li onClick={gotomoto}>Careers</li>
+              <li onClick={gotomarket}>Insights & Research</li>
+              <li onClick={Gotoservicepage} >Security & Compliance</li>
             </ul>
           </div>
 
           <div className="footer-contact">
             <h4>Contact</h4>
-            <p>Partnerships & Business Queries</p>
+            <p onClick={gotocontactus}>Partnerships & Business Queries</p>
 
             <p>Delhi NCR • Bengaluru • Global Remote</p>
           </div>

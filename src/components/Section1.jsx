@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const css = `
 @import url("https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap");
 
@@ -462,7 +462,7 @@ const positions = [
   {
     sym: "BTC",
     name: "Bitcoin",
-    price: "$67,240",
+    price: "$67,703",
     chg: "2.4%",
     up: true,
     bar: 72,
@@ -500,10 +500,21 @@ export default function Section1() {
 
   useEffect(() => {
     animateValue(setUsers, 2400000, 2000);
-    animateValue(setAssets, 180, 2000);
+    animateValue(setAssets, 35, 2000);
     animateValue(setUptime, 99.99, 2000, true);
-    animateValue(setPortfolioValue, 124830, 1800);
+    animateValue(setPortfolioValue, 36582, 1800);
   }, []);
+
+      const navigate = useNavigate();
+
+      const GoTodashboard = () => {
+        navigate("/dashboard");
+      }
+ 
+    const GoToservices = () => {
+      navigate("/ourservices");
+    };
+
 
   return (
     <>
@@ -531,10 +542,12 @@ export default function Section1() {
               ecosystem designed for modern investors worldwide.
             </p>
             <div className="s1Ctas">
-              <button className="ctaPrimary">
-                Get Started <span className="ctaArrow">→</span>
+              <button
+              onClick={GoTodashboard}
+              className="ctaPrimary">
+                Market insights <span className="ctaArrow">→</span>
               </button>
-              <button className="ctaSecondary">▶ Watch Demo</button>
+              <button onClick={GoToservices} className="ctaSecondary">Services we offer</button>
             </div>
             <div className="s1TrustRow">
               <div className="trustAvatars">
@@ -544,7 +557,7 @@ export default function Section1() {
                 <div className="trustAvatar ta4">AK</div>
               </div>
               <span className="trustText">
-                Trusted by <strong>2.4M+</strong> investors in 140+ countries
+                Trusted by <strong>55</strong> investors in 4+ countries
               </span>
             </div>
           </div>
@@ -557,7 +570,7 @@ export default function Section1() {
                 <div>
                   <div className="pcLabel">Total Portfolio Value</div>
                   <div className="pcValue">
-                    ${portfolioValue.toLocaleString()}
+                    ₹{portfolioValue.toLocaleString()}
                   </div>
                   <div className="pcValueSub">Updated just now</div>
                 </div>
@@ -650,11 +663,11 @@ export default function Section1() {
         <div className="s1StatsBand">
           {[
             {
-              num: `${(users / 1_000_000).toFixed(1)}M+`,
-              label: "Active Users",
+              num: `${((users / 100_000)* 2).toFixed(0)}+`,
+              label: "Active investors",
               sub: "↑ 23% YoY",
             },
-            { num: `$${assets}B+`, label: "Assets Managed", sub: "↑ 41% YoY" },
+            { num: `${assets}K`, label: "Assets Managed", sub: "↑ 41% YoY" },
             {
               num: `${uptime}%`,
               label: "Platform Uptime",
