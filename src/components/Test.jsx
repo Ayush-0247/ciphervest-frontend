@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 import { FaChartLine } from "react-icons/fa";
 import './Test.css';
 
@@ -73,6 +73,16 @@ const Avatar = ({ index }) => (
 
 /* ── Main Component ── */
 export default function WealthPlanner() {
+        const navigate = useNavigate();
+
+      const GoTodashboard = () => {
+        navigate("/dashboard");
+      }
+ 
+    const gotocontact = () => {
+      navigate("/contact");
+    };
+
   return (
     <div className="wealth-page">
 
@@ -87,8 +97,8 @@ export default function WealthPlanner() {
           budgets, and build savings all in one place.
         </p>
         <div className="btn-group">
-          <button className="btn-primary">Get Started Now</button>
-          <button className="btn-secondary">Watch Demo</button>
+          <button onClick={GoTodashboard} className="btn-primary">Get Started Now</button>
+          <button onClick={gotocontact} className="btn-secondary">Ask for a Demo</button>
         </div>
       </section>
 

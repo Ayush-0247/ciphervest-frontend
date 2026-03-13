@@ -20,12 +20,7 @@ function Home() {
       <Hero />
       <Section1 />
       <Test />
-   
-
       <JPMorganSection />
-
- 
-    
     </>
   );
 }
@@ -41,7 +36,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/outmoto" element={<Outmoto />} />
         <Route path="/contact" element={<ContactPage />} />
-         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/ourservices" element={<Ourservices />} />
       </Routes>
       <Footer />

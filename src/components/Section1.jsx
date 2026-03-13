@@ -663,11 +663,11 @@ export default function Section1() {
         <div className="s1StatsBand">
           {[
             {
-              num: `${((users / 100_000)* 2).toFixed(0)}+`,
+              num: `${((users / 100_000)* 0.55).toFixed(0)}+`,
               label: "Active investors",
-              sub: "↑ 23% YoY",
+              sub: "↑ 100% YoY",
             },
-            { num: `${assets}K`, label: "Assets Managed", sub: "↑ 41% YoY" },
+            { num: `${assets}K+`, label: "Assets Managed", sub: "↑ 100% YoY" },
             {
               num: `${uptime}%`,
               label: "Platform Uptime",
