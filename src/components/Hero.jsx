@@ -65,11 +65,10 @@ export default function Hero() {
           <h2 className={styles.subHeading}>for the Modern Era</h2>
 
           <p className={styles.description}>
-            CipherVest Capital structures institutional-grade financial
-            solutions across digital assets, structured credit, and public
-            markets. We bridge traditional finance with blockchain
-            infrastructure through disciplined risk management and transparent
-            capital deployment.
+            CipherVest Capital delivers institutional-grade solutions across
+            digital assets, structured credit, and public markets, bridging
+            traditional finance with blockchain through disciplined risk
+            management and transparent capital deployment.
           </p>
 
           <div className={styles.buttons}>
@@ -100,7 +99,7 @@ export default function Hero() {
           <div className={styles.cardBottom}>
             <div className={styles.cardBrand}>VISA</div>
             <div className={styles.cardChip}>C</div>
-            <div className={styles.cardNumber}>•••• •••• •••• 2407</div>
+            <div className={styles.cardNumber}>•••• •••• •••• 2094</div>
             <div className={styles.cardFooter}>
               <span>Exp 09/27</span>
               <span>Tony Starc</span>

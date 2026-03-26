@@ -94,7 +94,7 @@ const steps = [
   },
 ];
 const stats = [
-  { num: "₹36", suffix: "K+", desc: "Assets managed across client portfolios" },
+  { num: "₹48", suffix: "K+", desc: "Assets managed across client portfolios" },
   { num: "11+", suffix: "", desc: "Active investors using our advisory services" },
   { num: "15+", suffix: "", desc: "Markets tracked including crypto & global equities" },
   { num: "96", suffix: "%", desc: "Client satisfaction across advisory services" },
@@ -241,9 +241,9 @@ portfolio management, and tax advisory to help investors grow wealth with confid
                   <span className="fin-status-dot"></span> Active
                 </span>
               </div>
-              <div className="fin-dash-balance">₹31,200</div>
+              <div className="fin-dash-balance">₹48,523</div>
               <div className="fin-dash-change">
-                <span className="fin-trend-up">▲</span> +₹3,800 (12.0%) this year
+                <span className="fin-trend-up">▲</span> +₹7,200 (12.0%) this year
               </div>
 
               <Sparkline />

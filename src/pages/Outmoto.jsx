@@ -312,14 +312,14 @@ tax-efficient wealth management.
               <div className="ct-stats">
                 <div>
                   <span className="ct-stat-num">60+</span>
-                  <span className="ct-stat-label">Years experience</span>
+                  <span className="ct-stat-label">Years experience <br /> in total</span>
                 </div>
                 <div>
                   <span className="ct-stat-num">3</span>
                   <span className="ct-stat-label">Continents covered</span>
                 </div>
                 <div>
-                  <span className="ct-stat-num">$2B+</span>
+                  <span className="ct-stat-num">$1.2M+</span>
                   <span className="ct-stat-label">Volume processed</span>
                 </div>
               </div>

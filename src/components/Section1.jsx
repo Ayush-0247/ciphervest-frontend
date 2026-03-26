@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Globe } from "lucide-react";
+import { Lock } from "lucide-react";
 const css = `
 @import url("https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap");
 
@@ -462,7 +464,7 @@ const positions = [
   {
     sym: "BTC",
     name: "Bitcoin",
-    price: "$67,703",
+    price: "$70.3 k",
     chg: "2.4%",
     up: true,
     bar: 72,
@@ -472,7 +474,7 @@ const positions = [
   {
     sym: "ETH",
     name: "Ethereum",
-    price: "$3,512",
+    price: "$2.2 k",
     chg: "1.8%",
     up: true,
     bar: 55,
@@ -482,7 +484,7 @@ const positions = [
   {
     sym: "SOL",
     name: "Solana",
-    price: "$142",
+    price: "$85",
     chg: "0.9%",
     up: false,
     bar: 41,
@@ -502,7 +504,7 @@ export default function Section1() {
     animateValue(setUsers, 2400000, 2000);
     animateValue(setAssets, 35, 2000);
     animateValue(setUptime, 99.99, 2000, true);
-    animateValue(setPortfolioValue, 36582, 1800);
+    animateValue(setPortfolioValue, 48523, 1800);
   }, []);
 
       const navigate = useNavigate();
@@ -634,9 +636,9 @@ export default function Section1() {
             {/* 2×2 Mini Cards */}
             <div className="miniCards">
               <div className="miniCard miniCardGlow">
-                <div className="miniCardIcon">🔒</div>
+                <div className="miniCardIcon"><Lock className="w-5 h-5 text-gray-600" /></div>
                 <div className="miniCardLabel">Insured Assets</div>
-                <div className="miniCardValue">$250K</div>
+                <div className="miniCardValue">$12.30K</div>
                 <div className="miniCardSub">FDIC protected</div>
                 <div className="miniCardBar">
                   <div
@@ -647,7 +649,7 @@ export default function Section1() {
               </div>
 
               <div className="miniCard miniCardGlow">
-                <div className="miniCardIcon">🌍</div>
+                <div className="miniCardIcon"><Globe className="w-5 h-5 text-gray-600" /></div>
                 <div className="miniCardLabel">Markets Open</div>
                 <div className="miniCardValue">14</div>
                 <div className="miniCardSub">across 9 regions</div>
