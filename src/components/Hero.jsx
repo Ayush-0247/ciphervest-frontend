@@ -81,13 +81,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT – cards animate purely via CSS keyframes
-            Card 1: card1LeftToRight @ 4.1s  — slides from text side (left) → right
-            Card 2: card2PopFromCard1 @ 5.4s  — pops out of card 1, settles bottom-left
-        */}
+       
         <div className={`${styles.right} ${styles.floatWrapper}`}>
           <div className={styles.cardTop}>
-            <div className={styles.cardChip}>C</div>
+            <div className={styles.cardChip}>S</div>
             <div className={styles.cardBrand}>VISA</div>
             <div className={styles.cardNumber}>•••• •••• •••• 1207</div>
             <div className={styles.cardFooter}>
@@ -98,7 +95,7 @@ export default function Hero() {
 
           <div className={styles.cardBottom}>
             <div className={styles.cardBrand}>VISA</div>
-            <div className={styles.cardChip}>C</div>
+            <div className={styles.cardChip}>A</div>
             <div className={styles.cardNumber}>•••• •••• •••• 2094</div>
             <div className={styles.cardFooter}>
               <span>Exp 09/27</span>
