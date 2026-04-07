@@ -2,25 +2,29 @@ import "./Footer.css";
 import { FaGoogle, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import visaImg from "../assets/visalogo.avif";
+import mastercardImg from "../assets/Mastercard-logo.svg";
+import amexImg from "../assets/American_Express_logo.svg";
+import paypalImg from "../assets/PayPal.svg";
 
 function Footer() {
-    const navigate = useNavigate();
-    const Gotoproductpage = () => {
-        navigate("/products");
-    }
-    const gotocontactus = () => {
-        navigate("/contact");
-    }
-    const Gotoservicepage = () => {
-        navigate("/ourservices");
-    }
-    const gotomoto = ()=>{
-      navigate("/outmoto");
-    }
+  const navigate = useNavigate();
+  const Gotoproductpage = () => {
+    navigate("/products");
+  }
+  const gotocontactus = () => {
+    navigate("/contact");
+  }
+  const Gotoservicepage = () => {
+    navigate("/ourservices");
+  }
+  const gotomoto = () => {
+    navigate("/outmoto");
+  }
 
-    const gotomarket = () => {
-      navigate("/dashboard");
-    }
+  const gotomarket = () => {
+    navigate("/dashboard");
+  }
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,7 +47,7 @@ function Footer() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
-      });  
+      });
       const data = await res.json();
 
       if (res.ok) {
@@ -126,9 +130,9 @@ function Footer() {
             <ul>
               <li onClick={Gotoservicepage}>Crypto Tax Consultancy</li>
               <li onClick={Gotoservicepage}>Investment Advisory</li>
-               <li onClick={Gotoservicepage}>Risk Management</li>
+              <li onClick={Gotoservicepage}>Risk Management</li>
               <li onClick={Gotoservicepage}>Blockchain Consulting</li>
-                <li onClick={Gotoservicepage}>Financal Advisory</li>
+              <li onClick={Gotoservicepage}>Financal Advisory</li>
             </ul>
           </div>
 
@@ -152,23 +156,13 @@ function Footer() {
       </div>
 
       <div className="footer-payments">
-        <img
-          src="https://assets.weforum.org/organization/image/ngfvgBH8pt-CYvoLVnHFBcawoQG15TH4goz7V7g4ngo.jpg"
-          alt="Visa"
-        />
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-          alt="Mastercard"
-        />
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg"
-          alt="American Express"
-        />
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-          alt="PayPal"
-        />
+        <img src={visaImg} alt="Visa" />
+        <img src={mastercardImg} alt="Mastercard" />
+        <img src={amexImg} alt="American Express" />
+        <img src={paypalImg} alt="PayPal" />
       </div>
+
+      
 
       <div className="footer-bottom">
         Cryptocurrency investments carry risk. Past performance does not
