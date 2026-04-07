@@ -45,6 +45,7 @@ function Footer() {
         body: JSON.stringify({ email }),
       });
 
+  
       const data = await res.json();
 
       if (res.ok) {
