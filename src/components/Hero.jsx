@@ -55,10 +55,7 @@ export default function Hero() {
       >
         {/* LEFT – text staggered in via CSS (3.1s → 3.9s) */}
         <div className={styles.left}>
-          <span className={styles.tag}>
-            <span className={styles.tagDot} />
-            INSTITUTIONAL CAPITAL
-          </span>
+          <span className={styles.tag}>INSTITUTIONAL CAPITAL</span>
 
           <h1 className={styles.heading}>
             Engineering <br />

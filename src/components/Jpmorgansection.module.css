@@ -4,7 +4,7 @@
 .section {
   display: flex;
   align-items: flex-start;
-  background: linear-gradient(160deg, #f8f9ff 0%, #eef2ff 50%, #f3f4ff 100%);
+  background: #ffffff;
   min-height: 100vh;
   padding: 60px 56px;
   margin: 0;
@@ -12,19 +12,6 @@
   position: relative;
   gap: 48px;
   box-sizing: border-box;
-  overflow: hidden;
-}
-
-.section::before {
-  content: '';
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%);
-  top: -100px;
-  right: -100px;
-  pointer-events: none;
 }
 
 /* ── Left image column ── */
@@ -61,17 +48,14 @@
 .heading {
   font-size: clamp(1.6rem, 3vw, 2.6rem);
   font-weight: 400;
-  color: #1e1b4b;
+  color: #3a3a3a;
   line-height: 1.2;
   margin: 0 0 36px 0;
   font-family: 'Georgia', serif;
 }
 
 .heading .highlight {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #a0522d;
 }
 
 /* ── Card wrapper ── */
@@ -89,7 +73,7 @@
 
 /* ── Individual card ── */
 .card {
-  background: #ffffff;
+  background: #f0f4f4;
   padding: 28px 20px 22px;
   display: flex;
   flex-direction: column;
@@ -98,37 +82,30 @@
   cursor: pointer;
   transform: scale(1);
   transform-origin: center center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   z-index: 0;
   position: relative;
-  border-radius: 16px;
-  border: 1px solid #e8eaf6;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-radius: 12px;
 }
 
 .card:hover:not(.cardActive) {
-  background: #f5f3ff;
-  border-color: #c7d2fe;
-  box-shadow: 0 8px 28px rgba(99,102,241,0.12);
-  transform: translateY(-4px);
+  background: #e8f0f0;
 }
 
 .cardActive {
-  transform: scale(1.06) translateY(-4px);
+  transform: scale(1.08);
   z-index: 2;
-  background: #faf5ff;
-  border-color: #8b5cf6;
-  box-shadow: 0 12px 40px rgba(139,92,246,0.25), 0 0 0 2px rgba(139,92,246,0.12);
+  background: #ddeaea;
+  box-shadow: 0 10px 36px rgba(74, 138, 138, 0.2), 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 
 /* ── Card content ── */
 .cardIcon {
-  color: #6366f1;
+  color: #4a8a8a;
   margin-bottom: 16px;
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 8px rgba(99,102,241,0.2));
 }
 
 .cardTitle {
@@ -153,7 +130,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #6366f1;
+  color: #4a8a8a;
   font-size: 0.85rem;
   font-family: 'Arial', sans-serif;
   margin-top: 18px;
@@ -162,10 +139,10 @@
   background: none;
   border: none;
   padding: 0;
-  transition: gap 0.2s ease, color 0.2s ease;
+  transition: gap 0.2s ease;
 }
 
-.learnMore:hover { gap: 9px; color: #4f46e5; }
+.learnMore:hover { gap: 9px; }
 
 .learnMore svg {
   width: 15px;
@@ -185,22 +162,21 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1.5px solid #c7d2fe;
+  border: 1.5px solid #aaa;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #6366f1;
+  color: #555;
   flex-shrink: 0;
-  transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
 .arrowBtn:hover {
-  border-color: #6366f1;
-  color: #fff;
-  background: #6366f1;
-  box-shadow: 0 4px 16px rgba(99,102,241,0.3);
+  border-color: #4a8a8a;
+  color: #4a8a8a;
+  background: #f0f8f8;
 }
 
 .dot {
@@ -215,11 +191,10 @@
 }
 
 .dot.active {
-  background: #6366f1;
-  border-color: #6366f1;
-  width: 14px;
-  height: 10px;
-  border-radius: 5px;
+  background: #3a3a3a;
+  border-color: #3a3a3a;
+  width: 12px;
+  height: 12px;
 }
 
 
