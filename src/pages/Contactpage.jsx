@@ -72,7 +72,7 @@ export default function ContactPage() {
 
     try {
       const response = await fetch(
-        "https://ciphervest-backend-1.onrender.com/api/contact",
+        `${import.meta.env.VITE_API_URL}/api/contact`,
         {
           method: "POST",
           headers: {
