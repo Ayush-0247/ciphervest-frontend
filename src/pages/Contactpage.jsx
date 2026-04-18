@@ -256,10 +256,10 @@ export default function ContactPage() {
           </div>
 
           <div className={styles.contactMethods}>
-            <a href="tel:+18001234567" className={styles.contactMethod}>
+            <span className={styles.contactMethod}>
               <span className={styles.cmIcon}>📞</span>
               +91 xxx xxx xxxx
-            </a>
+            </span>
             <a
               href="mailto:support@ciphervest.com"
               className={styles.contactMethod}
