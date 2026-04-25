@@ -260,12 +260,13 @@ export default function ContactPage() {
               <span className={styles.cmIcon}>📞</span>
               +91 xxx xxx xxxx
             </span>
+           
             <a
-              href="mailto:support@ciphervest.com"
+              href="mailto:mail.ayushraj247@gmail.com"
               className={styles.contactMethod}
             >
               <span className={styles.cmIcon}>✉️</span>
-              support@ciphervestcpital.com
+             mail.ayushraj247@gmail.com
             </a>
           </div>
 
