@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
+
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -17,45 +18,91 @@ export default function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header
-      className={`${styles.header} ${
-        scrolled ? styles.scrolled : ""
-      }`}
-    >
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
-        
-        <div className={styles.logo}>
+        {/* Brand Logo */}
+        <Link to="/" className={styles.logo} onClick={closeMenu}>
           <div className={styles.logoIcon}>C</div>
-          <span>CIPHERVEST CAPITAL</span>
-        </div>
+          <span className={styles.logoText}>CIPHERVEST CAPITAL</span>
+        </Link>
 
-        <div
-          className={`${styles.menuToggle} ${
-            menuOpen ? styles.active : ""
-          }`}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <nav
-          className={`${styles.nav} ${
-            menuOpen ? styles.navActive : ""
-          }`}
-        >
-          <Link to="/" onClick={closeMenu}>Home</Link>
-          <Link to="/products" onClick={closeMenu}>Product</Link>
-          <Link to="/FAQ" onClick={closeMenu}>FAQ</Link>
-          <Link to="/outmoto" onClick={closeMenu}>Our Moto</Link>
-          <Link to="/ourservices" onClick={closeMenu}>Our Services</Link>
-          
-
-          <Link to="/dashboard" onClick={closeMenu}>Markets</Link>
+        {/* Center Pill Navigation */}
+        <nav className={`${styles.navPill} ${menuOpen ? styles.navActive : ""}`}>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.activeItem}` : styles.navItem
+            }
+            onClick={closeMenu}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/products"
+            className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.activeItem}` : styles.navItem
+            }
+            onClick={closeMenu}
+          >
+            Products
+          </NavLink>
+          <NavLink
+            to="/ourservices"
+            className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.activeItem}` : styles.navItem
+            }
+            onClick={closeMenu}
+          >
+            Our Services
+          </NavLink>
+          <NavLink
+            to="/outmoto"
+            className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.activeItem}` : styles.navItem
+            }
+            onClick={closeMenu}
+          >
+            Our Moto
+          </NavLink>
+          <NavLink
+            to="/FAQ"
+            className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.activeItem}` : styles.navItem
+            }
+            onClick={closeMenu}
+          >
+            FAQ
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.activeItem}` : styles.navItem
+            }
+            onClick={closeMenu}
+          >
+            Contact us
+          </NavLink>
         </nav>
 
-        
+        {/* Header Right Actions */}
+        <div className={styles.headerRight}>
+          <Link to="/dashboard" className={styles.ctaBtn} onClick={closeMenu}>
+            Markets
+          </Link>
+
+          {/* Hamburger toggle */}
+          <button
+            type="button"
+            className={`${styles.menuToggle} ${menuOpen ? styles.menuOpen : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </header>
   );
