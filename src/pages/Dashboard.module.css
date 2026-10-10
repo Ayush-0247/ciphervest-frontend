@@ -1,1 +1,725 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500;600&display=swap');
 
+/* ─── PAGE ROOT (MATCHES FAQ BACKGROUND & TOKENS) ───────────── */
+.page {
+  --blue:         #2563EB;
+  --blue-lt:      #60A5FA;
+  --blue-dk:      #1D4ED8;
+  --ink:          #0A0F1E;
+  --ink-mid:      #1E2A45;
+  --ink-soft:     #374151;
+  --ink-mute:     #6B7280;
+  --white:        #FFFFFF;
+  --surface:      #F1F5FD;
+  --blue-grad:    linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #60A5FA 100%);
+  --cool-bg:      linear-gradient(160deg, #FFFFFF 0%, #F1F5FD 55%, #E0EAFF 100%);
+  --shadow-sm:    0 2px 12px rgba(37, 99, 235, 0.07);
+  --shadow-md:    0 6px 28px rgba(37, 99, 235, 0.11);
+  --radius:       14px;
+  --t:            0.24s cubic-bezier(0.4, 0, 0.2, 1);
+
+  position: relative;
+  min-height: 100vh;
+  background: var(--cool-bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ─── GRID UI PATTERN (EXACT MATCH WITH FAQ HERO GRID) ──────── */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+  background-size: 52px 52px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bgGlow1 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.10) 0%, transparent 68%);
+  top: -240px;
+  right: -180px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bgGlow2 {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.08) 0%, transparent 65%);
+  bottom: 60px;
+  left: -120px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── CONTAINER ─────────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ─── TOP BAR / HEADER ──────────────────────────────────────── */
+.topBar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 680px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.07);
+  border: 1.5px solid rgba(37, 99, 235, 0.18);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--blue-dk);
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.7);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.badgeDotLoading {
+  background: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.6; }
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--ink);
+  margin: 0;
+}
+
+.titleAccent {
+  background: var(--blue-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+}
+
+.subtitle {
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.controlsArea {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* View Mode Switcher */
+.viewToggle {
+  display: inline-flex;
+  background: var(--white);
+  border: 1.5px solid rgba(37, 99, 235, 0.16);
+  border-radius: 999px;
+  padding: 3px;
+  box-shadow: var(--shadow-sm);
+}
+
+.viewBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--t);
+}
+
+.viewBtnActive {
+  background: var(--blue-grad);
+  color: var(--white);
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+}
+
+.viewBtn:hover:not(.viewBtnActive) {
+  color: var(--blue-dk);
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.counterBadge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--blue-dk);
+  background: var(--white);
+  border: 1.5px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ─── ASSET SELECTOR PANEL ──────────────────────────────────── */
+.selectorPanel {
+  background: var(--white);
+  border: 1.5px solid rgba(37, 99, 235, 0.12);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+
+.selectorPanel:hover {
+  border-color: rgba(37, 99, 235, 0.22);
+  box-shadow: var(--shadow-md);
+}
+
+.selectorTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  position: relative;
+  flex: 1;
+  max-width: 380px;
+  min-width: 220px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.55rem 0.9rem 0.55rem 2.3rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--ink);
+  background: #fdfefe;
+  border: 1.5px solid rgba(37, 99, 235, 0.16);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+
+.searchInput:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+  background: #ffffff;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-mute);
+  pointer-events: none;
+}
+
+.presetActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.presetLabel {
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+
+.presetBtn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--blue-dk);
+  background: rgba(37, 99, 235, 0.07);
+  border: 1.5px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  transition: all var(--t);
+}
+
+.presetBtn:hover {
+  background: var(--blue-grad);
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.22);
+}
+
+.clearBtn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.06);
+  border: 1.5px solid rgba(220, 38, 38, 0.2);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  transition: all var(--t);
+}
+
+.clearBtn:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* Ticker Chips (Styled exactly like FAQ filter pills) */
+.chipsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.85rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(37, 99, 235, 0.14);
+  background: var(--white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--t), border-color var(--t), color var(--t), box-shadow var(--t), transform var(--t);
+}
+
+.chip:hover:not(.chipDisabled) {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: rgba(37, 99, 235, 0.30);
+  color: var(--blue-dk);
+  transform: translateY(-1px);
+}
+
+.chipActive {
+  background: var(--blue-grad) !important;
+  border-color: transparent !important;
+  color: var(--white) !important;
+  font-weight: 600;
+  box-shadow: 0 3px 14px rgba(37, 99, 235, 0.28);
+}
+
+.chipDisabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.chipDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chipSymbol {
+  font-family: 'DM Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.chipName {
+  font-size: 0.76rem;
+  opacity: 0.85;
+}
+
+.chipCheck {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+
+/* ─── TABLE VIEW ────────────────────────────────────────────── */
+.tableContainer {
+  background: var(--white);
+  border: 1.5px solid rgba(37, 99, 235, 0.12);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--t), border-color var(--t);
+}
+
+.tableContainer:hover {
+  border-color: rgba(37, 99, 235, 0.22);
+  box-shadow: var(--shadow-md);
+}
+
+.marketTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.marketTable th {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.05) 0%, rgba(96, 165, 250, 0.03) 100%);
+  padding: 0.85rem 1.15rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue-dk);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1.5px solid rgba(37, 99, 235, 0.09);
+  white-space: nowrap;
+}
+
+.marketTable td {
+  padding: 0.95rem 1.15rem;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.06);
+  font-size: 0.88rem;
+  color: var(--ink);
+  vertical-align: middle;
+}
+
+.marketTable tr:last-child td {
+  border-bottom: none;
+}
+
+.marketTable tr:hover td {
+  background: rgba(37, 99, 235, 0.025);
+}
+
+.tableAssetCell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.assetAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.assetMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.assetName {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.assetPair {
+  font-size: 0.74rem;
+  color: var(--ink-mute);
+  font-family: 'DM Mono', monospace;
+}
+
+.priceCell {
+  font-family: 'DM Mono', monospace;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.94rem;
+}
+
+.deltaCell {
+  font-family: 'DM Mono', monospace;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+}
+
+.deltaPositive {
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.deltaNegative {
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.rangeCell {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.sparkCell {
+  width: 140px;
+  height: 36px;
+  padding: 0.2rem 0;
+}
+
+.rowActionBtn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ink-mute);
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--t);
+}
+
+.rowActionBtn:hover {
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* ─── GRID VIEW (CARDS MATCHING FAQ CATEGORY BLOCKS) ────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1.5px solid rgba(37, 99, 235, 0.12);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--t), box-shadow var(--t), transform var(--t);
+}
+
+.card:hover {
+  border-color: rgba(37, 99, 235, 0.26);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardAssetInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cardPriceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.cardPriceText {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.cardRangeText {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(37, 99, 235, 0.08);
+}
+
+.cardChartArea {
+  margin: 0 -0.5rem -0.25rem;
+  height: 64px;
+}
+
+/* ─── EMPTY STATE ───────────────────────────────────────────── */
+.emptyContainer {
+  background: var(--white);
+  border: 1.5px dashed rgba(37, 99, 235, 0.22);
+  border-radius: var(--radius);
+  padding: 4rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.emptyTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.emptyDesc {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  max-width: 480px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.emptyActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.emptyAddBtn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--blue-grad);
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
+  transition: all var(--t);
+}
+
+.emptyAddBtn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.38);
+}
+
+/* ─── FOOTER BAR ────────────────────────────────────────────── */
+.footerBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(37, 99, 235, 0.12);
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ─── CHART TOOLTIP ─────────────────────────────────────────── */
+.chartTooltip {
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.74rem;
+  font-family: 'DM Mono', monospace;
+  line-height: 1.4;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.tooltipTime {
+  color: #94a3b8;
+  font-size: 0.68rem;
+}
+
+.tooltipPrice {
+  font-weight: 600;
+  color: #60a5fa;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .tableContainer {
+    overflow-x: auto;
+  }
+
+  .marketTable {
+    min-width: 720px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1.5rem 1rem 3.5rem;
+  }
+
+  .topBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controlsArea {
+    justify-content: space-between;
+  }
+}

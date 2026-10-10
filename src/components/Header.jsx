@@ -96,12 +96,8 @@ export default function Header() {
 
         {/* Header Right Actions */}
         <div className={styles.headerRight}>
-          {/* <Link to="/dashboard" className={styles.ctaBtn} onClick={closeMenu}>
-            Markets
-          </Link> */}
-
           {/* Hamburger toggle */}
-          {/* <button
+          <button
             type="button"
             className={`${styles.menuToggle} ${menuOpen ? styles.menuOpen : ""}`}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -110,7 +106,7 @@ export default function Header() {
             <span></span>
             <span></span>
             <span></span>
-          </button> */}
+          </button>
         </div>
       </div>
     </header>
