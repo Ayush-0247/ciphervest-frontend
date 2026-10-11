@@ -1,5 +1,10 @@
+
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "redirects": [
+    { "source": "/FAQ", "destination": "/faq", "permanent": true },
+    { "source": "/outmoto", "destination": "/about", "permanent": true },
+    { "source": "/ourservices", "destination": "/services", "permanent": true },
+    { "source": "/dashboard", "destination": "/markets", "permanent": true }
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
