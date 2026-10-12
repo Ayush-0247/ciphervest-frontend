@@ -8,7 +8,7 @@ import Outmoto from "./pages/Outmoto";
 import Ourservices from "./pages/Ourservices";
 import Products from "./pages/Products";
 import "./App.css";
-
+import ResetScrollOnNavigate from "./components/ResetScrollOnNavigate";
 import Hero from "./components/Hero";
 import ContactPage from "./pages/Contactpage";
 import JPMorganSection from "./components/Jpmorgansection";
@@ -29,7 +29,7 @@ function App() {
   return (
     <Router>
       <Header />
-
+<ResetScrollOnNavigate />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/FAQ" element={<FAQ />} />
